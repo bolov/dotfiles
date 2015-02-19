@@ -1,0 +1,167 @@
+** please scuzați romgleza **
+
+================================================================================
+
+BASH
+
+EXPORT env variables to
+~/.bashrc
+~/.profile  (dacă țin bine minte pentru loggin cu ssh de pe alta mașină;
+             sigur pentru programe pornite cu dash)
+
+Vi mode:
+  ~/.inputrc
+set editing-mode vi
+  ~/.bashrc (trebuie aici pt fzf (v FZF))
+set -o vi
+
+Options pt (read) input (completion):
+  ~/.inputrc
+
+history with prefix:
+
+$if bash
+## arrow up
+#"\e[A":history-search-backward
+"\C-k":history-search-backward
+## arrow down
+#"\e[B":history-search-forward
+"\C-j":history-search-forward
+
+# clear screen
+"\C-l":clear-screen
+$endif
+
+Shortcuturile trebuie conditionate:
+
+# shortcut active only when bash has control
+# if the shortcuts are unconditional, some programs that take control of
+# readline will not work (gdb, cgdb)
+$if bash
+$endif
+
+================================================================================
+
+FZF Fuzzy finder
+ - just install
+ - export FZF_DEFAULT_OPTS="-x"
+ - dc am shortcuturile cu CTRL-k pt history nu merge insertul decât dacă
+   bash e în vi mode
+   dacă în vi mode trebuie pus
+     set -o vi
+   in bashrc înainte de
+     source ~/.fzf.bash
+as Vim Plugin
+ - for gvim:
+   let g:fzf_launcher='gnome-terminal --disable-factory -x bash -ic %s'
+
+
+================================================================================
+
+VIM
+
+various stuff
+alias gvim-remote='gvim --remote'
+
+
+clang complete
+  - install libclang:
+    sudo apt-get install libclang.so.1
+    sudo ln -s libclang.so.1 libclang.so
+
+Java completion
+
+ - Eclim installed
+   - eclimd not installed in /opt/eclipse (as in instalation guide)
+     găsit în:
+        /home/pk/.eclipse/
+        org.eclipse.platform_4.4.1_1473617060_linux_gtk_x86_64/eclimd
+   - autostart on login:
+      ~/.config/autostart
+      .desktop file to eclimd (cu gnome-desktop-item-edit)
+      (app, nu app in terminal)
+  - setări in vimrc:
+    - eclim schimbă make to javac. Inhibit:
+      let g:EclimJavaCompilerAutoDetect=0
+    - eclim arată erori la fiecare save. Inhibit:
+      let g:EclimJavaValidate=0
+
+buffkill
+ - http://www.vim.org/scripts/script.php?script_id=1147
+   vundle nu poate de aici
+ - https://github.com/vim-scripts/bufkill.vim
+   e o clona (merge cu vundle) dar nu are ultima versiune (v 1.11) - e nevoie
+   pentru disable mappings
+ - făcut local (e.g. în folder bufkill):
+   - script put in folder 'plugin'
+   - facut git
+   - in vundle: Plugin 'file:///home/pk/kituri/vim-plugins/bufkill'
+
+
+csope
+  ?
+
+================================================================================
+GCC
+
+LINKING
+  - L<path>
+  - ex pt: libboost_system.a (.so):
+    - static/dinamic (cred că alege el)
+      -lboost_system
+    - static
+      -l:libboost_system.a
+  - contează ordinea: A depinde de B -> A înainte de B
+
+================================================================================
+
+gdb
+
+pretty print stl (vectors)
+  - de investigat cum am făcut (~/.gdbinit)
+
+================================================================================
+
+BOOST
+  - instalat in /usr/local/boost-1.56.0
+  - (atentie la dezarhivat) owner si group sa fie pk
+  - symlink boost -> boost-1.56.0
+  - export BOOST_ROOT=/usr/local/boost
+  - am dat ./bootstrap.sh fara niciun arg si a put totul in stage
+  - mutat in lib/x64
+  - adaugat path la linker (fară dă eroare la executabilele linkate dinamic):
+    - creat fișier: (numele nu contează):
+      /etc/ld.so.conf.d/libboost.conf
+    - scris în el (nu merge cu $BOOST_ROOT)
+      /usr/local/boost/lib/x64
+
+
+================================================================================
+
+ANTLR
+V3
+
+ - ANTLR v3.5.1 (from ANTRLworks 1.5.1 doesn’t work: broken java files (throws)
+
+downloaded and copied into
+  /usr/lib/antl.v3
+
+export CLASSPATH=/usr/lib/antlr.3/antlrworks-1.4.3.jar:$CLASSPATH
+alias antlr-works='java -jar /usr/lib/antlr.3/antlrworks-1.4.3.jar'
+
+TODO shimbat in /usr/local/lib
+================================================================================
+
+Eclipse
+
+ - unziped to /opt/Eclipse/
+ - created .Desktop file (app description for it);
+   moved to /home/pk/.local/share/applications/ to add it to the dash
+
+
+================================================================================
+
+Java libraries:
+
+Apache POI
+  - unziped to /usr/lib/apache-poi/
