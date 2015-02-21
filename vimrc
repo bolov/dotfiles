@@ -32,20 +32,19 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
-Plugin 'scrooloose/nerdtree'
-
+" Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'file:///home/pk/.bufkill'
 Plugin 'file:///home/pk/.fzf'
 
-" Plugin 'Rip-Rip/clang_complete'
-" Plugin 'ervandew/supertab'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'file:///home/pk/.vim-plugins/.bufkill'
 
 " Plugin 'yonchu/accelerated-smooth-scroll'
 Plugin 'terryma/vim-smooth-scroll'
 
 
+"Plugin 'Rip-Rip/clang_complete'
+"Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -72,14 +71,14 @@ filetype plugin indent on    " required
 "    set lines=999 columns=999
 " endif
 
-
-if has("gui_running")
-  " start NERDTree
-  " au VimEnter * NERDTree
-  " switch focus out of NERTTree
-  " au VimEnter * normal l
-  " au VimEnter * vs
-endif
+" autostart NERDTree
+" if has("gui_running")
+"   " start NERDTree
+"   au VimEnter * NERDTree
+"   " switch focus out of NERTTree
+"   au VimEnter * normal l
+"   " au VimEnter * vs
+" endif
 
 " colorschem (slate > desert)
 if has("gui_running") 
@@ -105,32 +104,39 @@ set list
 set listchars=tab:»-,trail:·
 
 " vertical line
-set cc=80
+set colorcolumn=80 " or set cc
+
+" highlight current line only in current buffer
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
+  au WinLeave,FocusLost * setlocal nocursorline
+augroup END
 
 " tabs and indentation
 set tabstop=2
+set softtabstop=2
 set shiftwidth=2
 set expandtab
-
 set smartindent
+
+" for unknown reasons python files don't use the above global settings so
+" we set them again specifically for python
+autocmd Filetype python setlocal tabstop=2 softtabstop=2 shiftwidth=2
+                               \ expandtab smartindent
 
 " key settings
 set timeoutlen=3000
 
-" search settings
+" smar case search
 set ignorecase
 set smartcase
 
 " persistent undo
-set undodir=/home/pk/.vim/undo/
 set undofile
-
+set undodir=~/.vim/undo
 
 "=============== Plugins Settings ============================================
-
-
-" --- tags ---
-set tags+=.meta/tags
 
 "" --- clang complete ---
 "
@@ -174,10 +180,10 @@ set tags+=.meta/tags
 
 
 " --- YCM ---
-
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_complete_in_comments = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " --- CtrlP ---
 
@@ -211,6 +217,10 @@ let g:BufKillCreateMappings=0
 " Alt key workaround for termial
 " map i <Esc>
 
+" disable shortcuts that I often accidentally press
+" enter visual mode
+nmap Q <nop>
+
 " --- clang format ---
 
 " format selection
@@ -243,13 +253,16 @@ nmap <C-\>f :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap <C-\>i :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap <C-\>d :cs find d <C-R>=expand("<cword>")<CR><CR>
 
+" open in preview
 nmap <C-\>S :pedit! +cs\ find\ s\ <C-R>=expand("<cword>")<CR> %<CR>
 nmap <C-\>G :pedit! +cs\ find\ g\ <C-R>=expand("<cword>")<CR> %<CR>
 
 nmap <F2> <C-\>S
 nmap <F3> <C-\>G
 
-"map <C-Space> <Esc> F(b<F2>gi
+" --- YCM ---
+nmap <Leader>y :YcmCompleter GoToDeclaration<CR>
+nmap <Leader>Y :YcmCompleter GoToDefinition<CR>
 
 " --- Autohighlight ---
 
@@ -271,7 +284,7 @@ nmap <Leader>Q :qa<CR>
 nmap <Leader>ev :drop $MYVIMRC<CR>
 nmap <Leader>em :drop Makefile<CR>
 
-nmap <leader>rv :so $MYVIMRC<CR>
+nmap <Leader>rv :so $MYVIMRC<CR>
 nmap <Leader>rr :w<CR>:so %<CR>
 
 " build
@@ -292,8 +305,8 @@ vnoremap <A-j> :m '>+1<CR>gv
 
 " Duplicate line(s)
 
-nmap <leader>d :co+0<CR>
-vmap <leader>d :co '>+0<CR>gv
+nmap <Leader>d :co+0<CR>
+vmap <Leader>d :co '>+0<CR>gv
 
 " toogle search highlight
 noremap <Leader>h :set hlsearch!<CR>
@@ -305,10 +318,10 @@ cmap w!! w !sudo tee > /dev/null %
 inoremap {<CR> {<CR>}<Esc>O
 
 " skip closing parenthesis
-inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")"
-      \ ? "\<Right>" : ")"
-imap <expr> >  strpart(getline('.'), col('.')-1, 1) == ">"
-      \ ? "\<Right>" : ">"
+" inoremap <expr> )  strpart(getline('.'), col('.')-1, 1) == ")"
+"       \ ? "\<Right>" : ")"
+" imap <expr> >  strpart(getline('.'), col('.')-1, 1) == ">"
+"       \ ? "\<Right>" : ">"
 
 " autocomplete closing parenthesis
 " inoremap <A-(> ()<Left>
