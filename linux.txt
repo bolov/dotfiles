@@ -128,10 +128,9 @@ EXPORT env variables to
              sigur pentru programe pornite cu dash)
 
 
-# environment variables:
-if [ -f ~/.bash_env ]; then
-  . ~/.bash_env
-fi
+in .bashrc:
+
+[ -f ~/.bash_custom.sh ] && source ~/.bash_custom.sh
 
 Vi mode:
   ~/.inputrc
