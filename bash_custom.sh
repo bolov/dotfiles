@@ -1,5 +1,3 @@
-echo "bash custom loaded"
-
 ###### Aliases ####
 
 alias ls='ls --color=auto --group-directories-first'

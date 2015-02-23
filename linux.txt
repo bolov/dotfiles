@@ -231,6 +231,17 @@ install vundle
   https://github.com/gmarik/Vundle.vim
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
+Local plugins with Vundle
+  - mkdir ~/.vim/plugins (note the s)
+  - script need to be in folder plugin
+  - git init && git commit
+
+e.g.:
+~/.vim/plugins/buffkill/plugin/buffkill.vim
+                       /.git/
+
+in vundle: Plugin 'file:///home/pk/.vim/plugins/bufkill'
+
 clang complete
   - install libclang:
     sudo apt-get install libclang.so.1
@@ -259,12 +270,7 @@ buffkill
  - https://github.com/vim-scripts/bufkill.vim
    e o clona (merge cu vundle) dar nu are ultima versiune (v 1.11) - e nevoie
    pentru disable mappings
- - făcut local (e.g. în folder bufkill):
-   - download in ~/kituri/vim-plugins/bufkill/plugin
-       (script (.vim) tre pus in folder 'plugin')
-   - cd bufkill; git init
-   - in vundle: Plugin 'file:///home/pk/kituri/vim-plugins/bufkill'
-   - & commit
+ - făcut local (see Local plugins with Vundle)
 
 
 fzf

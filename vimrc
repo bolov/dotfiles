@@ -36,7 +36,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'file:///home/pk/.fzf'
 
-Plugin 'file:///home/pk/.vim-plugins/.bufkill'
+Plugin 'file:///home/pk/.vim/plugins/bufkill'
+Plugin 'file:///home/pk/.vim/plugins/autohighlight'
 
 " Plugin 'yonchu/accelerated-smooth-scroll'
 Plugin 'terryma/vim-smooth-scroll'
