@@ -1,0 +1,26 @@
+# Use Vi, not Emacs, style editing
+set editing-mode vi
+
+# change prompt depending on mode (insert, command)
+set show-mode-in-prompt on
+
+# Show all completions as soon as I press tab, even if there's more than one
+set show-all-if-ambiguous on
+# Ignore case
+set completion-ignore-case on
+
+
+# shortcuts active only when bash has control
+# if the shortcuts are unconditional, some programs that take control of
+# readline will not work (gdb, cgdb)
+$if bash
+## arrow up
+#"\e[A":history-search-backward
+"\C-k":history-search-backward
+## arrow down
+#"\e[B":history-search-forward
+"\C-j":history-search-forward
+
+# clear screen
+"\C-l":clear-screen
+$endif
