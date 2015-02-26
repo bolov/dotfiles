@@ -32,9 +32,8 @@ export GPU=mihail.balan@gpu.grid.pub.ro
 if [ $HOSTNAME == "cpl" ] ; then
   export PATH="/home/pk/llvm/install/bin:$PATH"
 
-  # TODO investigate if needed
-  # export LD_LIBRARY_PATH="/home/pk/llvm/install/lib/:$LD_LIBRARY_PATH"
-  # export LD_LIBRARY_PATH="/home/pk/pocl/install/lib/:$LD_LIBRARY_PATH"
+  export LD_LIBRARY_PATH="/home/pk/llvm/install/lib/:$LD_LIBRARY_PATH"
+  export LD_LIBRARY_PATH="/home/pk/pocl/install/lib/:$LD_LIBRARY_PATH"
 fi
 
 if [ $HOSTNAME == "cpl" ] ; then
