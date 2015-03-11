@@ -45,6 +45,10 @@ if [ $HOSTNAME == "cpl" ] ; then
   export OPINCAA_SIMULATOR_WD="$HOME/opincaa-simulator-wd"
 
   export POCL_DIR=/home/pk/pocl
+
+
+  # SO2
+  export QEMU_DIR="$HOME/ACS/SO2/qemu-vm"
 fi
 
 export FZF_DEFAULT_OPTS="-x"
