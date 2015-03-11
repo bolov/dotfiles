@@ -5,6 +5,8 @@ alias ls='ls --color=auto --group-directories-first'
 alias gvim-remote='gvim --remote'
 alias grepi='grep -i'
 
+alias cdp='cd -P'
+
 if [ $HOSTNAME == "daedalus" ] ; then
   alias make='make -j8'
 fi
@@ -39,6 +41,10 @@ fi
 if [ $HOSTNAME == "cpl" ] ; then
   export OPINCAA_ROOT="/home/pk/proiecte/opincaa"
   export OPINCAA_SIMULATOR_EXE="$OPINCAA_ROOT/simulator/build/simulator"
+  # simulator working dir
+  export OPINCAA_SIMULATOR_WD="$HOME/opincaa-simulator-wd"
+
+  export POCL_DIR=/home/pk/pocl
 fi
 
 export FZF_DEFAULT_OPTS="-x"
