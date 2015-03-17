@@ -38,6 +38,7 @@ Plugin 'file:///home/pk/.fzf'
 
 Plugin 'file:///home/pk/.vim/plugins/bufkill'
 Plugin 'file:///home/pk/.vim/plugins/autohighlight'
+Plugin 'ntpeters/vim-better-whitespace'
 
 " Plugin 'yonchu/accelerated-smooth-scroll'
 Plugin 'terryma/vim-smooth-scroll'
@@ -83,7 +84,7 @@ filetype plugin indent on    " required
 
 " colorschem (slate > desert)
 if has("gui_running") 
-  colorscheme mustang
+  colorscheme mustang-my
 
   if hostname() == "cpl"
     set guifont=ubuntu\ Mono\ 11
@@ -102,7 +103,7 @@ set number
 
 " whitespaces
 set list
-set listchars=tab:»-,trail:·
+set listchars=tab:»—,trail:·
 
 " vertical line
 set colorcolumn=80 " or set cc
@@ -205,6 +206,9 @@ let g:fzf_launcher='gnome-terminal --disable-factory -x bash -ic %s'
 
 " --- bufkill ---
 let g:BufKillCreateMappings=0
+
+" -- better whitespace --
+highlight ExtraWhitespace guibg=#440000
 
 " " --- eclim ---
 " let g:EclimJavaCompilerAutoDetect=0
