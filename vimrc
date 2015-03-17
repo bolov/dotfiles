@@ -83,8 +83,8 @@ filetype plugin indent on    " required
 " endif
 
 " colorschem (slate > desert)
-if has("gui_running") 
-  colorscheme mustang-my
+if has("gui_running")
+  colorscheme mustang-bolov
 
   if hostname() == "cpl"
     set guifont=ubuntu\ Mono\ 11
