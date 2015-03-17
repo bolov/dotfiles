@@ -343,3 +343,30 @@ endfunction
 " inoremap <expr> i IndentWithI()
 " inoremap <expr> <C-Tab> ISmartIndentEmptyLine()
 
+"============== Load individual vimrc ==========================================
+
+" finds the '.vimrc' file upward from a:search_dir
+" returns:
+"   - the .vimrc file path or
+"   - empty string if no file was found or the default .vimrc file was found
+function! GetLocalVimrc(search_dir)
+  let local_vimrc_file = findfile(".vimrc", a:search_dir . ";")
+
+  if empty(local_vimrc_file) || local_vimrc_file == $MYVIMRC
+    return ""
+  endif
+
+  return local_vimrc_file
+endfunction
+
+function! LoadLocalVimrc()
+  let local_vimrc_file = GetLocalVimrc(".")
+  if empty(local_vimrc_file)
+    return
+  endif
+
+  exec "source " . local_vimrc_file
+endfunction
+
+autocmd BufNewFile,BufRead * call LoadLocalVimrc()
+
