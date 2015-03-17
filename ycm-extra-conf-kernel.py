@@ -44,7 +44,7 @@ flags = [
 # a "-std=<something>".
 # For a C project, you would set this to something like 'c99' instead of
 # 'c++11'.
-'-std=c99',
+'-std=gnu99',
 # ...and the same thing goes for the magic -x option which specifies the
 # language that the files to be compiled are written in. This is mostly
 # relevant for c++ headers.
@@ -60,13 +60,15 @@ flags = [
 '-DCONFIG_AS_CFI_SECTIONS=1',
 '-DCONFIG_AS_FXSAVEQ=1',
 '-nostdinc',
-## '-I', '/usr/src/linux-so2/arch/x86/include',
-# this (next) line causes Ycm to not show error diagnostics
-## '-I', '/usr/src/linux-so2/arch/x86/include/generated',
 '-I', '/usr/src/linux-so2/include',
+# the next 2 includes cause Ycm to not show error diagnostics
+# '-I', '/usr/src/linux-so2/arch/x86/include',
+## '-I', '/usr/src/linux-so2/arch/x86/include/generated',
 '-DMODULE',
 '-DKBUILD_STR(s)=#s',
-# '-include', '/usr/src/linux-so2/include/linux/kconfig.h'
+#'-include', '/usr/src/linux-so2/include/linux/kconfig.h'
+# include individual headers from arch that do not cause errors in clang
+'-include', '/usr/src/linux-so2/arch/x86/include/asm/current.h'
 ]
 
 
