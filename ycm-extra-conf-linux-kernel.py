@@ -68,7 +68,8 @@ flags = [
 '-DKBUILD_STR(s)=#s',
 #'-include', '/usr/src/linux-so2/include/linux/kconfig.h'
 # include individual headers from arch that do not cause errors in clang
-'-include', '/usr/src/linux-so2/arch/x86/include/asm/current.h'
+'-include', '/usr/src/linux-so2/arch/x86/include/asm/current.h',
+'-include', '/usr/src/linux-so2/arch/x86/include/asm/uaccess.h'
 ]
 
 
