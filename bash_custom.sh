@@ -1,6 +1,7 @@
 ###### Aliases ####
 
 alias ls='ls --color=auto --group-directories-first'
+alias ls1='ls -1'
 
 alias gvim-remote='gvim --remote'
 alias grepi='grep -i'
