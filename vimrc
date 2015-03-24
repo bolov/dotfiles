@@ -192,7 +192,11 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 "let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPBuffer'
 
+" open multiple files in curret buffer and jump to the first
 let g:ctrlp_open_multiple_files = '1jr'
+
+" use vim cwd as path
+let g:ctrlp_working_path_mode=0
 
 " --- SmoothScrool --- "
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 1)<CR>
@@ -293,7 +297,7 @@ nmap <Leader>rv :so $MYVIMRC<CR>
 nmap <Leader>rr :w<CR>:so %<CR>
 
 " build
-nmap <Leader>b :wa<CR>:make build<CR>
+nmap <Leader>b :wa<CR>:make<CR>
 nmap <Leader><F5> :wa<CR>:make run<CR>
 nmap <Leader>B :wa<CR>:make build_metadata<CR>:cs reset<CR>
 
