@@ -1,3 +1,5 @@
+cs add /usr/src/linux-so2/cscope.out /usr/src/linux-so2
+
 setlocal tabstop=8
 setlocal shiftwidth=8
 setlocal softtabstop=8
