@@ -8,6 +8,11 @@ alias grepi='grep -i'
 
 alias cdp='cd -P'
 
+alias find-c-sources='find . -type f \
+                             -not -path "\./\.*" \
+                             -regextype egrep -regex ".*\.(h|hpp|c|cpp)" \
+                             -or -name Makefile -or -name Kbuild'
+
 if [ $HOSTNAME == "daedalus" ] ; then
   alias make='make -j8'
 fi
