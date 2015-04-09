@@ -34,7 +34,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-Plugin 'file:///home/pk/.fzf'
+Plugin 'file:///home/pk/.vim/plugins/fzf'
 
 Plugin 'file:///home/pk/.vim/plugins/bufkill'
 Plugin 'file:///home/pk/.vim/plugins/autohighlight'
