@@ -73,6 +73,7 @@ flags = [
 #'-include', '/usr/src/linux-so2/arch/x86/include/asm/current.h',
 #'-include', '/usr/src/linux-so2/arch/x86/include/asm/uaccess.h'
 '-include', '/usr/src/linux-so2/include/uapi/asm-generic/errno-base.h',
+'-include', '/usr/src/linux-so2/include/asm-generic/int-ll64.h',
 ]
 
 
