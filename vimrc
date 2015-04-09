@@ -134,6 +134,10 @@ set timeoutlen=3000
 set ignorecase
 set smartcase
 
+" autocomplete mode for cmd
+" list all and complete longest commom
+:set wildmode=list:longest
+
 " persistent undo
 set undofile
 set undodir=~/.vim/undo
