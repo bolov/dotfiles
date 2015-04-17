@@ -37,6 +37,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'file:///home/pk/.vim/plugins/fzf'
 
 Plugin 'file:///home/pk/.vim/plugins/bufkill'
+" Plugin 'ton/vim-bufsurf'
+Plugin 'file:///home/pk/proiecte/vim-bufsurf'
+
 Plugin 'file:///home/pk/.vim/plugins/autohighlight'
 Plugin 'ntpeters/vim-better-whitespace'
 
@@ -110,9 +113,9 @@ set colorcolumn=80 " or set cc
 
 " highlight current line only in current buffer
 augroup CursorLine
-  au!
-  au VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
-  au WinLeave,FocusLost * setlocal nocursorline
+  autocmd!
+  autocmd VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
+  autocmd WinLeave,FocusLost * setlocal nocursorline
 augroup END
 
 " tabs and indentation
@@ -122,10 +125,11 @@ set shiftwidth=2
 set expandtab
 set smartindent
 
-" for unknown reasons python files don't use the above global settings so
-" we set them again specifically for python
-autocmd Filetype python setlocal tabstop=2 softtabstop=2 shiftwidth=2
-                               \ expandtab smartindent
+augroup BolovFileTypes
+  autocmd!
+  autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
+        \                          expandtab smartindent
+augroup END
 
 " key settings
 set timeoutlen=3000
@@ -300,6 +304,11 @@ nmap <Leader>em :drop Makefile<CR>
 nmap <Leader>rv :so $MYVIMRC<CR>
 nmap <Leader>rr :w<CR>:so %<CR>
 
+" navigate buffers
+nmap <C-h> :BufSurfBack<CR>
+nmap <C-l> :BufSurfForward<CR>
+nmap <C-j> :BufSurfList<CR>
+
 " build
 nmap <Leader>b :wa<CR>:make<CR>
 nmap <Leader><F5> :wa<CR>:make run<CR>
@@ -380,5 +389,10 @@ function! LoadLocalVimrc()
   exec "source " . local_vimrc_file
 endfunction
 
-autocmd BufNewFile,BufRead * call LoadLocalVimrc()
+augroup LocalVimrc
+  autocmd!
+  autocmd BufNewFile,BufRead * call LoadLocalVimrc()
+augroup END
+
+"=============== Playground ====================================================
 
