@@ -38,7 +38,7 @@ Plugin 'file:///home/pk/.vim/plugins/fzf'
 
 Plugin 'file:///home/pk/.vim/plugins/bufkill'
 " Plugin 'ton/vim-bufsurf'
-" Plugin 'file:///home/pk/proiecte/vim-bufsurf/vim-bufsurf'
+Plugin 'file:///home/pk/proiecte/vim-bufsurf'
 
 Plugin 'file:///home/pk/.vim/plugins/autohighlight'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -395,6 +395,4 @@ augroup LocalVimrc
 augroup END
 
 "=============== Playground ====================================================
-
-source /home/pk/proiecte/vim-bufsurf/plugin/bufsurf.vim
 
