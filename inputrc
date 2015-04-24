@@ -8,7 +8,12 @@ set show-mode-in-prompt on
 set show-all-if-ambiguous on
 # Ignore case
 set completion-ignore-case on
-
+# common prefixes longer than this will be replaced with elipses (...)
+set completion-prefix-display-length 2
+#display each match on a single line
+#set completion-display-width 0
+#
+set colored-stats on
 
 # shortcuts active only when bash has control
 # if the shortcuts are unconditional, some programs that take control of
