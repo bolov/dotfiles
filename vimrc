@@ -125,6 +125,11 @@ set shiftwidth=2
 set expandtab
 set smartindent
 
+" indentation for C
+set cinoptions=:0    " case labels
+set cinoptions+=g0   " scope declarations (public: etc)
+set cinoptions+=N-s   " inside namespaces
+
 augroup BolovFileTypes
   autocmd!
   autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
