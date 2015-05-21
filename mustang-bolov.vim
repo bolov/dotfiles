@@ -52,6 +52,68 @@ hi Special		guifg=#ff9800 gui=none ctermfg=208
 hi PreProc 		guifg=#faf4c6 gui=none ctermfg=230
 hi Todo         guifg=#000000 guibg=#e6ea50 gui=italic
 
+" Clighter colors
+
+hi clighterTestRed			guifg=red
+hi clighterTestGreen		guifg=green
+hi clighterTestBlue			guifg=blue
+
+hi clighterNamespaceDecl	guifg=#8CBD6C
+hi clighterNamespaceRef		guifg=#8CBD6C
+
+hi clighterStructDecl		guifg=#C9F5AB
+hi clighterClassDecl		guifg=#C9F5AB
+hi clighterUnionDecl		guifg=#C9F5AB
+hi clighterEnumDecl			guifg=#D9B64E
+hi clighterTypedefDecl		guifg=#C9F5AB
+
+hi clighterStructRef		guifg=#C9F5AB
+hi clighterClassRef			guifg=#C9F5AB
+hi clighterUnionRef			guifg=#C9F5AB
+hi clighterEnumRef			guifg=#D9B64E
+hi clighterOtherTypeRef		guifg=#8CA6D4
+
+hi link clighterEnumConstantDecl Constant
+hi link clighterEnumConstantRef Constant
+
+hi cligherTemplateTypeParamDecl guifg=#C9F5AB gui=bold
+hi cligherTemplateTypeParamRef guifg=#C9F5AB gui=bold
+
+hi cligherTemplateNonTypeParamDecl guifg=#ff9800
+hi cligherTemplateNonTypeParamRef guifg=#ff9800
+
+hi cligherClassTemplateDecl guifg=#C9F5AB gui=bold
+hi cligherClassTemplateRef guifg=#C9F5AB gui=bold
+
+hi cligherClassTemplatePartialSpecDecl guifg=#C9F5AB gui=bold
+hi cligherClassTemplatePartialSpecRef guifg=#C9F5AB gui=bold
+
+
+hi cligherFunctionTemplateDecl guifg=#50ADCC gui=bold
+hi cligherFunctionTemplateRef guifg=#50ADCC gui=bold
+
+
+hi clighterMethodDecl		guifg=#77BF96
+hi clighterMethodRef		guifg=#77BF96
+
+hi clighterCtorDecl 		guifg=#77BF96 gui=bold
+hi clighterCtorRef  		guifg=#77BF96 gui=bold
+
+hi clighterDtorDecl 		guifg=#77BF96 gui=bold
+hi clighterDtorRef  		guifg=#77BF96 gui=bold
+
+hi clighterDataMemberDecl	guifg=#BBD459
+hi clighterDataMemberRef	guifg=#BBD459
+
+hi clighterFunctionDecl		guifg=#50ADCC
+hi clighterFunctionRef		guifg=#50ADCC
+
+hi clighterParamDecl		guifg=#824A4A
+hi clighterParamRef			guifg=#824A4A
+
+hi clighterVarDecl			guifg=#BD4F4F
+hi clighterVarRef			guifg=#BD4F4F
+
 " Code-specific colors
 hi pythonOperator guifg=#7e8aa2 gui=none ctermfg=103
 

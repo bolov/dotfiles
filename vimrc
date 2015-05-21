@@ -53,6 +53,11 @@ Plugin 'terryma/vim-smooth-scroll'
 "Plugin 'ervandew/supertab'
 Plugin 'Valloric/YouCompleteMe'
 
+" Plugin 'octol/vim-cpp-enhanced-highlight'
+" Plugin 'bbchung/clighter'
+" Plugin 'file:///home/pk/proiecte/vim-plugins/clighter'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -254,6 +259,11 @@ highlight ExtraWhitespace guibg=#440000
 " disable shortcuts that I often accidentally press
 " enter visual mode
 nmap Q <nop>
+
+" --- Clighter ---
+let g:clighter_libclang_file = '/home/pk/llvm/install/lib/libclang.so'
+
+let g:clighter_compile_args = ["-x", "c++", "-std=c++14", "-DLinux", "-I", "."]
 
 " --- clang format ---
 
