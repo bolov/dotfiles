@@ -140,6 +140,7 @@ set cinoptions+=N-s   " inside namespaces
 
 augroup BolovFileTypes
   autocmd!
+  autocmd BufRead,BufNewFile *.cu set filetype=cpp
   autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
         \                          expandtab smartindent
 augroup END
