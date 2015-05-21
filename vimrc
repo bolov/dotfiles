@@ -32,13 +32,15 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
+Plugin 'chrisbra/Recover.vim'
+
 " Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'file:///home/pk/.vim/plugins/fzf'
 
 Plugin 'file:///home/pk/.vim/plugins/bufkill'
 " Plugin 'ton/vim-bufsurf'
-Plugin 'file:///home/pk/proiecte/vim-bufsurf'
+Plugin 'file:///home/pk/proiecte/vim-plugins/bufsurf'
 
 Plugin 'file:///home/pk/.vim/plugins/autohighlight'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -101,12 +103,18 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
+" switching buffers
+set switchbuf=useopen
+
 " line numbers
 set number
 
 " whitespaces
 set list
 set listchars=tab:»—,trail:·
+
+" highlighted matching pairs
+set matchpairs+=<:>
 
 " vertical line
 set colorcolumn=80 " or set cc
@@ -139,7 +147,7 @@ augroup END
 " key settings
 set timeoutlen=3000
 
-" smar case search
+" smart case search
 set ignorecase
 set smartcase
 
@@ -150,6 +158,9 @@ set smartcase
 " persistent undo
 set undofile
 set undodir=~/.vim/undo
+
+" disable swap files
+set noswapfile
 
 "=============== Plugins Settings ============================================
 
