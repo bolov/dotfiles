@@ -1,6 +1,6 @@
 ###### Aliases ####
 
-alias ls='ls --color=auto --group-directories-first'
+alias ls='ls --color=auto -v --group-directories-first'
 alias ls1='ls -1'
 
 alias gvim-remote='gvim --remote'
@@ -59,6 +59,21 @@ export FZF_DEFAULT_OPTS="-x"
 # function to mkdir and cd into it
 mkcd() {
   mkdir -- "$1" && cd -- "$1"
+}
+
+# function to toggle the bash promp between cwd and basename of cwd
+# it basically toggles the case of \w in $PS1
+toggle-cwd-prompt() {
+  local NEW_PS1
+  # to upper
+  NEW_PS1=$(echo "$PS1" | sed 's/\\w\\\$/\\W\\\$/')
+  # if not substituted
+  if [ "$PS1" = "$NEW_PS1" ]
+  then
+    # to lower
+    NEW_PS1=$(echo "$PS1" | sed 's/\\W\\\$/\\w\\\$/')
+  fi
+  PS1=$NEW_PS1
 }
 
 
