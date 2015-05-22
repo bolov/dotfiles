@@ -1,6 +1,7 @@
 from __future__ import print_function
 import sys
 import os
+import subprocess
 
 def printUsage():
   print("Usage: nv [cd|ls|add|rm|list|p] ...")
@@ -37,7 +38,24 @@ class Navigator:
     return None
 
   def ls(self, args):
-    pass
+    if len(args) != 1:
+      print("Error: expected 1 argument for ls. Got {}".format(len(args)),
+            file=sys.stderr)
+      return False
+
+    ls_mark = args[0]
+
+    with open(self.locations_fn, "r") as f:
+      for line in f:
+        mark, location = line.rstrip("\n").split(" ", 1)
+        if mark == ls_mark:
+          print("{} is {}".format(mark, location))
+          subprocess.call(["ls", "--color=always", "-v",
+                           "--group-directories-first", location])
+          return True
+
+    print("Mark not found", file=sys.stderr)
+    return True
 
   def list(self, args):
     if len(args) != 0:
