@@ -13,19 +13,25 @@ class Navigator:
 
     #create the file if it does not exist
     try:
-      with os.open(self.locations_fn, os.O_CREAT | os.O_EXCL | os.O_RDONLY) as f:
-        pass
+      os.close(os.open(self.locations_fn, os.O_CREAT | os.O_EXCL | os.O_RDONLY))
     except OSError as e:
       if e.errno == os.errno.EEXIST:
         pass
       else:
         raise
 
-  def cd(self, args):
-    if len(args) != 1:
-      print("Error: expected 1 argument for cd. Got {}".format(len(args)),
+  def checkNumArgs(self, subcommand, expecter_num, args):
+    if expecter_num != len(args):
+      print("Error: expected 1 argument for {}. Got {}".format(subcommand,
+                                                               len(args)),
             file=sys.stderr)
+      printUsage()
       return False
+    return True
+
+  def cd(self, args):
+    if not self.checkNumArgs("cd", 1, args):
+      return None
 
     cd_mark = args[0]
 
@@ -35,12 +41,11 @@ class Navigator:
         if mark == cd_mark:
           return location
 
+    print("Mark {} not found".format(cd_mark), file=sys.stderr)
     return None
 
   def ls(self, args):
-    if len(args) != 1:
-      print("Error: expected 1 argument for ls. Got {}".format(len(args)),
-            file=sys.stderr)
+    if not self.checkNumArgs("ls", 1, args):
       return False
 
     ls_mark = args[0]
@@ -54,24 +59,20 @@ class Navigator:
                            "--group-directories-first", location])
           return True
 
-    print("Mark not found", file=sys.stderr)
+    print("Mark {} not found".format(ls_mark), file=sys.stderr)
     return True
 
   def list(self, args):
-    if len(args) != 0:
-      print("Error: too many arguments for list", file=sys.stderr)
-      printUsage()
+    if not self.checkNumArgs("list", 0, args):
       return False
 
     with open(self.locations_fn, "r") as f:
-      print(f.read())
+      print(f.read(), end="")
 
     return True
 
   def add(self, args):
-    if len(args) != 1:
-      print("Error: expected 1 argument for add. Got {}".format(len(args)),
-            file=sys.stderr)
+    if not self.checkNumArgs("add", 1, args):
       return False
 
     mark = args[0]
@@ -81,20 +82,21 @@ class Navigator:
 
     with open(self.locations_fn, "w") as f:
       for line in lines:
+        line = line.rstrip("\n")
         if line.split(" ", 1)[0] != mark:
           f.write("{}\n".format(line))
-      f.write("{} {}".format(mark, os.getcwd()))
+      f.write("{} {}\n".format(mark, os.getcwd()))
 
     return True
 
 
 subcommands = {
-    "cd":Navigator.cd,
-    "ls":Navigator.ls,
-    "add":Navigator.add,
-    "rm":None,
-    "list":Navigator.list,
-    "p":None,
+    "cd"      : Navigator.cd,
+    "ls"      : Navigator.ls,
+    "add"     : Navigator.add,
+    "rm"      : None,
+    "list"    : Navigator.list,
+    "p"       : None,
   }
 
 
@@ -122,7 +124,6 @@ def nv(*args, **dargs):
       loc = nav.cd(args)
 
     if loc is None:
-      print("Mark not found", sys.stderr)
       return -1
 
     cd_loc = loc

@@ -72,12 +72,18 @@ nv() {
   # locations file path
   local navigator_locations="$HOME/.navigator-locations"
 
+
+  if [ "$1" = "repair" ] ; then
+    rm -fv $navigator_cd_fifo
+    return 0
+  fi
+
   mkfifo $navigator_cd_fifo
 
   if [ $? -ne 0 ]; then
     echo Error: cannot create fifo
     echo Make sure that there isn\'t another navigator command running
-    echo If there isn\'t, you can safely delete \'$navigator_cd_fifo\'
+    echo If there isn\'t, you can safely run \'nv repair\'
     return -1
   fi
 
