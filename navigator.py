@@ -60,7 +60,7 @@ class Navigator:
           return True
 
     print("Mark {} not found".format(ls_mark), file=sys.stderr)
-    return True
+    return False
 
   def list(self, args):
     if not self.checkNumArgs("list", 0, args):
@@ -70,6 +70,22 @@ class Navigator:
       print(f.read(), end="")
 
     return True
+
+  def p(self, args):
+    if not self.checkNumArgs("p", 1, args):
+      return False
+
+    p_mark = args[0]
+
+    with open(self.locations_fn, "r") as f:
+      for line in f:
+        mark, location = line.rstrip("\n").split(" ", 1)
+        if mark == p_mark:
+          print(location)
+          return True
+
+    print("Mark {} not found".format(p_mark), file=sys.stderr)
+    return False
 
   def add(self, args):
     if not self.checkNumArgs("add", 1, args):
@@ -89,14 +105,39 @@ class Navigator:
 
     return True
 
+  def rm(self, args):
+    if not self.checkNumArgs("rm", 1, args):
+      return False
+
+    mark = args[0]
+
+    with open(self.locations_fn, "r") as f:
+      lines = f.readlines()
+
+    found = False
+    with open(self.locations_fn, "w") as f:
+      for line in lines:
+        line = line.rstrip("\n")
+        if line.split(" ", 1)[0] != mark:
+          f.write("{}\n".format(line))
+        else:
+          found = True
+
+    if not found:
+      print("Mark {} not found".format(mark), file=sys.stderr)
+      return False
+
+    return True
+
+
 
 subcommands = {
     "cd"      : Navigator.cd,
     "ls"      : Navigator.ls,
     "add"     : Navigator.add,
-    "rm"      : None,
+    "rm"      : Navigator.rm,
     "list"    : Navigator.list,
-    "p"       : None,
+    "p"       : Navigator.p,
   }
 
 
