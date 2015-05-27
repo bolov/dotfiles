@@ -26,6 +26,9 @@ $if bash
 #"\e[B":history-search-forward
 "\C-j":history-search-forward
 
+# expand (e.g. *)
+"\C-x":glob-expand-word
+
 # clear screen
 "\C-l":clear-screen
 $endif
