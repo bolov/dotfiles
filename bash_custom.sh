@@ -128,6 +128,9 @@ exit(navigator.nv($args cd_fifo_fn=\"$navigator_cd_fifo\",
   cd $new_cd
 }
 
+[ -f ~/.nv-completion.bash ] && source ~/.nv-completion.bash
+[ -f ~/.grid-completion.bash ] && source ~/.grid-completion.bash
+
 
 # function to toggle the bash promp between cwd and basename of cwd
 # it basically toggles the case of \w in $PS1
