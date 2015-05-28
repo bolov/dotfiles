@@ -128,9 +128,11 @@ exit(navigator.nv($args cd_fifo_fn=\"$navigator_cd_fifo\",
   cd $new_cd
 }
 
-[ -f ~/.nv-completion.bash ] && source ~/.nv-completion.bash
-[ -f ~/.grid-completion.bash ] && source ~/.grid-completion.bash
-
+# bash completions from ~/.bash-completion.d
+for f in ~/.bash-completion.d/* ; do
+  echo "compl: $f"
+  [ -f "$f" ] && source "$f"
+done
 
 # function to toggle the bash promp between cwd and basename of cwd
 # it basically toggles the case of \w in $PS1
@@ -156,9 +158,6 @@ set -o vi
 # (or warning on auto completion for cmd starting with g++:
 # bash: warning: programmable_completion: g++: possible retry loop)
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# git completion
-[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
