@@ -130,7 +130,6 @@ exit(navigator.nv($args cd_fifo_fn=\"$navigator_cd_fifo\",
 
 # bash completions from ~/.bash-completion.d
 for f in ~/.bash-completion.d/* ; do
-  echo "compl: $f"
   [ -f "$f" ] && source "$f"
 done
 
