@@ -114,7 +114,7 @@ exit(navigator.nv($args cd_fifo_fn=\"$navigator_cd_fifo\",
   "
 
   run_nv_py() {
-    python -c "$cmd" || echo "." > $navigator_cd_fifo
+    python3 -c "$cmd" || echo "." > $navigator_cd_fifo
   }
 
   (run_nv_py &)

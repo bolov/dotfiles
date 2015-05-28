@@ -1,4 +1,3 @@
-from __future__ import print_function
 import sys
 import os
 import subprocess
@@ -173,7 +172,7 @@ def nv(*args, **dargs):
   if ret != True:
     return -1
 
-  with open(nav.cd_fifo_fn, "w", 0) as f:
+  with open(nav.cd_fifo_fn, "w") as f:
     f.write(cd_loc)
 
   return 0
