@@ -35,8 +35,8 @@ import ycm_core
 # compilation database set (by default, one is not set).
 # CHANGE THIS LIST OF FLAGS. YES, THIS IS THE DROID YOU HAVE BEEN LOOKING FOR.
 flags = [
-'-Wall', '-Wextra', '-Wold-style-cast', '-Wconversion', '-Wno-sign-conversion',
-'-Wshadow',
+'-Wall', '-Wextra', '-Wold-style-cast', '-Wconversion', '-Wshadow',
+'-Wno-sign-conversion',
 '-DDEBUG',
 # THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
 # language to use when compiling headers. So it will guess. Badly. So C++
@@ -51,6 +51,9 @@ flags = [
 # For a C project, you would set this to 'c' instead of 'c++'.
 '-x', 'c++',
 '-I', '.',
+'-isystem', '/home/pk/gcc/gcc-5.1.0/include/c++/5.1.0/',
+'-isystem', '/home/pk/gcc/gcc-5.1.0/include/c++/5.1.0/x86_64-unknown-linux-gnu/',
+'-isystem', '/home/pk/gcc/gcc-5.1.0/include/c++/5.1.0/backward/',
 '-isystem', '/usr/include/c++/4.9',
 '-isystem', '/usr/include',
 '-isystem', '/usr/local/include',
