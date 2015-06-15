@@ -23,10 +23,6 @@ if [ -d "$HOME/bin" ] ; then
   export PATH="$HOME/bin:$PATH"
 fi
 
-export FEP=mihail.balan@fep.grid.pub.ro
-export CELL=mihail.balan@cell.grid.pub.ro
-export GPU=mihail.balan@gpu.grid.pub.ro
-
 # export BOOST_ROOT=/usr/local/boost
 
 # antlr3 jar file
