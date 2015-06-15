@@ -1,3 +1,8 @@
+module use /home/pk/modulefiles
+
+module load compilers/llvm-3.5.0
+module load libraries/pocl
+
 ###### Aliases ####
 
 alias ls='ls --color=auto -v --group-directories-first'
@@ -27,13 +32,6 @@ fi
 
 # antlr3 jar file
 # export CLASSPATH=/usr/lib/antlr.3/antlrworks-1.4.3.jar:$CLASSPATH
-
-if [ $HOSTNAME == "cpl" ] ; then
-  export PATH="/home/pk/llvm/install/bin:$PATH"
-
-  export LD_LIBRARY_PATH="/home/pk/llvm/install/lib/:$LD_LIBRARY_PATH"
-  export LD_LIBRARY_PATH="/home/pk/pocl/install/lib/:$LD_LIBRARY_PATH"
-fi
 
 if [ $HOSTNAME == "cpl" ] ; then
   export OPINCAA_ROOT="/home/pk/proiecte/opincaa"

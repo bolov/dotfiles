@@ -1,0 +1,4 @@
+#%Module1.0
+
+prepend-path PATH /home/pk/llvm/install/bin
+prepend-path LD_LIBRARY_PATH /home/pk/llvm/install/lib

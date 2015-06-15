@@ -331,6 +331,23 @@ pretty print stl (vectors)
 
 ================================================================================
 
+environment modules
+
+$ sudo apt-get install environment-modules
+$ add.modules
+
+autocomplete bug:
+/etc/bash_completion.d/modules
+
+wrong modulecmd path:
+
+change
+	/usr/share/modules/3.2.10/bin/modulecmd bash -t avail 2>&1 | sed '
+to
+	/usr/bin/modulecmd bash -t avail 2>&1 | sed '
+
+================================================================================
+
 BOOST
   - instalat in /usr/local/boost-1.56.0
   - (atentie la dezarhivat) owner si group sa fie pk
