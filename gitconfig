@@ -6,7 +6,8 @@
 
 	quotepath = false
 [alias]
-	lg = log --all --oneline --decorate --graph
+	lg = log --oneline --decorate --graph
+	lg-all = log --all --oneline --decorate --graph
 [push]
 	default = simple
 [diff]
