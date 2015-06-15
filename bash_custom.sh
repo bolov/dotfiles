@@ -61,6 +61,12 @@ mkcd() {
   mkdir -- "$1" && cd -- "$1"
 }
 
+whereis-func() {
+  shopt -s extdebug;
+  declare -F $1;
+  shopt -u extdebug
+}
+
 # navigator
 nv() {
   # python file basename (no extension)
