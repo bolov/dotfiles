@@ -336,6 +336,9 @@ environment modules
 $ sudo apt-get install environment-modules
 $ add.modules
 
+configs in bashrc (e.g. module use path, module load ...).
+modulerc or whatnot: executed at each command
+
 autocomplete bug:
 /etc/bash_completion.d/modules
 

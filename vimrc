@@ -266,6 +266,8 @@ let g:clighter_libclang_file = '/home/pk/llvm/install/lib/libclang.so'
 
 let g:clighter_compile_args = ["-x", "c++", "-std=c++14", "-DLinux", "-I", "."]
 
+let g:ClighterOccurrences = 0
+
 " --- clang format ---
 
 " format selection
@@ -307,7 +309,9 @@ nmap <F3> <C-\>G
 
 " --- YCM ---
 nmap <Leader>y :YcmCompleter GoToDeclaration<CR>
-nmap <Leader>Y :YcmCompleter GoToDefinition<CR>
+" nmap <Leader>Y :YcmCompleter GoToDefinition<CR>
+nmap <Leader>Y :YcmForceCompileAndDiagnostics<CR>
+
 
 " --- Autohighlight ---
 

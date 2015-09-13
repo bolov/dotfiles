@@ -1,0 +1,7 @@
+#%Module1.0
+
+unload pocl
+prereq llvm/3.5.0-release
+
+setenv POCL_DIR /home/pk/pocl/install
+prepend-path LD_LIBRARY_PATH /home/pk/pocl/install/lib

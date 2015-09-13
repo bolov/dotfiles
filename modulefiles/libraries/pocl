@@ -1,3 +1,0 @@
-#%Module1.0
-
-prepend-path LD_LIBRARY_PATH /home/pk/pocl/install/lib

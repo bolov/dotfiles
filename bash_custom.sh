@@ -1,7 +1,8 @@
 module use /home/pk/modulefiles
 
-module load compilers/llvm-3.5.0
-module load libraries/pocl
+module load java/jdk-8.0.51
+module load llvm/3.6.2-release
+#module load pocl/0.11-release
 
 ###### Aliases ####
 
@@ -34,13 +35,14 @@ fi
 # export CLASSPATH=/usr/lib/antlr.3/antlrworks-1.4.3.jar:$CLASSPATH
 
 if [ $HOSTNAME == "cpl" ] ; then
+  export PATH="/home/pk/android/android-studio/bin:$PATH"
+fi
+
+if [ $HOSTNAME == "cpl" ] ; then
   export OPINCAA_ROOT="/home/pk/proiecte/opincaa"
   export OPINCAA_SIMULATOR_EXE="$OPINCAA_ROOT/simulator/build/simulator"
   # simulator working dir
   export OPINCAA_SIMULATOR_WD="$HOME/opincaa-simulator-wd"
-
-  export POCL_DIR=/home/pk/pocl
-
 
   # SO2
   export QEMU_DIR="$HOME/ACS/SO2/qemu-vm"

@@ -1,0 +1,4 @@
+#%Module1.0
+
+setenv JAVA_HOME ~/java/jdk1.8.0_51
+prepend-path PATH ~/java/jdk1.8.0_51/bin

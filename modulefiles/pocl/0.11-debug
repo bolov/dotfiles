@@ -1,0 +1,8 @@
+#%Module1.0
+
+conflict pocl
+prereq llvm/3.6.2-debug
+
+setenv POCL_DIR /home/pk/pocl/pocl-0.11-debug
+setenv YOYO this_is_yoyo
+prepend-path LD_LIBRARY_PATH /home/pk/pocl/pocl-0.11-debug/lib
