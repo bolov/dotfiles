@@ -130,7 +130,7 @@ EXPORT env variables to
 
 in .bashrc:
 
-[ -f ~/.bash_custom.sh ] && source ~/.bash_custom.sh
+[ -f ~/.bash_custom ] && source ~/.bash_custom
 
 Vi mode:
   ~/.inputrc
