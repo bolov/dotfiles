@@ -4,6 +4,14 @@
 Ubuntu
 
 --------------------------------------------------------------------------------
+Install .deb
+
+sudo dpkg -i file.deb
+if errors with unresolved dependencies:
+sudo apt-get install -f
+
+
+--------------------------------------------------------------------------------
   Install Chrome:
 
 http://www.ubuntuupdates.org/ppa/google_chrome
@@ -13,6 +21,26 @@ sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /et
 
 ?? wtf is this?
   >> Ubuntu Unity  stable main" >> /etc/apt/sources.list.d/google.list'
+
+
+--------------------------------------------------------------------------------
+Mount partitions
+
+
+  dacă e montat (din Nautilus), see info:
+mount
+
+  get uuid/label:
+ls -al /dev/disk/by-uuid
+ls -al /dev/disk/by-label
+
+  mount in /media/<uuid> (don't have udisks):
+/usr/bin/udisks --mount /dev/disk/by-uuid/1313-F422
+  mount in /media/user/<uuid> (like nautilus):
+udisksctl mount --block-device /dev/disk/by-uuid/<uuid>
+
+  automount on login:
+from GUI: Startup Applications
 
 --------------------------------------------------------------------------------
 System settings
