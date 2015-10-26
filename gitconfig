@@ -2,7 +2,7 @@
 	name = Mihail Bălan
 	email = mihail.balan@gmail.com
 [core]
-	editor = "if hash gvim >/dev/null 2>&1 ; then EDITOR='gvim -f'; else EDITOR='vim'; fi; $EDITOR"
+	editor = gvim
 
 	quotepath = false
 [alias]
@@ -11,6 +11,6 @@
 [push]
 	default = simple
 [diff]
-	tool = "if hash gvimdiff >/dev/null 2>&1 ; then TOOL='gvimdiff '; else TOOL='vimdiff'; fi; $TOOL"
+	tool = gvimdiff
 [merge]
-	tool = "if hash gvimdiff >/dev/null 2>&1 ; then TOOL='gvimdiff '; else TOOL='vimdiff'; fi; $TOOL"
+	tool = gvimdiff
