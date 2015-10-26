@@ -7,6 +7,8 @@ Personal configuration files for Ubuntu.
 #### Bash
 
 - [bash_custom](bash_custom)
+- [bash_custom]()
+- [bash_custom][]
   - link: `~/.bash_custom`
   - ref by: `~/.bashrc`. Add:
     ````
