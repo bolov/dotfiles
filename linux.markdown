@@ -1,207 +1,194 @@
-** please scuzați romgleza **
+*please scuzați romgleza*
 
-================================================================================
-Ubuntu
+Linux: helpful information, faq
+===============================
 
---------------------------------------------------------------------------------
-Install .deb
+**Table of contents**
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Ubuntu - system & settings](#ubuntu---system-&-settings)
+  - [Install `.deb`](#install-deb)
+  - [Mount partitions](#mount-partitions)
+  - [System settings](#system-settings)
+  - [Compiz](#compiz)
+  - [Nvidia drivers](#nvidia-drivers)
+- [BASH](#bash)
+- [GIT](#git)
+- [VIM](#vim)
+    - [Vundle](#vundle)
+    - [clang complete](#clang-complete)
+    - [Eclim](#eclim)
+    - [buffkill](#buffkill)
+    - [fzf](#fzf)
+    - [YouCompleteMe](#youcompleteme)
+    - [csope](#csope)
+    - [ctags](#ctags)
+    - [clang format](#clang-format)
+- [Ubuntu - Applications](#ubuntu---applications)
+  - [Chrome](#chrome)
+  - [LastFM Scrobbler](#lastfm-scrobbler)
+  - [ProjectM](#projectm)
+  - [OSDLyrics](#osdlyrics)
+  - [Music Brainz Picard](#music-brainz-picard)
+  - [FZF Fuzzy finder (outdated)](#fzf-fuzzy-finder-outdated)
+  - [OpenGL](#opengl)
+  - [GCC](#gcc)
+  - [gdb](#gdb)
+  - [environment modules](#environment-modules)
+  - [BOOST (outdated)](#boost-outdated)
+  - [ANTLR V3](#antlr-v3)
+  - [Eclipse (outdated)](#eclipse-outdated)
+  - [Java libraries](#java-libraries)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+Ubuntu - system & settings
+------
+
+### Install `.deb`
+
+```Shell
 sudo dpkg -i file.deb
+```
+
 if errors with unresolved dependencies:
+
+```Shell
 sudo apt-get install -f
+```
+
+### Mount partitions
 
 
---------------------------------------------------------------------------------
-  Install Chrome:
+dacă e montat (din Nautilus), see info:
 
-http://www.ubuntuupdates.org/ppa/google_chrome
-
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-
-?? wtf is this?
-  >> Ubuntu Unity  stable main" >> /etc/apt/sources.list.d/google.list'
-
-
---------------------------------------------------------------------------------
-Mount partitions
-
-
-  dacă e montat (din Nautilus), see info:
+```Shell
 mount
+```
 
-  get uuid/label:
+get uuid/label:
+
+```Shell
 ls -al /dev/disk/by-uuid
 ls -al /dev/disk/by-label
+```
 
-  mount in /media/<uuid> (don't have udisks):
+
+mount in /media/<uuid> (don't have udisks):
+
+```Shell
 /usr/bin/udisks --mount /dev/disk/by-uuid/1313-F422
-  mount in /media/user/<uuid> (like nautilus):
-udisksctl mount --block-device /dev/disk/by-uuid/<uuid>
+```
 
-  automount on login:
+mount in /media/user/<uuid> (like nautilus):
+
+```Shell
+udisksctl mount --block-device /dev/disk/by-uuid/<uuid>
+```
+
+automount on login:<br>
 from GUI: Startup Applications
 
---------------------------------------------------------------------------------
-System settings
+### System settings
 
-Personal
-  >> Appearance >> Laucher Icon Size [32]
-  >> Security & Privacy >> Search >> Incluse Online Search Results [OFF]
-  >> Language >> Keyboard Input Method [None] (disable ibus)
+ - Personal ►
+
+    - Appearance ► Laucher Icon Size: `32`
+    - Security & Privacy ► Search ► Incluse Online Search Results: `OFF`
+    - Language Suport >> Keyboard Input Method: `None` (disable ibus)
 
 
---------------------------------------------------------------------------------
-  Compiz
+###  Compiz
+
+```Shell
 sudo apt-get install compizconfig-settings-manager compiz-plugins-extra
+```
 
-General
-  >> General Options
-    >> Display Settings
-      >> Outputs
-            [1500x1080+0+0]
-            [420x1080+1500+0]
+- General Options ► Display Settings ►
 
-    >> Desktop Size
-    >> Key bindings (Maximize, Unmaximize orMinimize)
-  >> OpenGL >> Texture Filtering ?
+  - Outputs:
 
-Accessibility
-  >> Enhanced Zoom Desktop [DISABLE]
+    ```
+    1500x1080+0+0
+    420x1080+1500+0
+    ```
+
+  - Key bindings: `Maximize, Unmaximize orMinimize`
+
+  - Desktop Size
+
+- OpenGL ► Texture Filtering: play with if not working
+
+- Enhanced Zoom Desktop: `Disable`
+
+- Ubuntu Unity Plugin ► Switcher: `Disable all key bindings`
+
+- Desktop Cube: `Enable` (Disable Desktop Wall)
+
+- Desktop Wall: `Disable`
+
+- Expo ► Appearance ►
+  - Viewport Distance [0.00]
+  - Inactive Viewports ►
+    - Brightness `60`
+    - Saturation `80`
+  - Reflection `ON`
+
+- Rotate Cube `Enable` ► General ► Raise on rotate `ON`
+
+- Viewport Switcher `Disable`
+
+- Scale Addons `Enable` ► Appearance ► Window Title Display: `All Windows`
+
+- Scale Window Title Filter: `OFF`
+
+- Workspace Naming `Enable` (Enable Text)
+
+- Application Switcher [ENABLE]
+
+- Grid
+
+- Scale ► Appearance ► Overlay Icon: `Emblem`
 
 
-Desktop
-  >> Ubuntu Unity Plugin
-    >> Switcher: Disable all key bindings
-  >> Desktop Cube [ENABLE] (Disable Desktop Wall)
-  >> Desktop Wall [DISABLE]
-  >> Expo [TBA]
-    >> Appearance
-      >> Viewport Distance [0.00]
-      >> Inactive Viewports
-        >> Brightness [60]
-        >> Saturation [80]
-      >> Reflection [ON]
-  >> Rotate Cube [ENABLE]
-    >> General >> Raise on rotate [ON]
-  >> Viewport Switcher [DISABLE]
+### Nvidia drivers
 
-Utility
-  >> Scale Addons [Enable]
-    >> Appearance >> Window Title Display [All Windows]
-  >> Scale Window Title Filter
-
-Window Management
-  >> Workspace Naming [ENABLE] (Enable Text)
-  >> Application Switcher [ENABLE]
-    >> Icon [OFF] (bug)
-  >> Grid
-  >> Scale >> Appearance >> Overlay Icon [Emblem]
-
-
-
---------------------------------------------------------------------------------
-
-  Nvidia drivers:
-
+```Shell
 sudo add-apt-repository -y ppa:xorg-edgers/ppa
-(-y assume yes to all queries)
+```
 
-!! 2 versiuni de nvidia instalate simultan = KABOOM !!
+Where `-y`: assume yes to all queries
+
+***!! 2 versiuni de nvidia instalate simultan = KABOOM !!***
 
 
 resize bug:
+
 workaround:
-  Compiz >> Resize Window >> General >> Default Resize Mode [Rectangle]
 
+- Compiz ► Resize Window ► General ► Default Resize Mode: `Rectangle`
 
-================================================================================
-LastFM Scrobbler
-
-http://apt.last.fm/
-
-wget -q http://apt.last.fm/last.fm.repo.gpg -O- | sudo apt-key add -
-  /etc/apt/sources.list  (add):
-deb http://apt.last.fm/debian stable main
-
-sudo apt-get update
-sudo apt-get install lastfm-scrobbler
-
-
-================================================================================
-ProjectM
-  from software: projectM PulseAudio
-  config:
-.projectM/config.inp
-
-================================================================================
-OSDLyrics
-
-https://code.google.com/p/osd-lyrics/
-
-
-================================================================================
-Music Brainz Picard
-sudo add-apt-repository ppa:musicbrainz-developers/stable
-
-
-
-================================================================================
 
 BASH
+----
 
-EXPORT env variables to
-~/.bashrc
-~/.profile  (dacă țin bine minte pentru loggin cu ssh de pe alta mașină;
-             sigur pentru programe pornite cu dash)
+EXPORT env variables in:
 
+ - `~/.bashrc`
+ - `~/.profile` (dacă țin bine minte pentru loggin cu ssh de pe alta mașină;
+                 sigur pentru programe pornite cu dash)
 
-in .bashrc:
-
-[ -f ~/.bash_custom ] && source ~/.bash_custom
-
-Vi mode:
-  ~/.inputrc
-set editing-mode vi
-  ~/.bashrc (trebuie aici pt fzf (v FZF))
-set -o vi
 
 Options pt (read) input (completion):
-  ~/.inputrc
 
-history with prefix:
-
-$if bash
-## arrow up
-#"\e[A":history-search-backward
-"\C-k":history-search-backward
-## arrow down
-#"\e[B":history-search-forward
-"\C-j":history-search-forward
-
-# clear screen
-"\C-l":clear-screen
-$endif
-
-Shortcuturile trebuie conditionate:
-
-# shortcut active only when bash has control
-# if the shortcuts are unconditional, some programs that take control of
-# readline will not work (gdb, cgdb)
-$if bash
-$endif
+`~/.inputrc`
 
 
-  In .bashrc:
-
-# function to mkdir and cd into it
-mkcd() {
-  mkdir -- "$1" && cd -- "$1"
-}
-
-
-================================================================================
 GIT
+---
 
 git bash completion
 
@@ -209,216 +196,310 @@ http://git-scm.com/book/en/v1/Git-Basics-Tips-and-Tricks
 
 https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
 
-# git completion
-[ -f ~/.git-completion.bash ] && source ~/.git-completion.bash
-
-
-git config --global core.editor "gvim -f"
-
-git config --global alias.log-graph "log --all --oneline --decorate --graph"
-git config --global alias.log-tree "log --all --oneline --decorate --graph"
-
-
-================================================================================
-
-FZF Fuzzy finder
-  https://github.com/junegunn/fzf
-
- - just install
-git clone https://github.com/junegunn/fzf.git ~/.fzf
-sudo ~/.fzf/install
-
-  - dc eroare la install: error installing curses
-sudo apt-get install ruby-dev
-sudo apt-get install libncurses5-dev
-
- - export FZF_DEFAULT_OPTS="-x"
- - dc am shortcuturile cu CTRL-k pt history nu merge insertul decât dacă
-   bash e în vi mode
-   dacă în vi mode trebuie pus
-     set -o vi
-   in bashrc înainte de
-     source ~/.fzf.bash
-# needed here for fzf before source ~/.fzf.bash
-set -o vi
-# must be before bash_competion
-# (or warning on auto completion for cmd starting with g++:
-# bash: warning: programmable_completion: g++: possible retry loop)
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-as Vim Plugin
- - for gvim:
-   let g:fzf_launcher='gnome-terminal --disable-factory -x bash -ic %s'
-
-
-================================================================================
 
 VIM
+----
 
-install vundle
-  https://github.com/gmarik/Vundle.vim
+#### Vundle
+
+https://github.com/gmarik/Vundle.vim
+
+```Shell
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
 
-Local plugins with Vundle
-  - mkdir ~/.vim/plugins (note the s)
-  - script need to be in folder plugin
-  - git init && git commit
+Local plugins with Vundle:
+  - put in folder `~/opt/vim-plugins/`
+  - script file needs to be in folder plugin
+  - `git init && git add . && git commit`
 
 e.g.:
-~/.vim/plugins/buffkill/plugin/buffkill.vim
-                       /.git/
 
-in vundle: Plugin 'file:///home/pk/.vim/plugins/bufkill'
+```
+~/opt/vim-plugins/buffkill/plugin/buffkill.vim
+                          /.git/
+```
 
-clang complete
-  - install libclang:
-    sudo apt-get install libclang.so.1
-    sudo ln -s libclang.so.1 libclang.so
+in vundle:
+```
+Plugin 'file:///home/pk/opt/vim-plugins/bufkill'
+```
 
-Java completion
+#### clang complete
 
- - Eclim installed
-   - eclimd not installed in /opt/eclipse (as in instalation guide)
-     găsit în:
-        /home/pk/.eclipse/
-        org.eclipse.platform_4.4.1_1473617060_linux_gtk_x86_64/eclimd
-   - autostart on login:
-      ~/.config/autostart
-      .desktop file to eclimd (cu gnome-desktop-item-edit)
-      (app, nu app in terminal)
-  - setări in vimrc:
-    - eclim schimbă make to javac. Inhibit:
-      let g:EclimJavaCompilerAutoDetect=0
-    - eclim arată erori la fiecare save. Inhibit:
-      let g:EclimJavaValidate=0
+Install libclang:
 
-buffkill
- - http://www.vim.org/scripts/script.php?script_id=1147
-   vundle nu poate de aici
- - https://github.com/vim-scripts/bufkill.vim
-   e o clona (merge cu vundle) dar nu are ultima versiune (v 1.11) - e nevoie
-   pentru disable mappings
- - făcut local (see Local plugins with Vundle)
+```Shell
+sudo apt-get install libclang.so.1
+sudo ln -s libclang.so.1 libclang.so
+```
+
+#### Eclim
 
 
-fzf
- - see FZF as standalone
+Eclimd not installed in `/opt/eclipse` (as in instalation guide).<br>
+Găsit în:<br>
+`/home/pk/.eclipse/org.eclipse.platform_4.4.1_1473617060_linux_gtk_x86_64/eclimd`
 
-YouCompleteMe
-  prerequisites
+Autostart on login:
+
+`~/.config/autostart`
+`.desktop` file to eclimd (cu gnome-desktop-item-edit)
+(app, nu app in terminal)
+
+
+#### buffkill
+
+http://www.vim.org/scripts/script.php?script_id=1147 vundle nu poate de aici
+
+https://github.com/vim-scripts/bufkill.vim e o clona (merge cu vundle) dar nu are ultima versiune (v 1.11) - e nevoie pentru disable mappings
+
+făcut local (see Local plugins with Vundle)
+
+
+#### fzf
+
+See FZF as standalone
+
+#### YouCompleteMe
+
+prerequisites:
+
+```Shell
 sudo apt-get install build-essential cmake python-dev
-  compile
+```
+
+Compile:
+
+```
 cd ~/.vim/bundle/YouCompleteMe/
 ./install.sh --clang-completer
+```
 
-  config file
-~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py
+config file:
 
-csope
-  ?
-ctags
-  ?
-
-clang format
-  ?
+`~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py`
 
 
+#### csope
 
-various stuff
-alias gvim-remote='gvim --remote'
+Coming soon
 
-Persistent undo
-set undofile
-set undodir=~/.vim/undo
+#### ctags
+
+Coming soon
+
+#### clang format
+
+Coming soon
 
 
-================================================================================
-OpenGL
 
+Ubuntu - Applications
+---------------------
+
+### Chrome
+
+http://www.ubuntuupdates.org/ppa/google_chrome
+
+```Shell
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+```
+
+### LastFM Scrobbler
+
+http://apt.last.fm/
+
+```Shell
+wget -q http://apt.last.fm/last.fm.repo.gpg -O- | sudo apt-key add -
+```
+
+  `/etc/apt/sources.list`  add:
+
+```
+deb http://apt.last.fm/debian stable main
+```
+
+
+```Shell
+sudo apt-get update
+sudo apt-get install lastfm-scrobbler
+```
+
+
+### ProjectM
+
+
+Milkdrop like visualization
+
+  from software: projectM PulseAudio
+
+  config:
+
+`.projectM/config.inp`
+
+
+### OSDLyrics
+
+https://code.google.com/p/osd-lyrics/
+
+
+### Music Brainz Picard
+
+Music tagger
+
+
+```Shell
+sudo add-apt-repository ppa:musicbrainz-developers/stable
+```
+
+
+### FZF Fuzzy finder (outdated)
+
+https://github.com/junegunn/fzf
+
+just install
+
+```
+git clone https://github.com/junegunn/fzf.git ~/.fzf
+sudo ~/.fzf/install
+```
+
+dc eroare la install: error installing curses
+
+```
+sudo apt-get install ruby-dev
+sudo apt-get install libncurses5-dev
+```
+
+```
+export FZF_DEFAULT_OPTS="-x"
+```
+
+dc am shortcuturile cu CTRL-k pt history nu merge insertul decât dacă bash e
+în vi mode
+
+dacă în vi mode trebuie pus
+
+```
+set -o vi
+```
+
+în `bashrc` înainte de
+
+```
+source ~/.fzf.bash
+```
+
+As Vim Plugin
+
+for gvim:
+
+```
+let g:fzf_launcher='gnome-terminal --disable-factory -x bash -ic %s'
+```
+
+
+### OpenGL
+
+```
 sudo apt-get install freeglut3-dev
 sudo apt-get install mesa-utils
+```
 
-================================================================================
-GCC
+### GCC
 
-LINKING
-  - L<path>
-  - ex pt: libboost_system.a (.so):
+LINKING:
+
+  - `-L<path>`
+  - ex pt: `libboost_system.a` (`.so`):
     - static/dinamic (cred că alege el)
-      -lboost_system
+      - `-lboost_system`
     - static
-      -l:libboost_system.a
+      - `-l:libboost_system.a`
   - contează ordinea: A depinde de B -> A înainte de B
 
-================================================================================
 
-gdb
+### gdb
 
 pretty print stl (vectors)
-  - de investigat cum am făcut (~/.gdbinit)
 
-================================================================================
+de investigat cum am făcut: `~/.gdbinit`
 
-environment modules
 
-$ sudo apt-get install environment-modules
+### environment modules
+
+```
+sudo apt-get install environment-modules
+```
+
 $ add.modules
 
-configs in bashrc (e.g. module use path, module load ...).
-modulerc or whatnot: executed at each command
+configs in `bashrc` (e.g. `module use path, module load ...`).
+`modulerc` or whatnot: executed at each command
 
 autocomplete bug:
+
+```
 /etc/bash_completion.d/modules
+```
 
 wrong modulecmd path:
 
 change
-	/usr/share/modules/3.2.10/bin/modulecmd bash -t avail 2>&1 | sed '
+
+```
+/usr/share/modules/3.2.10/bin/modulecmd bash -t avail 2>&1 | sed '
+```
 to
-	/usr/bin/modulecmd bash -t avail 2>&1 | sed '
 
-================================================================================
-
-BOOST
-  - instalat in /usr/local/boost-1.56.0
-  - (atentie la dezarhivat) owner si group sa fie pk
-  - symlink boost -> boost-1.56.0
-  - export BOOST_ROOT=/usr/local/boost
-  - am dat ./bootstrap.sh fara niciun arg si a put totul in stage
-  - mutat in lib/x64
-  - adaugat path la linker (fară dă eroare la executabilele linkate dinamic):
-    - creat fișier: (numele nu contează):
-      /etc/ld.so.conf.d/libboost.conf
-    - scris în el (nu merge cu $BOOST_ROOT)
-      /usr/local/boost/lib/x64
+```
+/usr/bin/modulecmd bash -t avail 2>&1 | sed '
+```
 
 
-================================================================================
+### BOOST (outdated)
 
-ANTLR
-V3
+- instalat in /usr/local/boost-1.56.0
+- (atentie la dezarhivat) owner si group sa fie pk
+- symlink boost -> boost-1.56.0
+- export BOOST_ROOT=/usr/local/boost
+- am dat ./bootstrap.sh fara niciun arg si a put totul in stage
+- mutat in lib/x64
+- adaugat path la linker (fară dă eroare la executabilele linkate dinamic):
+  - creat fișier: (numele nu contează):
+    /etc/ld.so.conf.d/libboost.conf
+  - scris în el (nu merge cu $BOOST_ROOT)
+    /usr/local/boost/lib/x64
 
- - ANTLR v3.5.1 (from ANTRLworks 1.5.1 doesn’t work: broken java files (throws)
+
+
+### ANTLR V3
+
+ANTLR v3.5.1 (from ANTRLworks 1.5.1) doesn’t work: broken java files (throws)
 
 downloaded and copied into
-  /usr/lib/antl.v3
 
+```
+/usr/lib/antl.v3
+```
+
+```
 export CLASSPATH=/usr/lib/antlr.3/antlrworks-1.4.3.jar:$CLASSPATH
 alias antlr-works='java -jar /usr/lib/antlr.3/antlrworks-1.4.3.jar'
-
-TODO shimbat in /usr/local/lib
-================================================================================
-
-Eclipse
-
- - unziped to /opt/Eclipse/
- - created .Desktop file (app description for it);
-   moved to /home/pk/.local/share/applications/ to add it to the dash
+```
 
 
-================================================================================
+### Eclipse (outdated)
 
-Java libraries:
+- unziped to /opt/Eclipse/
+- created .Desktop file (app description for it);
+  moved to `/home/pk/.local/share/applications/` to add it to the dash
+
+
+### Java libraries
 
 Apache POI
-  - unziped to /usr/lib/apache-poi/
+
+- unziped to /usr/lib/apache-poi/

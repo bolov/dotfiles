@@ -282,7 +282,10 @@ let g:BufKillCreateMappings=0
 highlight ExtraWhitespace guibg=#440000
 
 " " --- eclim ---
+
+" " eclim schimbă make to javac. Inhibit:
 " let g:EclimJavaCompilerAutoDetect=0
+" " eclim arată erori la fiecare save. Inhibit:
 " let g:EclimFileTypeValidate=0
 " let g:EclimShowCurrentError=0
 " let g:EclimLogLevel='off'
