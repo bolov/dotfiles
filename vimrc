@@ -32,17 +32,28 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
+" Show differences for recovered files
 Plugin 'chrisbra/Recover.vim'
 
 " Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-Plugin 'file:///home/pk/.vim/plugins/fzf'
+" Plug 'junegunn/fzf', { 'dir': '~/opt/fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 
-Plugin 'file:///home/pk/.vim/plugins/bufkill'
+Plugin 'file:///home/pk/opt/vim-plugins/bufkill'
 " Plugin 'ton/vim-bufsurf'
 Plugin 'file:///home/pk/proiecte/vim-plugins/bufsurf'
 
-Plugin 'file:///home/pk/.vim/plugins/autohighlight'
+" syntax highlight for GitHub Flavored Markdown
+Plugin 'jtratner/vim-flavored-markdown'
+" Preview GitHub Flavored Markdown in browser. Updates in real-time
+Plugin 'suan/vim-instant-markdown'
+" Preview GitHub Flavored Markdown in browser. Uptades on shortcut press -> meh
+" Plugin 'JamshedVesuna/vim-markdown-preview'
+
+
+" Highlight all instances of word under cursor, when idle.
+Plugin 'file:///home/pk/opt/vim-plugins/autohighlight'
 Plugin 'ntpeters/vim-better-whitespace'
 
 " Plugin 'yonchu/accelerated-smooth-scroll'
@@ -73,6 +84,26 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+
+"================ Scripts ======================================================
+
+nnoremap <C-W>o :call MaximizeToggle()<CR>
+
+function! MaximizeToggle()
+  if exists("s:maximize_session")
+    exec "source " . s:maximize_session
+    call delete(s:maximize_session)
+    unlet s:maximize_session
+    let &hidden=s:maximize_hidden_save
+    unlet s:maximize_hidden_save
+  else
+    let s:maximize_hidden_save = &hidden
+    let s:maximize_session = tempname()
+    " set hidden
+    exec "mksession! " . s:maximize_session
+    only
+  endif
+endfunction
 
 "================ Vim Settings ================================================
 
@@ -149,6 +180,8 @@ augroup BolovFileTypes
 
   autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
         \                          expandtab smartindent
+
+  autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 augroup END
 
 " key settings
@@ -211,9 +244,12 @@ set noswapfile
 "let g:SuperTabDefaultCompletionType='<c-x><c-u>'
 "let g:SuperTabLongestEnhanced=1
 
+" --- Instant Markdown ---
+set shell=bash\ -i  "  TODO might not be needed
+let g:instant_markdown_slow=1
 
 " --- YCM ---
-let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/ycm-extra-conf.py"
+let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_complete_in_comments = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
