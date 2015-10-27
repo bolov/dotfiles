@@ -2,7 +2,7 @@
 	name = Mihail Bălan
 	email = mihail.balan@gmail.com
 [core]
-	editor = gvim
+	editor = "gvim -f"
 
 	quotepath = false
 [alias]
