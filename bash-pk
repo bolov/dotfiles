@@ -16,41 +16,7 @@ alias grepi='grep -i'
 
 alias cdp='cd -P'
 
-if [ $HOSTNAME == "daedalus" ] ; then
-  alias make='make -j8'
-fi
-
 # alias antlr-works='java -jar /usr/lib/antlr.3/antlrworks-1.4.3.jar'
-
-###### Environment Variables #####
-
-if [ -d "$HOME/scripts" ] ; then
-  export PATH="$HOME/scripts:$PATH"
-fi
-if [ -d "$HOME/bin" ] ; then
-  export PATH="$HOME/bin:$PATH"
-fi
-
-# export BOOST_ROOT=/usr/local/boost
-
-# antlr3 jar file
-# export CLASSPATH=/usr/lib/antlr.3/antlrworks-1.4.3.jar:$CLASSPATH
-
-if [ $HOSTNAME == "cpl" ] ; then
-  export PATH="/home/pk/android/android-studio/bin:$PATH"
-fi
-
-if [ $HOSTNAME == "cpl" ] ; then
-  export OPINCAA_ROOT="/home/pk/proiecte/opincaa"
-  export OPINCAA_SIMULATOR_EXE="$OPINCAA_ROOT/simulator/build/simulator"
-  # simulator working dir
-  export OPINCAA_SIMULATOR_WD="$HOME/opincaa-simulator-wd"
-
-  # SO2
-  export QEMU_DIR="$HOME/ACS/SO2/qemu-vm"
-fi
-
-export FZF_DEFAULT_OPTS="-x"
 
 ### Functions ###
 
@@ -132,11 +98,6 @@ exit(navigator.nv($args cd_fifo_fn=\"$navigator_cd_fifo\",
   cd $new_cd
 }
 
-# bash completions from ~/.bash-completion.d
-for f in ~/.bash-completion.d/* ; do
-  [ -f "$f" ] && source "$f"
-done
-
 # function to toggle the bash promp between cwd and basename of cwd
 # it basically toggles the case of \w in $PS1
 toggle-cwd-prompt() {
@@ -151,6 +112,11 @@ toggle-cwd-prompt() {
   fi
   PS1=$NEW_PS1
 }
+
+# bash completions from ~/.bash-completion.d
+for f in ~/.bash-completion.d/* ; do
+  [ -f "$f" ] && source "$f"
+done
 
 
 ### Settings ###

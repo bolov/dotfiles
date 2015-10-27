@@ -1,0 +1,34 @@
+#!/bin/bash
+
+if [ -d "$HOME/scripts" ] ; then
+  export PATH="$HOME/scripts:$PATH"
+fi
+if [ -d "$HOME/bin" ] ; then
+  export PATH="$HOME/bin:$PATH"
+fi
+
+# export BOOST_ROOT=/usr/local/boost
+
+# antlr3 jar file
+# export CLASSPATH=/usr/lib/antlr.3/antlrworks-1.4.3.jar:$CLASSPATH
+
+if [ $HOSTNAME == "cpl" ] ; then
+  export PATH="/home/pk/android/android-studio/bin:$PATH"
+fi
+
+if [ $HOSTNAME == "cpl" ] ; then
+  export OPINCAA_ROOT="/home/pk/proiecte/opincaa"
+  export OPINCAA_SIMULATOR_EXE="$OPINCAA_ROOT/simulator/build/simulator"
+  # simulator working dir
+  export OPINCAA_SIMULATOR_WD="$HOME/opincaa-simulator-wd"
+
+  # SO2
+  export QEMU_DIR="$HOME/ACS/SO2/qemu-vm"
+fi
+
+
+if [ $HOSTNAME == "Daedalus" ] ; then
+  export PATH="$PATH:/home/pk/opt/Node.js/4.2.1/bin"
+fi
+
+export FZF_DEFAULT_OPTS="-x"

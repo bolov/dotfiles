@@ -175,11 +175,27 @@ workaround:
 BASH
 ----
 
-EXPORT env variables in:
+### Config files
 
- - `~/.bashrc`
- - `~/.profile` (dacă țin bine minte pentru loggin cu ssh de pe alta mașină;
-                 sigur pentru programe pornite cu dash)
+http://www.joshstaiger.org/archives/2005/07/bash_profile_vs.html
+
+When:
+
+ - `~/.profile`: se execută la login: locally or ssh remote, etc.
+                 Sigur pentru programe pornite cu dash
+ - `~/.bashrc`: se execută când pornești un terminal, bash
+
+
+What:
+
+ - `~/.bash_profile` should be super-simple and just load `.profile` and
+    `.bashrc` (in that order)
+
+ - `~/.profile` has the stuff NOT specifically
+    related to bash, such as environment variables (`PATH` and friends)
+
+ - `~/.bashrc` has anything you'd want at an interactive command line.
+    Command prompt, `EDITOR` variable, bash aliases for my use
 
 
 Options pt (read) input (completion):
