@@ -16,6 +16,7 @@ Linux: helpful information, faq
   - [Compiz](#compiz)
   - [Nvidia drivers](#nvidia-drivers)
 - [BASH](#bash)
+  - [Config files](#config-files)
 - [GIT](#git)
 - [VIM](#vim)
     - [Vundle](#vundle)
@@ -36,8 +37,13 @@ Linux: helpful information, faq
   - [FZF Fuzzy finder (outdated)](#fzf-fuzzy-finder-outdated)
   - [OpenGL](#opengl)
   - [GCC](#gcc)
+    - [Linking](#linking)
+  - [Get gcc build options and default directories](#get-gcc-build-options-and-default-directories)
   - [gdb](#gdb)
   - [environment modules](#environment-modules)
+    - [Install and first use](#install-and-first-use)
+    - [Autocomplete bug:](#autocomplete-bug)
+    - [Config](#config)
   - [BOOST (outdated)](#boost-outdated)
   - [ANTLR V3](#antlr-v3)
   - [Eclipse (outdated)](#eclipse-outdated)
@@ -426,7 +432,7 @@ sudo apt-get install mesa-utils
 
 ### GCC
 
-LINKING:
+#### Linking
 
   - `-L<path>`
   - ex pt: `libboost_system.a` (`.so`):
@@ -435,6 +441,15 @@ LINKING:
     - static
       - `-l:libboost_system.a`
   - contează ordinea: A depinde de B -> A înainte de B
+
+### Get gcc build options and default directories
+
+http://stackoverflow.com/questions/4980819/what-are-the-gcc-default-include-directories
+
+```
+gcc -xc++ -E -v -
+```
+
 
 
 ### gdb
@@ -446,16 +461,30 @@ de investigat cum am făcut: `~/.gdbinit`
 
 ### environment modules
 
+#### Install and first use
+
+http://askubuntu.com/a/533636/255053
+
 ```
 sudo apt-get install environment-modules
+add.modules
 ```
 
-$ add.modules
+in `.bashrc`: (lines added by `add.modules` and the beginning of the file)<br>
+comment the first and uncomment the second. This should be the result:
 
-configs in `bashrc` (e.g. `module use path, module load ...`).
-`modulerc` or whatnot: executed at each command
 
-autocomplete bug:
+```
+#module() { eval `/usr/Modules/$MODULE_VERSION/bin/modulecmd $modules_shell $*`; }
+module() { eval `/usr/bin/modulecmd $modules_shell $*`; }
+```
+
+```
+source ~/.profile && source ~/.bashrc
+```
+
+
+#### Autocomplete bug:
 
 ```
 /etc/bash_completion.d/modules
@@ -463,16 +492,17 @@ autocomplete bug:
 
 wrong modulecmd path:
 
-change
+change (first with second)
 
 ```
 /usr/share/modules/3.2.10/bin/modulecmd bash -t avail 2>&1 | sed '
-```
-to
-
-```
 /usr/bin/modulecmd bash -t avail 2>&1 | sed '
 ```
+
+#### Config
+
+configs in `.profile` (e.g. `module use path, module load ...`).<br>
+`modulerc` or whatnot: executed at each command
 
 
 ### BOOST (outdated)
