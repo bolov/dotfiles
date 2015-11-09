@@ -1,11 +1,5 @@
 #!/bin/bash
 
-module use /home/pk/modulefiles
-
-module load java/jdk-8.0.51
-module load llvm/3.6.2-release
-#module load pocl/0.11-release
-
 ###### Aliases ####
 
 alias ls='ls --color=auto -v --group-directories-first'

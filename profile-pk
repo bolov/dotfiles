@@ -1,5 +1,16 @@
 #!/bin/bash
 
+module use /home/pk/modulefiles
+
+if [ $HOSTNAME == "cpl" ] ; then
+  module load java/jdk-8.0.51
+  module load llvm/3.6.2-release
+  #module load pocl/0.11-release
+
+elif [ $HOSTNAME == "Daedalus" ] ; then
+fi
+
+
 if [ -d "$HOME/scripts" ] ; then
   export PATH="$HOME/scripts:$PATH"
 fi
