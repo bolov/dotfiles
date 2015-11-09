@@ -1,14 +1,30 @@
-# Bolov Configs
+Linux configuration files
+=========================
 
 Personal configuration files for Ubuntu.
 
-## Files
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-#### Bash
+**Table of contents**
 
-- [profile-pk](profile-pk]
+- [Bash](#bash)
+- [Vim](#vim)
+- [Clang, YouCompleteMe](#clang-youcompleteme)
+- [Git](#git)
+- [Environment modules](#environment-modules)
+- [ZSH](#zsh)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+Bash
+----
+
+- [profile-pk](profile-pk)
   - link: `~/.profile-pk`
   - ref by `~/.profile`. Add:
+
   ```
   [ -f "$HOME/.profile-pk" ] && source "$HOME/.profile-pk"
   ```
@@ -16,9 +32,11 @@ Personal configuration files for Ubuntu.
 - [bash-pk](bash-pk)
   - link: `~/.bash-pk`
   - ref by: `~/.bashrc`. Add:
+
     ````
     [ -f ~/.bash-pk ] && source ~/.bash-pk
     ````
+
   - TODO: make `.bashrc.d`
 
 - [inputrc](inputrc)
@@ -38,7 +56,8 @@ Personal configuration files for Ubuntu.
   - link: `~/.bash-completion.d/grid-completion`
   - ref by: [bash-pk](bash-pk) (via ~/.bash-completion.d folder)
 
-#### Vim
+Vim
+---
 
 - [vimrc](vimrc)
 
@@ -46,11 +65,12 @@ Personal configuration files for Ubuntu.
 
 - [mustang-bolov.vim](mustang-bolov.vim)
 
-### Clang, YouCompleteMe
+Clang, YouCompleteMe
+--------------------
 
 - [ycm_extra_conf.py](ycm_extra_conf.py)
   - link: `~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py`
-  - ref by: [vimrc](vimrc) [vimrc](vimrc)
+  - ref by: [vimrc](vimrc)
 
 - [ycm_extra_conf_linux_kernel.py](ycm_extra_conf_linux_kernel.py)
 
@@ -62,14 +82,17 @@ Personal configuration files for Ubuntu.
 
 - [clang-format-linux-kernel](clang-format-linux-kernel)
 
-### Git
+Git
+---
 
 - [gitconfig](gitconfig)
 
-### System
+Environment modules
+-------------------
 
 - [modulefiles/](modulefiles/)
 
-### Other
+ZSH
+---
 
 - [zshrc](zshrc)

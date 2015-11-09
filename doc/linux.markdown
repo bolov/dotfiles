@@ -1,7 +1,7 @@
 *please scuzați romgleza*
 
-Linux: helpful information, faq
-===============================
+Linux: Settings, How To
+=======================
 
 **Table of contents**
 
@@ -10,95 +10,55 @@ Linux: helpful information, faq
 
 
 - [Ubuntu - system & settings](#ubuntu---system-&-settings)
-  - [Install `.deb`](#install-deb)
-  - [Mount partitions](#mount-partitions)
   - [System settings](#system-settings)
   - [Compiz](#compiz)
   - [Nvidia drivers](#nvidia-drivers)
-- [BASH](#bash)
-  - [Config files](#config-files)
-- [GIT](#git)
-- [VIM](#vim)
-    - [Vundle](#vundle)
-    - [clang complete](#clang-complete)
-    - [Eclim](#eclim)
-    - [buffkill](#buffkill)
-    - [fzf](#fzf)
-    - [YouCompleteMe](#youcompleteme)
-    - [csope](#csope)
-    - [ctags](#ctags)
-    - [clang format](#clang-format)
-- [Ubuntu - Applications](#ubuntu---applications)
+  - [Package Management](#package-management)
+    - [Install `.deb`](#install-deb)
+  - [File system](#file-system)
+    - [Mount partitions](#mount-partitions)
+- [Applications](#applications)
+  - [BASH](#bash)
+    - [Config files](#config-files)
+  - [GIT](#git)
+  - [VIM](#vim)
+    - [Plugins](#plugins)
+      - [Vundle](#vundle)
+      - [clang complete](#clang-complete)
+      - [Eclim](#eclim)
+      - [buffkill](#buffkill)
+      - [fzf](#fzf)
+      - [YouCompleteMe](#youcompleteme)
+      - [csope](#csope)
+      - [ctags](#ctags)
+      - [clang format](#clang-format)
   - [Chrome](#chrome)
   - [LastFM Scrobbler](#lastfm-scrobbler)
   - [ProjectM](#projectm)
   - [OSDLyrics](#osdlyrics)
   - [Music Brainz Picard](#music-brainz-picard)
-  - [FZF Fuzzy finder (outdated)](#fzf-fuzzy-finder-outdated)
+  - [FZF Fuzzy finder (outdated version)](#fzf-fuzzy-finder-outdated-version)
   - [OpenGL](#opengl)
   - [GCC](#gcc)
     - [Linking](#linking)
-  - [Get gcc build options and default directories](#get-gcc-build-options-and-default-directories)
+    - [Get gcc build options and default directories](#get-gcc-build-options-and-default-directories)
   - [gdb](#gdb)
-  - [environment modules](#environment-modules)
+  - [Environment Modules](#environment-modules)
     - [Install and first use](#install-and-first-use)
     - [Autocomplete bug:](#autocomplete-bug)
     - [Config](#config)
   - [BOOST (outdated)](#boost-outdated)
   - [ANTLR V3](#antlr-v3)
-  - [Eclipse (outdated)](#eclipse-outdated)
-  - [Java libraries](#java-libraries)
+  - [Eclipse (outdated version & instructions)](#eclipse-outdated-version-&-instructions)
+  - [Java libraries (outdated instructions)](#java-libraries-outdated-instructions)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 Ubuntu - system & settings
-------
+==========================
 
-### Install `.deb`
-
-```Shell
-sudo dpkg -i file.deb
-```
-
-if errors with unresolved dependencies:
-
-```Shell
-sudo apt-get install -f
-```
-
-### Mount partitions
-
-
-dacă e montat (din Nautilus), see info:
-
-```Shell
-mount
-```
-
-get uuid/label:
-
-```Shell
-ls -al /dev/disk/by-uuid
-ls -al /dev/disk/by-label
-```
-
-
-mount in /media/<uuid> (don't have udisks):
-
-```Shell
-/usr/bin/udisks --mount /dev/disk/by-uuid/1313-F422
-```
-
-mount in /media/user/<uuid> (like nautilus):
-
-```Shell
-udisksctl mount --block-device /dev/disk/by-uuid/<uuid>
-```
-
-automount on login:<br>
-from GUI: Startup Applications
-
-### System settings
+System settings
+---------------
 
  - Personal ►
 
@@ -107,7 +67,8 @@ from GUI: Startup Applications
     - Language Suport >> Keyboard Input Method: `None` (disable ibus)
 
 
-###  Compiz
+Compiz
+------
 
 ```Shell
 sudo apt-get install compizconfig-settings-manager compiz-plugins-extra
@@ -160,7 +121,8 @@ sudo apt-get install compizconfig-settings-manager compiz-plugins-extra
 - Scale ► Appearance ► Overlay Icon: `Emblem`
 
 
-### Nvidia drivers
+Nvidia drivers
+--------------
 
 ```Shell
 sudo add-apt-repository -y ppa:xorg-edgers/ppa
@@ -177,6 +139,58 @@ workaround:
 
 - Compiz ► Resize Window ► General ► Default Resize Mode: `Rectangle`
 
+
+Package Management
+------------------
+
+### Install `.deb`
+
+```Shell
+sudo dpkg -i file.deb
+```
+
+if errors with unresolved dependencies:
+
+```Shell
+sudo apt-get install -f
+```
+
+File system
+-----------
+
+### Mount partitions
+
+dacă e montat (din Nautilus), see info:
+
+```Shell
+mount
+```
+
+get uuid/label:
+
+```Shell
+ls -al /dev/disk/by-uuid
+ls -al /dev/disk/by-label
+```
+
+
+mount in /media/<uuid> (don't have udisks):
+
+```Shell
+/usr/bin/udisks --mount /dev/disk/by-uuid/1313-F422
+```
+
+mount in /media/user/<uuid> (like nautilus):
+
+```Shell
+udisksctl mount --block-device /dev/disk/by-uuid/<uuid>
+```
+
+automount on login:<br>
+from GUI: Startup Applications
+
+Applications
+============
 
 BASH
 ----
@@ -221,6 +235,8 @@ https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
 
 VIM
 ----
+
+### Plugins
 
 #### Vundle
 
@@ -316,11 +332,8 @@ Coming soon
 Coming soon
 
 
-
-Ubuntu - Applications
----------------------
-
-### Chrome
+Chrome
+------
 
 http://www.ubuntuupdates.org/ppa/google_chrome
 
@@ -329,7 +342,8 @@ wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-ke
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 ```
 
-### LastFM Scrobbler
+LastFM Scrobbler
+----------------
 
 http://apt.last.fm/
 
@@ -350,7 +364,8 @@ sudo apt-get install lastfm-scrobbler
 ```
 
 
-### ProjectM
+ProjectM
+--------
 
 
 Milkdrop like visualization
@@ -362,12 +377,14 @@ Milkdrop like visualization
 `.projectM/config.inp`
 
 
-### OSDLyrics
+OSDLyrics
+---------
 
 https://code.google.com/p/osd-lyrics/
 
 
-### Music Brainz Picard
+Music Brainz Picard
+-------------------
 
 Music tagger
 
@@ -377,25 +394,26 @@ sudo add-apt-repository ppa:musicbrainz-developers/stable
 ```
 
 
-### FZF Fuzzy finder (outdated)
+FZF Fuzzy finder (outdated version)
+---------------------------
 
 https://github.com/junegunn/fzf
 
 just install
 
-```
+```Shell
 git clone https://github.com/junegunn/fzf.git ~/.fzf
 sudo ~/.fzf/install
 ```
 
 dc eroare la install: error installing curses
 
-```
+```Shell
 sudo apt-get install ruby-dev
 sudo apt-get install libncurses5-dev
 ```
 
-```
+```Shell
 export FZF_DEFAULT_OPTS="-x"
 ```
 
@@ -404,13 +422,13 @@ dc am shortcuturile cu CTRL-k pt history nu merge insertul decât dacă bash e
 
 dacă în vi mode trebuie pus
 
-```
+```Shell
 set -o vi
 ```
 
 în `bashrc` înainte de
 
-```
+```Shell
 source ~/.fzf.bash
 ```
 
@@ -418,54 +436,58 @@ As Vim Plugin
 
 for gvim:
 
-```
+```Shell
 let g:fzf_launcher='gnome-terminal --disable-factory -x bash -ic %s'
 ```
 
 
-### OpenGL
+OpenGL
+------
 
-```
+```Shell
 sudo apt-get install freeglut3-dev
 sudo apt-get install mesa-utils
 ```
 
-### GCC
+GCC
+---
 
-#### Linking
+### Linking
 
-  - `-L<path>`
-  - ex pt: `libboost_system.a` (`.so`):
-    - static/dinamic (cred că alege el)
-      - `-lboost_system`
-    - static
-      - `-l:libboost_system.a`
-  - contează ordinea: A depinde de B -> A înainte de B
+- `-L<path>`
+- ex pt: `libboost_system.a` (`.so`):
+  - static/dinamic (cred că alege el)
+    - `-lboost_system`
+  - static
+    - `-l:libboost_system.a`
+- contează ordinea: A depinde de B -> A înainte de B
 
 ### Get gcc build options and default directories
 
 http://stackoverflow.com/questions/4980819/what-are-the-gcc-default-include-directories
 
-```
+```Shell
 gcc -xc++ -E -v -
 ```
 
 
 
-### gdb
+gdb
+---
 
 pretty print stl (vectors)
 
 de investigat cum am făcut: `~/.gdbinit`
 
 
-### environment modules
+Environment Modules
+-------------------
 
-#### Install and first use
+### Install and first use
 
 http://askubuntu.com/a/533636/255053
 
-```
+```Shell
 sudo apt-get install environment-modules
 add.modules
 ```
@@ -474,19 +496,19 @@ in `.bashrc`: (lines added by `add.modules` and the beginning of the file)<br>
 comment the first and uncomment the second. This should be the result:
 
 
-```
+```Shell
 #module() { eval `/usr/Modules/$MODULE_VERSION/bin/modulecmd $modules_shell $*`; }
 module() { eval `/usr/bin/modulecmd $modules_shell $*`; }
 ```
 
-```
+```Shell
 source ~/.profile && source ~/.bashrc
 ```
 
 
-#### Autocomplete bug:
+### Autocomplete bug:
 
-```
+```Shell
 /etc/bash_completion.d/modules
 ```
 
@@ -494,18 +516,19 @@ wrong modulecmd path:
 
 change (first with second)
 
-```
+```Shell
 /usr/share/modules/3.2.10/bin/modulecmd bash -t avail 2>&1 | sed '
 /usr/bin/modulecmd bash -t avail 2>&1 | sed '
 ```
 
-#### Config
+### Config
 
 configs in `.profile` (e.g. `module use path, module load ...`).<br>
 `modulerc` or whatnot: executed at each command
 
 
-### BOOST (outdated)
+BOOST (outdated)
+-----
 
 - instalat in /usr/local/boost-1.56.0
 - (atentie la dezarhivat) owner si group sa fie pk
@@ -521,30 +544,33 @@ configs in `.profile` (e.g. `module use path, module load ...`).<br>
 
 
 
-### ANTLR V3
+ANTLR V3
+--------
 
 ANTLR v3.5.1 (from ANTRLworks 1.5.1) doesn’t work: broken java files (throws)
 
 downloaded and copied into
 
-```
+```Shell
 /usr/lib/antl.v3
 ```
 
-```
+```Shell
 export CLASSPATH=/usr/lib/antlr.3/antlrworks-1.4.3.jar:$CLASSPATH
 alias antlr-works='java -jar /usr/lib/antlr.3/antlrworks-1.4.3.jar'
 ```
 
 
-### Eclipse (outdated)
+Eclipse (outdated version & instructions)
+-------
 
 - unziped to /opt/Eclipse/
 - created .Desktop file (app description for it);
   moved to `/home/pk/.local/share/applications/` to add it to the dash
 
 
-### Java libraries
+Java libraries (outdated instructions)
+--------------
 
 Apache POI
 
