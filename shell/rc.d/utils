@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# function to mkdir and cd into it
+mkcd() {
+  mkdir -- "$1" && cd -- "$1"
+}
+
+whereis-func() {
+  shopt -s extdebug;
+  declare -F $1;
+  shopt -u extdebug
+}
+
+
+# function to toggle the bash promp between cwd and basename of cwd
+# it basically toggles the case of \w in $PS1
+toggle-cwd-prompt() {
+  local NEW_PS1
+  # to upper
+  NEW_PS1=$(echo "$PS1" | sed 's/\\w\\\$/\\W\\\$/')
+  # if not substituted
+  if [ "$PS1" = "$NEW_PS1" ]
+  then
+    # to lower
+    NEW_PS1=$(echo "$PS1" | sed 's/\\W\\\$/\\w\\\$/')
+  fi
+  PS1=$NEW_PS1
+}
+
+

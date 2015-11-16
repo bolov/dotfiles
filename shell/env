@@ -8,8 +8,8 @@ if [ $HOSTNAME == "cpl" ] ; then
   #module load pocl/0.11-release
 
 elif [ $HOSTNAME == "Daedalus" ] ; then
+  :
 fi
-
 
 if [ -d "$HOME/scripts" ] ; then
   export PATH="$HOME/scripts:$PATH"
@@ -17,11 +17,6 @@ fi
 if [ -d "$HOME/bin" ] ; then
   export PATH="$HOME/bin:$PATH"
 fi
-
-# export BOOST_ROOT=/usr/local/boost
-
-# antlr3 jar file
-# export CLASSPATH=/usr/lib/antlr.3/antlrworks-1.4.3.jar:$CLASSPATH
 
 if [ $HOSTNAME == "cpl" ] ; then
   export PATH="/home/pk/android/android-studio/bin:$PATH"

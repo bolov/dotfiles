@@ -1,0 +1,12 @@
+#!/bin/bash
+
+alias ls='ls --color=auto -v --group-directories-first'
+alias ls1='ls -1'
+
+alias gvim-remote='gvim --remote'
+alias grepi='grep -i'
+
+alias cdp='cd -P'
+
+# alias antlr-works='java -jar /usr/lib/antlr.3/antlrworks-1.4.3.jar'
+
