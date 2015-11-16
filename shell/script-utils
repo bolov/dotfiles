@@ -1,5 +1,13 @@
 #!/bin/bash
 
+source-if-ok() {
+  for f in "$@" ; do
+    if [ -f "$f" -a -r "$f" ] ; then
+      source "$f"
+    fi
+  done
+}
+
 # cleans the delimiter colon `:` in an environment variable
 # removes consecutives, first and last colon
 clean-path() {

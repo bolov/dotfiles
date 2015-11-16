@@ -1,14 +1,30 @@
 #!/bin/bash
 
-#TODO source aliases
+if [ -z $SHELL_CONFIGS_VERSION ] ; then
+  export SHELL_CONFIGS_VERSION="-1"
+fi
 
-#TODO source rc.d
+if [ ! -f "$HOME/.shell-configs-latest-version" ] ; then
+  echo 0 >"$HOME/.shell-configs-latest-version"
+fi
 
-# bash completions from ~/.bash-completion.d
-for f in ~/.bash-completion.d/* ; do
-  [ -f "$f" ] && source "$f"
-done
+shel_configs_latest_version=`cat "$HOME/.shell-configs-latest-version"`
 
+if [ $SHELL_CONFIGS_VERSION -eq $shel_configs_latest_version ] ; then
+  # script up to date
+  unset shel_configs_latest_version
+  return 0
+fi
+
+#-------------------------------------------------------------------------------
+
+source "$HOME/.shell/script-utils"
+
+source-if-ok $HOME/.shell/env
+
+source-if-ok $HOME/.shell/rc.d/*
+
+source-if-ok $HOME/.shell/bash-completion.d/*
 
 ### Settings ###
 
@@ -34,3 +50,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+#-------------------------------------------------------------------------------
+
+export SHELL_CONFIGS_VERSION=$shel_configs_latest_version
+unset shel_configs_latest_version
+

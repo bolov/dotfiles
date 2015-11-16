@@ -11,15 +11,10 @@ elif [ $HOSTNAME == "Daedalus" ] ; then
   :
 fi
 
-if [ -d "$HOME/scripts" ] ; then
-  export PATH="$HOME/scripts:$PATH"
-fi
-if [ -d "$HOME/bin" ] ; then
-  export PATH="$HOME/bin:$PATH"
-fi
+prepend-path PATH $HOME/bin $HOME/scripts
 
 if [ $HOSTNAME == "cpl" ] ; then
-  export PATH="/home/pk/android/android-studio/bin:$PATH"
+  prepend-path PATH /home/pk/android/android-studio/bin
 fi
 
 if [ $HOSTNAME == "cpl" ] ; then
@@ -34,7 +29,7 @@ fi
 
 
 if [ $HOSTNAME == "Daedalus" ] ; then
-  export PATH="$PATH:/home/pk/opt/Node.js/4.2.1/bin"
+  prepend-path PATH /home/pk/opt/Node.js/4.2.1/bin
 fi
 
 export FZF_DEFAULT_OPTS="-x"

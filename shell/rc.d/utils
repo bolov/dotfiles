@@ -5,6 +5,7 @@ mkcd() {
   mkdir -- "$1" && cd -- "$1"
 }
 
+# print filename and linenumber of a function definition
 whereis-func() {
   shopt -s extdebug;
   declare -F $1;
@@ -27,4 +28,16 @@ toggle-cwd-prompt() {
   PS1=$NEW_PS1
 }
 
+#
+shell-configs-update() {
+  if [ ! -f "$HOME/.shell-configs-latest-version" ] ; then
+    return 0
+  fi
+
+  local shel_configs_latest_version=`cat "$HOME/.shell-configs-latest-version"`
+  let "shel_configs_latest_version+=1"
+  echo $shel_configs_latest_version >"$HOME/.shell-configs-latest-version"
+
+  source "$HOME/.shell/pk"
+}
 
