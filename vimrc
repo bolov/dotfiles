@@ -75,6 +75,12 @@ Plugin 'Valloric/YouCompleteMe'
 " Plugin 'file:///home/pk/proiecte/vim-plugins/clighter'
 
 
+" Syntax highlight for jade (HTML template language)
+Plugin 'digitaltoad/vim-jade'
+" Syntax highlight for stylus (CSS template language)
+Plugin 'wavded/vim-stylus'
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -205,6 +211,12 @@ augroup BolovFileTypes
         \                          expandtab smartindent
 
   autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+
+  "iabbrev looks at characters before and inserts after you type
+  "non-keyword character
+  " inoremap is dumb
+  "autocmd Filetype xml iabbrev </ </<C-X><C-O>
+  autocmd Filetype xml inoremap </ </<C-X><C-O>
 augroup END
 
 " key settings
