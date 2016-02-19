@@ -1,3 +1,23 @@
-BasedOnStyle: LLVM
-Cpp11BracedListStyle: true
-Standard: Cpp11
+ColumnLimit: 100
+
+UseTab: Never
+IndentWidth: 4
+AccessModifierOffset: -4
+NamespaceIndentation: None
+
+BreakBeforeBraces: Stroustrup
+AlwaysBreakTemplateDeclarations: true
+BreakConstructorInitializersBeforeComma: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: false
+
+AllowShortBlocksOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: All
+
+PointerAlignment: Left
+
+# AlignConsecutiveAssignments: false
+AlignTrailingComments: true
+# SpaceAfterCStyleCast: true
+

@@ -179,7 +179,7 @@ set matchpairs+=<:>
 set iskeyword+=-
 
 " vertical line
-set colorcolumn=80 " or set cc
+set colorcolumn=100 " or set cc
 
 " vertical offset
 set scrolloff=5
@@ -192,9 +192,9 @@ augroup CursorLine
 augroup END
 
 " tabs and indentation
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set expandtab
 set smartindent
 
@@ -206,9 +206,6 @@ set cinoptions+=N-s   " inside namespaces
 augroup BolovFileTypes
   autocmd!
   autocmd BufRead,BufNewFile *.cu,*.cl set filetype=cpp
-
-  autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
-        \                          expandtab smartindent
 
   autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 
@@ -287,6 +284,8 @@ let g:instant_markdown_slow=1
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/ycm_extra_conf.py"
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " --- CtrlP ---
