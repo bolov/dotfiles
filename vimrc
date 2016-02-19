@@ -447,7 +447,8 @@ endfunction
 function! GetLocalVimrc(search_dir)
   let local_vimrc_file = findfile(".vimrc", a:search_dir . ";")
 
-  if empty(local_vimrc_file) || local_vimrc_file == $MYVIMRC
+  if empty(local_vimrc_file) ||
+        \ fnamemodify(local_vimrc_file, ":p") == $MYVIMRC
     return ""
   endif
 
@@ -459,6 +460,8 @@ function! LoadLocalVimrc()
   if empty(local_vimrc_file)
     return
   endif
+
+  let b:local_vimrc = local_vimrc_file
 
   exec "source " . local_vimrc_file
 endfunction
