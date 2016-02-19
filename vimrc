@@ -108,6 +108,14 @@ function! MaximizeToggle()
   endif
 endfunction
 
+function! RemoveTrailingWhitespaces(pos) range
+  execute a:firstline.",".a:lastline."s/\\s\\+$//e"
+endfunction
+
+command! -range=% RemoveTrailingWhitespaces
+      \ <line1>,<line2>call RemoveTrailingWhitespaces(getpos("."))
+
+
 "================ Vim Settings ================================================
 
 " --- Autostart ---
@@ -142,6 +150,9 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
+" status line always
+set laststatus=2
+
 " switching buffers
 set switchbuf=useopen
 
@@ -155,8 +166,14 @@ set listchars=tab:»—,trail:·
 " highlighted matching pairs
 set matchpairs+=<:>
 
+" make dash (-) part of the word
+set iskeyword+=-
+
 " vertical line
 set colorcolumn=80 " or set cc
+
+" vertical offset
+set scrolloff=5
 
 " highlight current line only in current buffer
 augroup CursorLine
@@ -403,6 +420,36 @@ vnoremap <A-j> :m '>+1<CR>gv
 
 nmap <Leader>d :co+0<CR>
 vmap <Leader>d :co '>+0<CR>gv
+
+" New line without insert
+nmap <Enter> o<Esc>
+nmap <S-Enter> O<Esc>
+
+" Select All
+nnoremap <Leader>a ggVG
+
+" redraw. Current line between top and bottom
+" position:
+"    1.0 - current line at top
+"    0.5 - current line at center
+"    0.0 - current line at bottom
+function! SmartCenter(position)
+  if a:position >= 0.5
+    let top_offset = float2nr((1 - a:position) * winheight(0))
+    let cmd = 'zt'
+  else
+    let top_offset = float2nr(a:position * winheight(0))
+    let cmd = 'zb'
+  endif
+
+  let oldso=&scrolloff
+  echo top_offset
+  execute ":set so=" . top_offset
+  execute "normal! " . cmd
+  execute ":set so=" . oldso
+endfunction
+
+nnoremap zz :call SmartCenter(0.65)<CR>
 
 " toogle search highlight
 noremap <Leader>h :set hlsearch!<CR>

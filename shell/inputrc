@@ -1,4 +1,5 @@
 # Use Vi, not Emacs, style editing
+# this enables vi mode in all programs that use readline (e.g. gdb)
 set editing-mode vi
 
 # change prompt depending on mode (insert, command)
