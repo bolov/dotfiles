@@ -346,12 +346,23 @@ let g:ClighterOccurrences = 0
 
 " format selection
 map <Leader>f :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
-
 " format {}
 map <Leader>g va{<Leader>f
-
 " formal all file
 map <Leader>F ggVG<Leader>f
+
+" --- yapf ---
+
+augroup BolovYAPF
+    " format current line (normal mode)
+    autocmd FileType python nnoremap <buffer> <Leader>f :silent .!yapf<CR>
+    " format current selection (trick with Home-End: http://superuser.com/q/585629/292141)
+    autocmd FileType python vnoremap <buffer> <Leader>f :'<.'>!yapf<Home>silent<End><CR>
+    " format whole file
+    autocmd FileType python noremap <buffer> <Leader>F :silent %!yapf<CR>
+
+    autocmd FileType python map <buffer> <Leader>g <nop>
+augroup END
 
 " --- CtrlP ---
 
