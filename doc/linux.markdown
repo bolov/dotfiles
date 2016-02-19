@@ -203,6 +203,27 @@ udisksctl mount --block-device /dev/disk/by-uuid/<uuid>
 automount on login:<br>
 from GUI: Startup Applications
 
+OS
+==
+
+File paths terminology
+----------------------
+
+
+http://stackoverflow.com/q/2235173
+
+| Name                   | /home/pk/foo.src        | /home/pk/dir/       |
+|------------------------|-------------------------|---------------------|
+| path                   | **/home/pk/foo.src**    | **/home/pk/dir**    |
+| file path              | **/home/pk/foo.src**    | -                   |
+| directory              | -                       | **/home/pk/dir**    |
+| dirname<sup>Unix</sup> | <b>/home/pk/</b>foo.src | <b>/home/pk/</b>dir |
+| basename<sup>Unix</sup>| /home/pk/**foo.src**    | /home/pk/**dir**    |
+| filename               | /home/pk/**foo.src**    | -                   |
+| stem <sup>*Boost*<sup> | /home/pk/**foo**.src    | -                   |
+| extension              | /home/pk/foo<b>.src</b> | -                   |
+
+
 Applications
 ============
 
