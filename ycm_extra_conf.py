@@ -38,6 +38,7 @@ flags = [
 '-Wall', '-Wextra', '-Wold-style-cast', '-Wconversion', '-Wshadow',
 '-Wno-sign-conversion',
 '-DDEBUG',
+'-DYOU_COMPLETE_ME_CLANG',
 # THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
 # language to use when compiling headers. So it will guess. Badly. So C++
 # headers will be compiled as C headers. You don't want that so ALWAYS specify
@@ -57,6 +58,8 @@ flags = [
 '-isystem', '/usr/include/c++/4.9',
 '-isystem', '/usr/include',
 '-isystem', '/usr/local/include',
+'-isystem', '/home/pk/opt/GSL/include',
+'-isystem', '/home/pk/opt/bolov-gsl/include',
 ]
 
 

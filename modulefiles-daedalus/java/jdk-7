@@ -1,0 +1,11 @@
+#%Module1.0
+
+setenv JAVA_HOME ~/opt/jvm/oracle-jdk-7u79
+
+setenv J2SDKDIR   ~/opt/jvm/oracle-jdk-7u79
+setenv J2REDIR    ~/opt/jvm/oracle-jdk-7u79/jre
+setenv DERBY_HOME ~/opt/jvm/oracle-jdk-7u79/db
+
+prepend-path PATH ~/opt/jvm/oracle-jdk-7u79/db/bin
+prepend-path PATH ~/opt/jvm/oracle-jdk-7u79/jre/bin
+prepend-path PATH ~/opt/jvm/oracle-jdk-7u79/bin
