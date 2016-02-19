@@ -3,11 +3,19 @@
 	email = mihail.balan@gmail.com
 [core]
 	editor = "gvim -f"
-
 	quotepath = false
+
+[status]
+	showUntrackedFiles = "all"
+
 [alias]
 	lg = log --oneline --decorate --graph
 	lg-all = log --all --oneline --decorate --graph
+	sdiff      = "!git diff && git submodule foreach 'git diff'"
+	spush = push --recurse-submodules=on-demand
+	supdate = submodule update --remote --merge
+	mergeff = merge --ff-only
+
 [push]
 	default = simple
 [diff]
