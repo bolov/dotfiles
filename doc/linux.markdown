@@ -155,6 +155,20 @@ if errors with unresolved dependencies:
 sudo apt-get install -f
 ```
 
+### Info
+
+For remote package
+
+```Shell
+apt-cache show PACKAGE
+```
+
+For local package
+
+```Shell
+dpkg -s PACKAGE
+```
+
 File system
 -----------
 
@@ -331,6 +345,15 @@ Coming soon
 
 Coming soon
 
+Apache Ant
+----------
+
+### Install
+
+```Shell
+sudo apt-get install ant
+```
+
 
 Chrome
 ------
@@ -391,6 +414,32 @@ Music tagger
 
 ```Shell
 sudo add-apt-repository ppa:musicbrainz-developers/stable
+```
+
+
+Cue Splitter
+------------
+
+http://askubuntu.com/questions/521388/native-flac-cue-splitter
+
+```Shell
+sudo apt-get install cuetools shntool
+```
+
+```Shell
+cuebreakpoints cue_file | shnsplit -o flac audio_flac_file
+
+cuetag CUE_FILE split-track*.flac
+```
+
+--- Not tested
+
+If error
+
+> shnsplit: error: m:ss.ff format can only be used with CD-quality files
+
+```Shell
+cuebreakpoints cue_file | sed s/$/0/ | shnsplit -o flac audio_flac_file>
 ```
 
 
