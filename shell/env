@@ -11,7 +11,7 @@ elif [ $HOSTNAME == "Daedalus" ] ; then
   :
 fi
 
-prepend-path PATH $HOME/bin $HOME/scripts
+prepend-path PATH $HOME/bin $HOME/scripts $HOME/scripts/tmux
 prepend-path PATH $HOME/opt/fzf/bin
 
 if [ $HOSTNAME == "cpl" ] ; then
