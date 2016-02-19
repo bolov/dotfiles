@@ -49,8 +49,11 @@ Plugin 'file:///home/pk/proiecte/vim-plugins/bufsurf'
 
 " syntax highlight for GitHub Flavored Markdown
 Plugin 'jtratner/vim-flavored-markdown'
+
 " Preview GitHub Flavored Markdown in browser. Updates in real-time
-Plugin 'suan/vim-instant-markdown'
+" Plugin 'suan/vim-instant-markdown'
+Plugin 'file:///home/pk/proiecte/vim-plugins/vim-instant-markdown'
+
 " Preview GitHub Flavored Markdown in browser. Uptades on shortcut press -> meh
 " Plugin 'JamshedVesuna/vim-markdown-preview'
 
@@ -265,7 +268,7 @@ set noswapfile
 "let g:SuperTabLongestEnhanced=1
 
 " --- Instant Markdown ---
-set shell=bash\ -i  "  TODO might not be needed
+let g:instant_markdown_autostart=1
 let g:instant_markdown_slow=1
 
 " --- YCM ---
