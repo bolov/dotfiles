@@ -258,14 +258,85 @@ Options pt (read) input (completion):
 `~/.inputrc`
 
 
-GIT
+Git
 ---
 
-git bash completion
+### git bash completion
 
 http://git-scm.com/book/en/v1/Git-Basics-Tips-and-Tricks
 
 https://github.com/git/git/blob/master/contrib/completion/git-completion.bash
+
+Git Cheat Sheet
+---------------
+
+### Remote
+
+#### Show remote url
+
+```Shell
+git config --get remote.origin.url
+git remote show origin
+git remote -v
+git ls-remote --get-url origin
+```
+
+### Submodules
+
+https://git-scm.com/book/en/v2/Git-Tools-Submodules
+
+#### Starting
+
+```Shell
+git submodule add link [name]
+git diff --submodule
+```
+
+#### Clone a proj with submodules:
+
+```Shell
+git clone link
+git submodule init
+git submodule update
+```
+
+or
+
+```Shell
+git clone --recursive link
+```
+
+#### Working on a project with submodules
+
+##### Pulling in Upstream Change
+
+```Shell
+cd submodule-dir
+git fetch
+git merge origin/master
+```
+
+or
+
+```Shell
+git submodule update --remote SubmoduleName
+```
+
+##### Workin on a submodule
+
+
+```Shell
+cd submodule-dir
+git checkout master
+git submodule update --remote [--merge | --rebase]
+```
+
+##### Publishing Submodule Changes
+
+```Shell
+git push --recursive-submodules=[check | on-demand]
+```
+
 
 
 VIM
