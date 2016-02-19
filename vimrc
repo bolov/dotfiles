@@ -37,8 +37,11 @@ Plugin 'chrisbra/Recover.vim'
 
 " Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+
 " Plug 'junegunn/fzf', { 'dir': '~/opt/fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 
 Plugin 'file:///home/pk/opt/vim-plugins/bufkill'
 " Plugin 'ton/vim-bufsurf'

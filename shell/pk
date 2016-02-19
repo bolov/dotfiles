@@ -14,11 +14,8 @@ source-if-ok $HOME/.shell/bash-completion.d/*
 ### Settings ###
 
 # needed here for fzf before source ~/.fzf.bash
+# this enables vi mode in bash only
 set -o vi
-# must be before bash_competion
-# (or warning on auto completion for cmd starting with g++:
-# bash: warning: programmable_completion: g++: possible retry loop)
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # git completion
 if [[ $HOSTNAME != *grid.pub.ro ]] ; then
