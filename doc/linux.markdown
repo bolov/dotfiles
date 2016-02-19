@@ -535,51 +535,91 @@ cuebreakpoints cue_file | sed s/$/0/ | shnsplit -o flac audio_flac_file>
 ```
 
 
-FZF Fuzzy finder (outdated version)
----------------------------
+FZF
+---
 
 https://github.com/junegunn/fzf
 
-just install
+Install:
 
 ```Shell
-git clone https://github.com/junegunn/fzf.git ~/.fzf
-sudo ~/.fzf/install
+git clone --depth 1 https://github.com/junegunn/fzf.git fzf
+./fzf/install
 ```
 
-dc eroare la install: error installing curses
+`[ -f ~/.fzf.bash ] && source ~/.fzf.bash` must be loaded after bash_completion.
+So we can't have it in `shell/pk`.
+
+Leave it in `~/.bashrc` as last instruction
+
+`find` bug: infinte loop on symlinks.
+
+Something inside `dosdevices` folders makes find run an infite loop when
+executing with `-L` (follow symlinks). Fzf uses `-L` for autocomplete (`**`)
 
 ```Shell
-sudo apt-get install ruby-dev
-sudo apt-get install libncurses5-dev
+./.config/teamviewer10/dosdevices
+./.local/share/wineprefixes/autohotkey/dosdevices
+./.wine/dosdevices
 ```
+
+Fix:
 
 ```Shell
-export FZF_DEFAULT_OPTS="-x"
+fzf/shell/completion.bash
 ```
 
-dc am shortcuturile cu CTRL-k pt history nu merge insertul decât dacă bash e
-în vi mode
-
-dacă în vi mode trebuie pus
+add
 
 ```Shell
-set -o vi
+-name dosdevices -prune -o
 ```
 
-în `bashrc` înainte de
+Before:
+
 
 ```Shell
-source ~/.fzf.bash
+_fzf_path_completion() {
+  __fzf_generic_path_completion \
+    "-name .git -prune -o -name .svn -prune -o ( -type d -o -type f -o -type l )" \
+    "-m" "" "$@"
+}
+
+_fzf_file_completion() {
+  __fzf_generic_path_completion \
+    "-name .git -prune -o -name .svn -prune -o ( -type f -o -type l )" \
+    "-m" "" "$@"
+}
+
+_fzf_dir_completion() {
+  __fzf_generic_path_completion \
+    "-name .git -prune -o -name .svn -prune -o -type d" \
+    "" "/" "$@"
+}
 ```
 
-As Vim Plugin
+After:
 
-for gvim:
-
-```Shell
-let g:fzf_launcher='gnome-terminal --disable-factory -x bash -ic %s'
 ```
+_fzf_path_completion() {
+  __fzf_generic_path_completion \
+    "-name dosdevices -prune -o -name .git -prune -o -name .svn -prune -o ( -type d -o -type f -o -type l )" \
+    "-m" "" "$@"
+}
+
+_fzf_file_completion() {
+  __fzf_generic_path_completion \
+    "-name dosdevices -prune -o -name .git -prune -o -name .svn -prune -o ( -type f -o -type l )" \
+    "-m" "" "$@"
+}
+
+_fzf_dir_completion() {
+  __fzf_generic_path_completion \
+    "-name dosdevices -prune -o -name .git -prune -o -name .svn -prune -o -type d" \
+    "" "/" "$@"
+}
+```
+
 
 
 OpenGL
