@@ -367,6 +367,8 @@ augroup END
 
 let g:ctrlp_map = '<Leader>p'
 nmap <Leader>P :CtrlPMixed<CR>
+nmap <Leader>o :CtrlP<CR>
+nmap <Leader>O :CtrlPMRUFiles<CR>
 
 nmap <Leader>t :CtrlPBufTag<CR>
 nmap <Leader>T :CtrlPTag<CR>
