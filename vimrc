@@ -184,10 +184,20 @@ set colorcolumn=100 " or set cc
 " vertical offset
 set scrolloff=5
 
+
+function! BolovLocalCursorlineShow()
+    if !exists("b:bolov_local_cursorline_disable") || b:bolov_local_cursorline_disable==0
+        setlocal cursorline
+    endif
+endfunction
+
+command! BolovLocalCursorlineDisable setlocal nocursorline | let b:bolov_local_cursorline_disable=1
+command! BolovLocalCursorlineEnable setlocal cursorline | let b:bolov_local_cursorline_disable=0
+
 " highlight current line only in current buffer
-augroup CursorLine
+augroup BolovCursorLine
   autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter,FocusGained * setlocal cursorline
+  autocmd VimEnter,WinEnter,BufWinEnter,FocusGained * call BolovLocalCursorlineShow()
   autocmd WinLeave,FocusLost * setlocal nocursorline
 augroup END
 
