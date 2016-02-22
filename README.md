@@ -2,6 +2,28 @@
 
 Personal configuration files for Ubuntu.
 
+# Test
+
+code block no syntax:
+
+```
+echo "string" <param>
+```
+
+code block Shell:
+
+```Shell
+echo "string" <param>
+```
+
+code block sh:
+
+```sh
+echo "string" <param>
+```
+
+
+
 ## Files
 
 #### Bash
