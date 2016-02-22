@@ -87,7 +87,7 @@ System settings
 Compiz
 ------
 
-```Shell
+```sh
 sudo apt-get install compizconfig-settings-manager compiz-plugins-extra
 ```
 
@@ -141,7 +141,7 @@ sudo apt-get install compizconfig-settings-manager compiz-plugins-extra
 Nvidia drivers
 --------------
 
-```Shell
+```sh
 sudo add-apt-repository -y ppa:xorg-edgers/ppa
 ```
 
@@ -162,13 +162,13 @@ Package Management
 
 ### Install `.deb`
 
-```Shell
+```sh
 sudo dpkg -i file.deb
 ```
 
 if errors with unresolved dependencies:
 
-```Shell
+```sh
 sudo apt-get install -f
 ```
 
@@ -176,13 +176,13 @@ sudo apt-get install -f
 
 For remote package
 
-```Shell
+```sh
 apt-cache show PACKAGE
 ```
 
 For local package
 
-```Shell
+```sh
 dpkg -s PACKAGE
 ```
 
@@ -193,13 +193,13 @@ File system
 
 dacă e montat (din Nautilus), see info:
 
-```Shell
+```sh
 mount
 ```
 
 get uuid/label:
 
-```Shell
+```sh
 ls -al /dev/disk/by-uuid
 ls -al /dev/disk/by-label
 ```
@@ -207,13 +207,13 @@ ls -al /dev/disk/by-label
 
 mount in /media/<uuid> (don't have udisks):
 
-```Shell
+```sh
 /usr/bin/udisks --mount /dev/disk/by-uuid/1313-F422
 ```
 
 mount in /media/user/<uuid> (like nautilus):
 
-```Shell
+```sh
 udisksctl mount --block-device /dev/disk/by-uuid/<uuid>
 ```
 
@@ -291,7 +291,7 @@ Git Cheat Sheet
 
 #### Show remote url
 
-```Shell
+```sh
 git config --get remote.origin.url
 git remote show origin
 git remote -v
@@ -300,13 +300,13 @@ git ls-remote --get-url origin
 
 #### Rename
 
-```Shell
+```sh
 git remote rename old-name new-name
 ```
 
 #### Add
 
-```Shell
+```sh
 git remote add name url
 ```
 
@@ -316,14 +316,14 @@ https://git-scm.com/book/en/v2/Git-Tools-Submodules
 
 #### Starting
 
-```Shell
+```sh
 git submodule add link [name]
 git diff --submodule
 ```
 
 #### Clone a proj with submodules:
 
-```Shell
+```sh
 git clone link
 git submodule init
 git submodule update
@@ -331,7 +331,7 @@ git submodule update
 
 or
 
-```Shell
+```sh
 git clone --recursive link
 ```
 
@@ -339,7 +339,7 @@ git clone --recursive link
 
 ##### Pulling in Upstream Change
 
-```Shell
+```sh
 cd submodule-dir
 git fetch
 git merge origin/master
@@ -347,14 +347,14 @@ git merge origin/master
 
 or
 
-```Shell
+```sh
 git submodule update --remote SubmoduleName
 ```
 
 ##### Workin on a submodule
 
 
-```Shell
+```sh
 cd submodule-dir
 git checkout master
 git submodule update --remote [--merge | --rebase]
@@ -362,7 +362,7 @@ git submodule update --remote [--merge | --rebase]
 
 ##### Publishing Submodule Changes
 
-```Shell
+```sh
 git push --recursive-submodules=[check | on-demand]
 ```
 
@@ -377,7 +377,7 @@ VIM
 
 https://github.com/gmarik/Vundle.vim
 
-```Shell
+```sh
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
@@ -402,7 +402,7 @@ Plugin 'file:///home/pk/opt/vim-plugins/bufkill'
 
 Install libclang:
 
-```Shell
+```sh
 sudo apt-get install libclang.so.1
 sudo ln -s libclang.so.1 libclang.so
 ```
@@ -438,13 +438,13 @@ See FZF as standalone
 
 prerequisites:
 
-```Shell
+```sh
 sudo apt-get install build-essential cmake python-dev
 ```
 
 Compile:
 
-```
+```sh
 cd ~/.vim/bundle/YouCompleteMe/
 ./install.sh --clang-completer
 ```
@@ -471,7 +471,7 @@ Apache Ant
 
 ### Install
 
-```Shell
+```sh
 sudo apt-get install ant
 ```
 
@@ -481,7 +481,7 @@ Chrome
 
 http://www.ubuntuupdates.org/ppa/google_chrome
 
-```Shell
+```sh
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 ```
@@ -491,18 +491,18 @@ LastFM Scrobbler
 
 http://apt.last.fm/
 
-```Shell
+```sh
 wget -q http://apt.last.fm/last.fm.repo.gpg -O- | sudo apt-key add -
 ```
 
   `/etc/apt/sources.list`  add:
 
-```
+```sh
 deb http://apt.last.fm/debian stable main
 ```
 
 
-```Shell
+```sh
 sudo apt-get update
 sudo apt-get install lastfm-scrobbler
 ```
@@ -533,7 +533,7 @@ Music Brainz Picard
 Music tagger
 
 
-```Shell
+```sh
 sudo add-apt-repository ppa:musicbrainz-developers/stable
 ```
 
@@ -543,11 +543,11 @@ Cue Splitter
 
 http://askubuntu.com/questions/521388/native-flac-cue-splitter
 
-```Shell
+```sh
 sudo apt-get install cuetools shntool
 ```
 
-```Shell
+```sh
 cuebreakpoints cue_file | shnsplit -o flac audio_flac_file
 
 cuetag CUE_FILE split-track*.flac
@@ -559,7 +559,7 @@ If error
 
 > shnsplit: error: m:ss.ff format can only be used with CD-quality files
 
-```Shell
+```sh
 cuebreakpoints cue_file | sed s/$/0/ | shnsplit -o flac audio_flac_file>
 ```
 
@@ -571,7 +571,7 @@ https://github.com/junegunn/fzf
 
 Install:
 
-```Shell
+```sh
 git clone --depth 1 https://github.com/junegunn/fzf.git fzf
 ./fzf/install
 ```
@@ -586,7 +586,7 @@ Leave it in `~/.bashrc` as last instruction
 Something inside `dosdevices` folders makes find run an infite loop when
 executing with `-L` (follow symlinks). Fzf uses `-L` for autocomplete (`**`)
 
-```Shell
+```sh
 ./.config/teamviewer10/dosdevices
 ./.local/share/wineprefixes/autohotkey/dosdevices
 ./.wine/dosdevices
@@ -594,20 +594,20 @@ executing with `-L` (follow symlinks). Fzf uses `-L` for autocomplete (`**`)
 
 Fix:
 
-```Shell
+```sh
 fzf/shell/completion.bash
 ```
 
 add
 
-```Shell
+```sh
 -name dosdevices -prune -o
 ```
 
 Before:
 
 
-```Shell
+```sh
 _fzf_path_completion() {
   __fzf_generic_path_completion \
     "-name .git -prune -o -name .svn -prune -o ( -type d -o -type f -o -type l )" \
@@ -629,7 +629,7 @@ _fzf_dir_completion() {
 
 After:
 
-```
+```sh
 _fzf_path_completion() {
   __fzf_generic_path_completion \
     "-name dosdevices -prune -o -name .git -prune -o -name .svn -prune -o ( -type d -o -type f -o -type l )" \
@@ -654,7 +654,7 @@ _fzf_dir_completion() {
 OpenGL
 ------
 
-```Shell
+```sh
 sudo apt-get install freeglut3-dev
 sudo apt-get install mesa-utils
 ```
@@ -676,7 +676,7 @@ GCC
 
 http://stackoverflow.com/questions/4980819/what-are-the-gcc-default-include-directories
 
-```Shell
+```sh
 gcc -xc++ -E -v -
 ```
 
@@ -687,7 +687,7 @@ https://gcc.gnu.org/install/index.html
 
 Prequisites:
 
-```Shell
+```sh
 sudo apt-get install libgmp-dev libmpfr-dev libmpc-dev
 ```
 
@@ -706,7 +706,7 @@ Environment Modules
 
 http://askubuntu.com/a/533636/255053
 
-```Shell
+```sh
 sudo apt-get install environment-modules
 add.modules
 ```
@@ -715,19 +715,19 @@ in `.bashrc`: (lines added by `add.modules` and the beginning of the file)<br>
 comment the first and uncomment the second. This should be the result:
 
 
-```Shell
+```sh
 #module() { eval `/usr/Modules/$MODULE_VERSION/bin/modulecmd $modules_shell $*`; }
 module() { eval `/usr/bin/modulecmd $modules_shell $*`; }
 ```
 
-```Shell
+```sh
 source ~/.profile && source ~/.bashrc
 ```
 
 
 ### Autocomplete bug:
 
-```Shell
+```sh
 /etc/bash_completion.d/modules
 ```
 
@@ -735,7 +735,7 @@ wrong modulecmd path:
 
 change (first with second)
 
-```Shell
+```sh
 /usr/share/modules/3.2.10/bin/modulecmd bash -t avail 2>&1 | sed '
 /usr/bin/modulecmd bash -t avail 2>&1 | sed '
 ```
@@ -770,11 +770,11 @@ ANTLR v3.5.1 (from ANTRLworks 1.5.1) doesn’t work: broken java files (throws)
 
 downloaded and copied into
 
-```Shell
+```sh
 /usr/lib/antl.v3
 ```
 
-```Shell
+```sh
 export CLASSPATH=/usr/lib/antlr.3/antlrworks-1.4.3.jar:$CLASSPATH
 alias antlr-works='java -jar /usr/lib/antlr.3/antlrworks-1.4.3.jar'
 ```
