@@ -680,7 +680,16 @@ http://stackoverflow.com/questions/4980819/what-are-the-gcc-default-include-dire
 gcc -xc++ -E -v -
 ```
 
+### Install from sources
 
+https://gcc.gnu.org/wiki/InstallingGCC
+https://gcc.gnu.org/install/index.html
+
+Prequisites:
+
+```Shell
+sudo apt-get install libgmp-dev libmpfr-dev libmpc-dev
+```
 
 gdb
 ---
