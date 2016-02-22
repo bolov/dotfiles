@@ -59,7 +59,7 @@ flags = [
 '-isystem', '/usr/include',
 '-isystem', '/usr/local/include',
 '-isystem', '/home/pk/opt/GSL/include',
-'-isystem', '/home/pk/opt/bolov-gsl/include',
+'-isystem', '/home/pk/opt/bolov/include',
 ]
 
 

@@ -9,6 +9,7 @@ if [ $HOSTNAME == "cpl" ] ; then
 
 elif [ $HOSTNAME == "Daedalus" ] ; then
   module load gsl/gsl
+  module load bolov/bolov
   module load java/jdk-8
 fi
 
