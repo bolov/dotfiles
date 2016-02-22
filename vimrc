@@ -47,8 +47,11 @@ Plugin 'file:///home/pk/opt/vim-plugins/bufkill'
 " Plugin 'ton/vim-bufsurf'
 Plugin 'file:///home/pk/proiecte/vim-plugins/bufsurf'
 
-" syntax highlight for GitHub Flavored Markdown
-Plugin 'jtratner/vim-flavored-markdown'
+" syntax highlight for GitHub Flavored Markdown (has bug. It breaks colorising)
+" Plugin 'jtratner/vim-flavored-markdown'
+
+" syntax highlight for GitHub Flavored Markdown + some features (no bug, but slower)
+Plugin 'gabrielelana/vim-markdown'
 
 " Preview GitHub Flavored Markdown in browser. Updates in real-time
 " Plugin 'suan/vim-instant-markdown'
@@ -217,7 +220,8 @@ augroup BolovFileTypes
   autocmd!
   autocmd BufRead,BufNewFile *.cu,*.cl set filetype=cpp
 
-  autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+  " vim-flavoured-markdown plugin
+  " autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 
   "iabbrev looks at characters before and inserts after you type
   "non-keyword character
@@ -285,6 +289,11 @@ set noswapfile
 "" let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabDefaultCompletionType='<c-x><c-u>'
 "let g:SuperTabLongestEnhanced=1
+
+" --- Vim Markdown ---
+let g:markdown_include_jekyll_support = 0
+let g:markdown_enable_spell_checking = 0
+let g:markdown_enable_input_abbreviations = 0
 
 " --- Instant Markdown ---
 let g:instant_markdown_autostart=1
