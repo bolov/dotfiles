@@ -217,7 +217,7 @@ mount in /media/user/<uuid> (like nautilus):
 udisksctl mount --block-device /dev/disk/by-uuid/<uuid>
 ```
 
-automount on login:<br>
+automount on login:<br/>
 from GUI: Startup Applications
 
 OS
@@ -296,6 +296,18 @@ git config --get remote.origin.url
 git remote show origin
 git remote -v
 git ls-remote --get-url origin
+```
+
+#### Rename
+
+```Shell
+git remote rename old-name new-name
+```
+
+#### Add
+
+```Shell
+git remote add name url
 ```
 
 ### Submodules
