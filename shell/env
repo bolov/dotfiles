@@ -8,8 +8,11 @@ if [ $HOSTNAME == "cpl" ] ; then
     #module load pocl/0.11-release
 
 elif [ $HOSTNAME == "Daedalus" ] ; then
+    module load llvm/3.7.1-release
+
     module load gsl/gsl
     module load bolov/bolov
+
     module load java/jdk-8
 fi
 
