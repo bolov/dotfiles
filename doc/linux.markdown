@@ -367,6 +367,33 @@ git push --recursive-submodules=[check | on-demand]
 ```
 
 
+SVN
+---
+
+Branches, tags and HEAD look apparently like folders:
+
+```sh
+> svn list http://llvm.org/svn/llvm-project/llvm/
+
+branches/
+tags/
+trunk/
+```
+
+Checkout
+
+```sh
+svn checkout <url>
+svn checkout <url>/trunk
+```
+
+list files / tags / branches
+
+```sh
+svn list <url> [--verbose]
+snv list <url>/tags/
+snv list <url>/branches/
+```
 
 VIM
 ----
@@ -690,6 +717,81 @@ Prequisites:
 ```sh
 sudo apt-get install libgmp-dev libmpfr-dev libmpc-dev
 ```
+
+LLVM & clang
+------------
+
+### Install from source
+
+http://llvm.org/docs/GettingStarted.html<br/>
+http://llvm.org/docs/CMake.html
+
+```
+http://llvm.org/svn/llvm-project/llvm/
+```
+
+Latest is `trunk`
+
+For a specific version checkout `tags/RELEASE_XXX/final`
+
+#### Various
+
+Targets supported:
+
+Aparently:
+
+`src/CMakeLists.txt:177`
+
+```cmake
+set(LLVM_ALL_TARGETS
+  AArch64
+  AMDGPU
+  ARM
+  BPF
+  CppBackend
+  Hexagon
+  Mips
+  MSP430
+  NVPTX
+  PowerPC
+  Sparc
+  SystemZ
+  X86
+  XCore
+  )
+```
+
+If you run cmake with target all, all the targets will be listed
+
+
+#### Example install 3.7.1 final
+
+```sh
+cd ~/opt/llvm
+mkcd 3.7.1-final
+svn checkout http://llvm.org/svn/llvm-project/llvm/tags/RELEASE_371/final src
+cd src/tools
+svn checkout http://llvm.org/svn/llvm-project/cfe/tags/RELEASE_371/final clang
+
+cd ~/opt/llvm/3.7.1-final
+mkcd build
+
+cmake -G "Unix Makefiles" \
+  -DCMAKE_INSTALL_PREFIX=/home/pk/opt/llvm/3.7.1-final/install-release/ \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DLLVM_TARGETS_TO_BUILD="X86" \
+  -- ../src
+
+# free RAM!
+
+make -j9
+# ~23 min
+
+make install
+```
+
+Note: `mkcd` = `mkdir` + `cd`
+
 
 gdb
 ---
