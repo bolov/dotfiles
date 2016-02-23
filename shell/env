@@ -3,35 +3,35 @@
 module use /home/pk/modulefiles
 
 if [ $HOSTNAME == "cpl" ] ; then
-  module load java/jdk-8.0.51
-  module load llvm/3.6.2-release
-  #module load pocl/0.11-release
+    module load java/jdk-8.0.51
+    module load llvm/3.6.2-release
+    #module load pocl/0.11-release
 
 elif [ $HOSTNAME == "Daedalus" ] ; then
-  module load gsl/gsl
-  module load bolov/bolov
-  module load java/jdk-8
+    module load gsl/gsl
+    module load bolov/bolov
+    module load java/jdk-8
 fi
 
 prepend-path PATH $HOME/bin $HOME/scripts $HOME/scripts/tmux
 prepend-path PATH $HOME/opt/fzf/bin
 
 if [ $HOSTNAME == "cpl" ] ; then
-  prepend-path PATH /home/pk/android/android-studio/bin
+    prepend-path PATH /home/pk/android/android-studio/bin
 fi
 
 if [ $HOSTNAME == "cpl" ] ; then
-  export OPINCAA_ROOT="/home/pk/proiecte/opincaa"
-  export OPINCAA_SIMULATOR_EXE="$OPINCAA_ROOT/simulator/build/simulator"
-  # simulator working dir
-  export OPINCAA_SIMULATOR_WD="$HOME/opincaa-simulator-wd"
+    export OPINCAA_ROOT="/home/pk/proiecte/opincaa"
+    export OPINCAA_SIMULATOR_EXE="$OPINCAA_ROOT/simulator/build/simulator"
+    # simulator working dir
+    export OPINCAA_SIMULATOR_WD="$HOME/opincaa-simulator-wd"
 
-  # SO2
-  export QEMU_DIR="$HOME/ACS/SO2/qemu-vm"
+    # SO2
+    export QEMU_DIR="$HOME/ACS/SO2/qemu-vm"
 fi
 
 
 if [ $HOSTNAME == "Daedalus" ] ; then
-  prepend-path PATH /home/pk/opt/Node.js/4.2.1/bin
+    prepend-path PATH /home/pk/opt/Node.js/4.2.1/bin
 fi
 

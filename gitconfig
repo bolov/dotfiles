@@ -1,24 +1,29 @@
 [user]
-	name = Mihail Bălan
-	email = mihail.balan@gmail.com
+    name = Mihail Bălan
+    email = mihail.balan@gmail.com
+
 [core]
-	editor = "gvim -f"
-	quotepath = false
+    editor = "gvim -f"
+    quotepath = false
 
 [status]
-	showUntrackedFiles = "all"
+    showUntrackedFiles = "all"
 
 [alias]
-	lg = log --oneline --decorate --graph
-	lg-all = log --all --oneline --decorate --graph
-	sdiff      = "!git diff && git submodule foreach 'git diff'"
-	spush = push --recurse-submodules=on-demand
-	supdate = submodule update --remote --merge
-	mergeff = merge --ff-only
+    lg     = log --oneline --decorate --graph
+    lg-all = log --all --oneline --decorate --graph
+
+    sdiff   = "!git diff && git submodule foreach 'git diff'"
+    spush   = push --recurse-submodules=on-demand
+    supdate = submodule update --remote --merge
+
+    mergeff = merge --ff-only
 
 [push]
-	default = simple
+    default = simple
+
 [diff]
-	tool = gvimdiff
+    tool = gvimdiff
+
 [merge]
-	tool = gvimdiff
+    tool = gvimdiff

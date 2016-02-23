@@ -88,18 +88,18 @@ bindkey "^K" history-beginning-search-backward
 bindkey "^J" history-beginning-search-forward
 
 for dir in \
-  ~/scripts \
-  ~/bin \
-  ~/llvm/install/bin
+    ~/scripts \
+    ~/bin \
+    ~/llvm/install/bin
 ; do
-  if [[ -d $dir ]] ; then
-    PATH+=:$dir
-  fi
+    if [[ -d $dir ]] ; then
+        PATH+=:$dir
+    fi
 done
 
 
 mkcd() {
-  mkdir -- "$@" && cd -- "$@"
+    mkdir -- "$@" && cd -- "$@"
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -105,27 +105,27 @@ filetype plugin indent on    " required
 nnoremap <C-W>o :call MaximizeToggle()<CR>
 
 function! MaximizeToggle()
-  if exists("s:maximize_session")
-    exec "source " . s:maximize_session
-    call delete(s:maximize_session)
-    unlet s:maximize_session
-    let &hidden=s:maximize_hidden_save
-    unlet s:maximize_hidden_save
-  else
-    let s:maximize_hidden_save = &hidden
-    let s:maximize_session = tempname()
-    " set hidden
-    exec "mksession! " . s:maximize_session
-    only
-  endif
+    if exists("s:maximize_session")
+        exec "source " . s:maximize_session
+        call delete(s:maximize_session)
+        unlet s:maximize_session
+        let &hidden=s:maximize_hidden_save
+        unlet s:maximize_hidden_save
+    else
+        let s:maximize_hidden_save = &hidden
+        let s:maximize_session = tempname()
+        " set hidden
+        exec "mksession! " . s:maximize_session
+        only
+    endif
 endfunction
 
 function! RemoveTrailingWhitespaces(pos) range
-  execute a:firstline.",".a:lastline."s/\\s\\+$//e"
+    execute a:firstline.",".a:lastline."s/\\s\\+$//e"
 endfunction
 
 command! -range=% RemoveTrailingWhitespaces
-      \ <line1>,<line2>call RemoveTrailingWhitespaces(getpos("."))
+            \ <line1>,<line2>call RemoveTrailingWhitespaces(getpos("."))
 
 
 "================ Vim Settings ================================================
@@ -148,11 +148,11 @@ command! -range=% RemoveTrailingWhitespaces
 
 " colorschem (slate > desert)
 if has("gui_running")
-  colorscheme mustang-bolov
+    colorscheme mustang-bolov
 
-  if hostname() == "cpl"
-    set guifont=ubuntu\ Mono\ 11
-  endif
+    if hostname() == "cpl"
+        set guifont=ubuntu\ Mono\ 11
+    endif
 
 endif
 
@@ -199,9 +199,9 @@ command! BolovLocalCursorlineEnable setlocal cursorline | let b:bolov_local_curs
 
 " highlight current line only in current buffer
 augroup BolovCursorLine
-  autocmd!
-  autocmd VimEnter,WinEnter,BufWinEnter,FocusGained * call BolovLocalCursorlineShow()
-  autocmd WinLeave,FocusLost * setlocal nocursorline
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter,FocusGained * call BolovLocalCursorlineShow()
+    autocmd WinLeave,FocusLost * setlocal nocursorline
 augroup END
 
 " tabs and indentation
@@ -212,22 +212,22 @@ set expandtab
 set smartindent
 
 " indentation for C
-set cinoptions=:0    " case labels
-set cinoptions+=g0   " scope declarations (public: etc)
+set cinoptions=:0     " case labels
+set cinoptions+=g0    " scope declarations (public: etc)
 set cinoptions+=N-s   " inside namespaces
 
 augroup BolovFileTypes
-  autocmd!
-  autocmd BufRead,BufNewFile *.cu,*.cl set filetype=cpp
+    autocmd!
+    autocmd BufRead,BufNewFile *.cu,*.cl set filetype=cpp
 
-  " vim-flavoured-markdown plugin
-  " autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+    " vim-flavoured-markdown plugin
+    " autocmd BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 
-  "iabbrev looks at characters before and inserts after you type
-  "non-keyword character
-  " inoremap is dumb
-  "autocmd Filetype xml iabbrev </ </<C-X><C-O>
-  autocmd Filetype xml inoremap </ </<C-X><C-O>
+    "iabbrev looks at characters before and inserts after you type
+    "non-keyword character
+    " inoremap is dumb
+    "autocmd Filetype xml iabbrev </ </<C-X><C-O>
+    autocmd Filetype xml inoremap </ </<C-X><C-O>
 augroup END
 
 " key settings
@@ -239,7 +239,7 @@ set smartcase
 
 " autocomplete mode for cmd
 " list all and complete longest commom
-:set wildmode=list:longest
+set wildmode=list:longest
 
 " persistent undo
 set undofile
@@ -480,19 +480,19 @@ nnoremap <Leader>a ggVG
 "    0.5 - current line at center
 "    0.0 - current line at bottom
 function! SmartCenter(position)
-  if a:position >= 0.5
-    let top_offset = float2nr((1 - a:position) * winheight(0))
-    let cmd = 'zt'
-  else
-    let top_offset = float2nr(a:position * winheight(0))
-    let cmd = 'zb'
-  endif
+    if a:position >= 0.5
+        let top_offset = float2nr((1 - a:position) * winheight(0))
+        let cmd = 'zt'
+    else
+        let top_offset = float2nr(a:position * winheight(0))
+        let cmd = 'zb'
+    endif
 
-  let oldso=&scrolloff
-  echo top_offset
-  execute ":set so=" . top_offset
-  execute "normal! " . cmd
-  execute ":set so=" . oldso
+    let oldso=&scrolloff
+    echo top_offset
+    execute ":set so=" . top_offset
+    execute "normal! " . cmd
+    execute ":set so=" . oldso
 endfunction
 
 nnoremap zz :call SmartCenter(0.65)<CR>
@@ -522,7 +522,7 @@ inoremap {<CR> {<CR>}<Esc>O
 function! ISmartIndentEmptyLine()
     if len(getline('.')) == 0
         " return "\"_ddO"
-         return "cc" " <Esc>cc
+        return "cc" " <Esc>cc
     else
         return "==gi" " <Esc>==gi
     endif
@@ -538,30 +538,30 @@ endfunction
 "   - the .vimrc file path or
 "   - empty string if no file was found or the default .vimrc file was found
 function! GetLocalVimrc(search_dir)
-  let local_vimrc_file = findfile(".vimrc", a:search_dir . ";")
+    let local_vimrc_file = findfile(".vimrc", a:search_dir . ";")
 
-  if empty(local_vimrc_file) ||
-        \ fnamemodify(local_vimrc_file, ":p") == $MYVIMRC
-    return ""
-  endif
+    if empty(local_vimrc_file) ||
+                \ fnamemodify(local_vimrc_file, ":p") == $MYVIMRC
+        return ""
+    endif
 
-  return local_vimrc_file
+    return local_vimrc_file
 endfunction
 
 function! LoadLocalVimrc()
-  let local_vimrc_file = GetLocalVimrc(".")
-  if empty(local_vimrc_file)
-    return
-  endif
+    let local_vimrc_file = GetLocalVimrc(".")
+    if empty(local_vimrc_file)
+        return
+    endif
 
-  let b:local_vimrc = local_vimrc_file
+    let b:local_vimrc = local_vimrc_file
 
-  exec "source " . local_vimrc_file
+    exec "source " . local_vimrc_file
 endfunction
 
 augroup LocalVimrc
-  autocmd!
-  autocmd BufNewFile,BufRead * call LoadLocalVimrc()
+    autocmd!
+    autocmd BufNewFile,BufRead * call LoadLocalVimrc()
 augroup END
 
 "=============== Playground ====================================================
