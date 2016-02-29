@@ -60,6 +60,16 @@ Plugin 'file:///home/pk/proiecte/vim-plugins/vim-instant-markdown'
 " Preview GitHub Flavored Markdown in browser. Uptades on shortcut press -> meh
 " Plugin 'JamshedVesuna/vim-markdown-preview'
 
+" Colorize all text in form #rgb, rga() etc. It is slow, enable when you need it
+" Plugin 'lilydjwg/colorizer'
+
+" Color picker
+" opens the dialog behind the gvim window, so unusable
+" Plugin 'KabbAmine/vCoolor.vim'
+
+" Color picker
+Plugin 'blindFS/vim-colorpicker'
+
 
 " Highlight all instances of word under cursor, when idle.
 Plugin 'file:///home/pk/opt/vim-plugins/autohighlight'
