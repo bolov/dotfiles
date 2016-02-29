@@ -61,58 +61,72 @@ hi clighterTestBlue         guifg=blue
 hi clighterNamespaceDecl    guifg=#8CBD6C
 hi clighterNamespaceRef     guifg=#8CBD6C
 
-hi clighterStructDecl       guifg=#C9F5AB
-hi clighterClassDecl        guifg=#C9F5AB
-hi clighterUnionDecl        guifg=#C9F5AB
-hi clighterEnumDecl         guifg=#D9B64E
-hi clighterTypedefDecl      guifg=#C9F5AB
+" Types - Decl
 
-hi clighterStructRef        guifg=#C9F5AB
-hi clighterClassRef         guifg=#C9F5AB
-hi clighterUnionRef         guifg=#C9F5AB
-hi clighterEnumRef          guifg=#D9B64E
-hi clighterOtherTypeRef     guifg=#8CA6D4
+hi clighterStructDecl           guifg=#C9F5AB gui=italic
+hi clighterClassDecl            guifg=#C9F5AB gui=italic
+hi clighterClassTemplateDecl    guifg=#C9F5AB gui=italic
+
+hi clighterUnionDecl            guifg=#C9F5AB gui=italic
+hi clighterTypedefDecl          guifg=#C9F5AB gui=italic
+hi clighterEnumDecl             guifg=#D9B64E gui=italic
+
+" Types - Ref
+
+hi clighterStructRef            guifg=#C9F5AB
+hi clighterClassRef             guifg=#C9F5AB
+hi clighterClassTemplateRef     guifg=#C9F5AB
+hi clighterUnionRef             guifg=#C9F5AB
+hi clighterEnumRef              guifg=#D9B64E
+hi clighterOtherTypeRef         guifg=#8CA6D4
+
+" Functions, Methods
+
+hi clighterFunctionDecl             guifg=#50ADCC gui=italic
+hi clighterFunctionTemplateDecl     guifg=#50ADCC gui=italic
+hi clighterFunctionRef              guifg=#50ADCC
+hi clighterFunctionTemplateRef      guifg=#50ADCC
+
+hi clighterMethodDecl               guifg=#72E5E9 gui=italic
+hi clighterMethodTemplateDecl       guifg=#72E5E9 gui=italic
+hi clighterMethodRef                guifg=#72E5E9
+hi clighterMethodTemplateRef        guifg=#72E5E9
+
+hi clighterConstructorDecl          guifg=#72E5E9 gui=bold,italic
+hi clighterConstructorTemplateDecl  guifg=#72E5E9 gui=bold,italic
+hi clighterConstructorRef           guifg=#72E5E9 gui=bold
+hi clighterConstructorTemplateRef   guifg=#72E5E9 gui=bold
+
+hi clighterDtorDecl                 guifg=#72E5E9 gui=bold,italic
+hi clighterDtorRef                  guifg=#72E5E9 gui=bold
+
+" Variables, Data members
+
+hi clighterVarDecl          guifg=#DC3B3B gui=italic
+hi clighterVarRef           guifg=#DC3B3B
+
+hi clighterDataMemberDecl   guifg=#EC5866 gui=italic
+hi clighterDataMemberRef    guifg=#EC5866
+
+hi clighterParamDecl        guifg=#824A4A gui=italic
+hi clighterParamRef         guifg=#824A4A
+
+" template param
+
+hi clighterTemplateTypeParamDecl guifg=#C9F5AB gui=bold,italic
+hi clighterTemplateTypeParamRef  guifg=#C9F5AB gui=bold
+
+hi clighterTemplateNonTypeParamDecl guifg=#ff9800 gui=bold,italic
+hi clighterTemplateNonTypeParamRef  guifg=#ff9800 gui=bold,italic
+
+
+" Other
 
 hi link clighterEnumConstantDecl Constant
 hi link clighterEnumConstantRef Constant
 
-hi cligherTemplateTypeParamDecl guifg=#C9F5AB gui=bold
-hi cligherTemplateTypeParamRef  guifg=#C9F5AB gui=bold
-
-hi cligherTemplateNonTypeParamDecl guifg=#ff9800
-hi cligherTemplateNonTypeParamRef  guifg=#ff9800
-
-hi cligherClassTemplateDecl guifg=#C9F5AB gui=bold
-hi cligherClassTemplateRef  guifg=#C9F5AB gui=bold
-
-hi cligherClassTemplatePartialSpecDecl guifg=#C9F5AB gui=bold
-hi cligherClassTemplatePartialSpecRef  guifg=#C9F5AB gui=bold
-
-
-hi cligherFunctionTemplateDecl guifg=#50ADCC gui=bold
-hi cligherFunctionTemplateRef  guifg=#50ADCC gui=bold
-
-
-hi clighterMethodDecl       guifg=#77BF96
-hi clighterMethodRef        guifg=#77BF96
-
-hi clighterCtorDecl         guifg=#77BF96 gui=bold
-hi clighterCtorRef          guifg=#77BF96 gui=bold
-
-hi clighterDtorDecl         guifg=#77BF96 gui=bold
-hi clighterDtorRef          guifg=#77BF96 gui=bold
-
-hi clighterDataMemberDecl   guifg=#BBD459
-hi clighterDataMemberRef    guifg=#BBD459
-
-hi clighterFunctionDecl     guifg=#50ADCC
-hi clighterFunctionRef      guifg=#50ADCC
-
-hi clighterParamDecl        guifg=#824A4A
-hi clighterParamRef         guifg=#824A4A
-
-hi clighterVarDecl          guifg=#BD4F4F
-hi clighterVarRef           guifg=#BD4F4F
+hi clighterClassTemplatePartialSpecDecl guifg=#C9F5AB gui=bold
+hi clighterClassTemplatePartialSpecRef  guifg=#C9F5AB gui=bold
 
 " Code-specific colors
 hi pythonOperator guifg=#7e8aa2 gui=none ctermfg=103

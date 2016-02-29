@@ -85,7 +85,11 @@ Plugin 'Valloric/YouCompleteMe'
 
 " Plugin 'octol/vim-cpp-enhanced-highlight'
 " Plugin 'bbchung/clighter'
-" Plugin 'file:///home/pk/proiecte/vim-plugins/clighter'
+
+
+if has("gui_running")
+    Plugin 'file:///home/pk/proiecte/vim-plugins/clighter'
+endif
 
 
 " Syntax highlight for jade (HTML template language)
@@ -374,6 +378,7 @@ nmap Q <nop>
 
 " --- Clighter ---
 let g:clighter_libclang_file = '/home/pk/llvm/install/lib/libclang.so'
+let g:clighter_libclang_file = '/home/pk/opt/llvm/3.7.1-final/install-release/lib/libclang.so'
 
 let g:clighter_compile_args = ["-x", "c++", "-std=c++14", "-DLinux", "-I", "."]
 
