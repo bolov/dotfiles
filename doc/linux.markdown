@@ -366,6 +366,99 @@ git submodule update --remote [--merge | --rebase]
 git push --recursive-submodules=[check | on-demand]
 ```
 
+### Rebase
+
+```sh
+git rebase <upstream> [<branch>]
+```
+
+#### Example 1
+
+
+```
+      A---B---C topic
+     /
+D---E---F---G master
+```
+
+```sh
+git rebase master          # need to be on topic
+git rebase master topic    # does a `checkout topic` first
+```
+
+```
+              A'--B'--C' topic
+             /
+D---E---F---G master
+```
+
+#### Example 2
+
+```
+o---o---o---o---o  master
+     \
+      o---o---o---o---o  next
+                       \
+                        o---o---o  topic
+```
+
+```sh
+git rebase --onto master next topic
+```
+
+```
+o---o---o---o---o  master
+    |            \
+    |             o'--o'--o'  topic
+     \
+      o---o---o---o---o  next
+```
+
+### Workflow
+
+#### Debug & Fix branches. Rebasing
+
+```
+M1---M2  master
+     \
+      D1---D2---D3  debug
+                 \
+                  F1---F2---F3  fix
+```
+
+```sh
+git rebase --onto master debug fix
+```
+
+```
+M1---M2  master
+     | \
+     |  F1'---F2'---F3' fix
+      \
+       D1---D2---D3  debug
+```
+
+```sh
+git checkout master
+git merge --ff-only fix
+git branch -D fix
+```
+
+```
+M1---M2---F1'---F2'---F3' master
+      \
+       D1---D2---D3  debug
+```
+
+```sh
+git rebase master debug
+```
+
+```
+M1---M2---F1'---F2'---F3' master
+                       \
+                        D1'---D2'---D3'  debug
+```
 
 SVN
 ---
