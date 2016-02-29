@@ -183,6 +183,8 @@ set iskeyword+=-
 
 " vertical line
 set colorcolumn=100 " or set cc
+" autoformat wrap
+set textwidth=100
 
 " vertical offset
 set scrolloff=5
@@ -244,6 +246,13 @@ set wildmode=list:longest
 " persistent undo
 set undofile
 set undodir=~/.vim/undo
+
+" File history length
+" viminfo = stuff to remember
+" default viminfo='100,<50,10,h
+" comma separated. First character tells which option is set:
+" ' file history length
+set viminfo='1000,<50,s10,h
 
 " disable swap files
 set noswapfile
@@ -473,6 +482,12 @@ nmap <S-Enter> O<Esc>
 
 " Select All
 nnoremap <Leader>a ggVG
+
+" copy :messages to unnamed register
+nnoremap <Leader>m :redir @"<CR>:silent :messages<CR>:redir END<CR>
+
+" Fill current buffer with :messages
+nmap <Leader>M <Leader>m<Leader>ap
 
 " redraw. Current line between top and bottom
 " position:
