@@ -792,6 +792,52 @@ make install
 
 Note: `mkcd` = `mkdir` + `cd`
 
+#### Extra: libclang Python bindings
+
+found in
+
+```sh
+src/tools/clang/bindings/python
+```
+
+Are not installed in any way by building.
+
+##### manual pseudo-install
+
+```sh
+cd ~/opt/llvm/<version>
+mkdir -P <install>/other/libclang-python-bindings
+cp -r src/tools/clang/bindings/python/clang <install>/other/libclang-python-bindings
+```
+
+add to `PYTHONPATH` (in llvm module maybe)
+
+```sh
+/home/pk/opt/llvm/3.7.1-final/install-release/other/libclang-python-bindings
+```
+
+### Check instalation
+
+Compile flags? Include paths:
+
+```sh
+clang -E -x c++ -v  -  < /dev/null
+```
+
+Libraries:
+
+```sh
+ldd <executable>
+objdump -p <executable> | grepi "needed"
+```
+
+### GNU vs LLVM C/C++ libraries
+
+| Project       | C     | C++        |
+|---------------|-------|------------|
+| GNU (gcc)     | libc  | libstdc++  |
+| LLVM (clang)  | ?     | libc++     |
+
 
 gdb
 ---
