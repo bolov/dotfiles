@@ -2,3 +2,5 @@
 
 prepend-path PATH /home/pk/opt/llvm/3.7.1-final/install-release/bin
 prepend-path LD_LIBRARY_PATH /home/pk/opt/llvm/3.7.1-final/install-release/lib
+
+prepend-path PYTHONPATH /home/pk/opt/llvm/3.7.1-final/install-release/other/libclang-python-bindings

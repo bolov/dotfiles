@@ -9,6 +9,7 @@ if [ $HOSTNAME == "cpl" ] ; then
 
 elif [ $HOSTNAME == "Daedalus" ] ; then
     module load llvm/3.7.1-release
+    module load llvm/include-fix
 
     module load gsl/gsl
     module load bolov/bolov

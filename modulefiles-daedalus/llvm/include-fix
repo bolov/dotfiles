@@ -1,0 +1,8 @@
+#%Module1.0
+
+# This fix is needed because some clang when invoked by some llvm tools don't find headers like
+# stdarg.h for instance, although all is ok when clang is invoked normally
+# for instance cligher (vim plugin) doesn't work
+#
+# because this affects including stock gcc, this should be loaded at all times
+append-path CPLUS_INCLUDE_PATH /usr/lib/gcc/x86_64-linux-gnu/5/include
