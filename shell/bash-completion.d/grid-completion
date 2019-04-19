@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# todo enable when working on grid again only on grid computers
+# for now disable it completly
+return 0
+
 # prints all the queues
 _grid_get_queues() {
     echo `qstat -g c | tail -n +3 | cut -f1 -d ' '`

@@ -5,6 +5,9 @@ set editing-mode vi
 # change prompt depending on mode (insert, command)
 set show-mode-in-prompt on
 
+set vi-cmd-mode-string "C "
+set vi-ins-mode-string "I "
+
 # Show all completions as soon as I press tab, even if there's more than one
 set show-all-if-ambiguous on
 # Ignore case
@@ -20,16 +23,17 @@ set colored-stats on
 # if the shortcuts are unconditional, some programs that take control of
 # readline will not work (gdb, cgdb)
 $if bash
-## arrow up
-#"\e[A":history-search-backward
-"\C-k":history-search-backward
-## arrow down
-#"\e[B":history-search-forward
-"\C-j":history-search-forward
+    ## arrow up
+    #"\e[A":history-search-backward
+    "\C-k":history-search-backward
 
-# expand (e.g. *)
-"\C-x":glob-expand-word
-
-# clear screen
-"\C-l":clear-screen
+    ## arrow down
+    #"\e[B":history-search-forward
+    "\C-j":history-search-forward
+    
+    # expand (e.g. *)
+    "\C-x":glob-expand-word
+    
+    # clear screen
+    "\C-l":clear-screen
 $endif

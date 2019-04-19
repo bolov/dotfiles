@@ -1,0 +1,2 @@
+[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+[ -d "$HOME/scripts" ] && PATH="$HOME/scripts:$PATH"

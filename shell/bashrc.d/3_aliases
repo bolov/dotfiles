@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# enable color suport for ls
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+fi
+
+# colored GCC warnings and errors
+# TODO this is from system .bashrc. Investigate if it's needed
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+alias cd..='cd ..'
+alias cdp='cd -P'
+
+alias ls='ls --color=auto -v --group-directories-first'
+alias ls1='ls -1'
+alias l1='ls -1'
+
+alias la='ls -A'
+alias la1='la -1'
+
+alias ll='ls -alF'
+alias ll1='ll -1'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+alias gvim-remote='gvim --remote'
+
+alias grep='grep --color=auto'
+alias grepi='grep -i'
+
+
+alias makej='make -j 9'
+
+# alias antlr-works='java -jar /usr/lib/antlr.3/antlrworks-1.4.3.jar'
+

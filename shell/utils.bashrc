@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# utility functions for bash
+
 source-if-ok() {
     for f in "$@" ; do
         if [ -f "$f" -a -r "$f" ] ; then

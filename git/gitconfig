@@ -2,8 +2,10 @@
     name = Mihail Bălan
     email = mihail.balan@gmail.com
 
+[includeIf "gitdir:Holosee/**"]
+	path = ~/.dotfiles/git/gitconfig-holosee
+
 [core]
-    editor = "gvim -f"
     quotepath = false
 
 [status]
@@ -18,12 +20,13 @@
     supdate = submodule update --remote --merge
 
     mergeff = merge --ff-only
+    merge-no-ff = merge --no-ff
 
 [push]
     default = simple
 
 [diff]
-    tool = gvimdiff
+    tool = vimdiff
 
 [merge]
-    tool = gvimdiff
+    tool = vimdiff

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# stop here if shell is non-interactive
+[[ $- == *i* ]] || return 0
+
+source "$HOME/.dotfiles/shell/utils.bashrc"
+
+source-if-ok $HOME/.dotfiles/shell/bashrc.d/*
+
+source-if-ok $HOME/.dotfiles/shell/bash-completion.d/*
+
