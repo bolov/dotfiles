@@ -4,5 +4,30 @@
 # this enables vi mode in bash only
 set -o vi
 
+export FZF_DEFAULT_COMMAND="find -L . -mindepth 1 \
+    \\( -name '.git' -o -fstype 'sysfs' \
+                     -o -fstype 'devfs' \
+                     -o -fstype 'devtmpfs' \
+                     -o -fstype 'proc' \\) -prune \
+    -o -print 2> /dev/null | cut -b3- "
+
+export FZF_CTRL_T_COMMAND="find -L . -mindepth 1 \
+    \\( -name '.git' -o -fstype 'sysfs' \
+                     -o -fstype 'devfs' \
+                     -o -fstype 'devtmpfs' \
+                     -o -fstype 'proc' \\) -prune \
+    -o -type f -print \
+    -o -type d -print \
+    -o -type l -print 2> /dev/null | cut -b3-"
+
+export FZF_ALT_C_COMMAND="command find -L . -mindepth 1 \
+    \\( -type d -name '.git' -o -fstype 'sysfs' \
+                             -o -fstype 'devfs' \
+                             -o -fstype 'devtmpfs' \
+                             -o -fstype 'proc' \\) -prune \
+    -o -type d -print 2> /dev/null | cut -b3-"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 export DISPLAY=localhost:0.0
 

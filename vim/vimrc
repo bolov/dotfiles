@@ -40,8 +40,11 @@ Plugin 'ctrlpvim/ctrlp.vim'
 
 " Plug 'junegunn/fzf', { 'dir': '~/opt/fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
-Plugin 'junegunn/fzf'
+" Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+" not working:
+" Plugin 'file:///home/mihail.balan/home/.fzf'
+
 
 " Plugin 'file:///home/pk/opt/vim-plugins/bufkill'
 " Plugin 'ton/vim-bufsurf'
@@ -74,7 +77,7 @@ Plugin 'blindFS/vim-colorpicker'
 " Highlight all instances of word under cursor, when idle.
 " Plugin 'file:///home/pk/opt/vim-plugins/autohighlight'
 
-" highlight trailing whitespaces 
+" highlight trailing whitespaces
 Plugin 'ntpeters/vim-better-whitespace'
 
 " Plugin 'yonchu/accelerated-smooth-scroll'
@@ -338,22 +341,11 @@ let g:ycm_complete_in_strings = 1
 let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
-" --- CtrlP ---
-
-"let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPBuffer'
-
-" open multiple files in curret buffer and jump to the first
-let g:ctrlp_open_multiple_files = '1jr'
-
-" use vim cwd as path
-let g:ctrlp_working_path_mode=0
-
 " --- SmoothScrool --- "
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 4)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 4)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 6)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 6)<CR>
+" noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+" noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+" noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+" noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " -- FZF ---
 let g:fzf_launcher='gnome-terminal --disable-factory -x bash -ic %s'
@@ -417,6 +409,14 @@ augroup END
 " --- CtrlP ---
 
 let g:ctrlp_map = '<Leader>p'
+let g:ctrlp_cmd = 'CtrlPBuffer'
+
+" open multiple files in curret buffer and jump to the first
+let g:ctrlp_open_multiple_files = '1jr'
+
+" use vim cwd as path
+let g:ctrlp_working_path_mode=0
+
 nmap <Leader>P :CtrlPMixed<CR>
 nmap <Leader>o :CtrlP<CR>
 nmap <Leader>O :CtrlPMRUFiles<CR>
@@ -597,10 +597,10 @@ function! LoadLocalVimrc()
     exec "source " . local_vimrc_file
 endfunction
 
-augroup LocalVimrc
-    autocmd!
-    autocmd BufNewFile,BufRead * call LoadLocalVimrc()
-augroup END
+" augroup LocalVimrc
+"     autocmd!
+"     autocmd BufNewFile,BufRead * call LoadLocalVimrc()
+" augroup END
 
 "=============== Playground ====================================================
 
