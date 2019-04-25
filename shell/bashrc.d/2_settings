@@ -1,5 +1,7 @@
 #!/bin/bash
 
+umask 002
+
 # needed here for fzf before source ~/.fzf.bash
 # this enables vi mode in bash only
 set -o vi

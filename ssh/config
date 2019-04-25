@@ -1,0 +1,16 @@
+# Personal account, - the default config
+Host gitlab.com
+   HostName gitlab.com
+   User git
+   IdentityFile ~/.ssh/id_rsa
+
+# Holosee account
+Host holosee.gitlab.com
+   HostName gitlab.com
+   User git
+   IdentityFile ~/.ssh/id_rsa_holosee
+
+# Holosee AWS
+Host *.amazonaws.com
+   User mihail.balan
+   IdentityFile ~/.ssh/id_rsa_holosee
