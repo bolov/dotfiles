@@ -40,11 +40,13 @@ Plugin 'ctrlpvim/ctrlp.vim'
 
 " Plug 'junegunn/fzf', { 'dir': '~/opt/fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
-" Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 " not working:
 " Plugin 'file:///home/mihail.balan/home/.fzf'
 
+" If installed using git
+set rtp+=~/.fzf
 
 " Plugin 'file:///home/pk/opt/vim-plugins/bufkill'
 " Plugin 'ton/vim-bufsurf'
@@ -107,6 +109,8 @@ endif
 Plugin 'digitaltoad/vim-jade'
 " Syntax highlight for stylus (CSS template language)
 Plugin 'wavded/vim-stylus'
+
+Plugin 'christoomey/vim-tmux-navigator'
 
 
 " All of your Plugins must be added before the following line
