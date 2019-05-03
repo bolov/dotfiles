@@ -3,7 +3,7 @@
     email = mihail.balan@gmail.com
 
 [includeIf "gitdir:Holosee/**"]
-	path = ~/.dotfiles/git/gitconfig-holosee
+    path = ~/.dotfiles/git/gitconfig-holosee
 
 [core]
     quotepath = false
@@ -26,7 +26,13 @@
     default = simple
 
 [diff]
-    tool = vimdiff
+    tool = nvimdiff
 
 [merge]
-    tool = vimdiff
+    tool = nvimmerge
+
+[mergetool "nvimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE
+
+[mergetool "nvimmerge"]
+    cmd = nvim -d $LOCAL $REMOTE $MERGED

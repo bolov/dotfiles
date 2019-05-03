@@ -110,7 +110,7 @@ Plugin 'digitaltoad/vim-jade'
 " Syntax highlight for stylus (CSS template language)
 Plugin 'wavded/vim-stylus'
 
-Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'christoomey/vim-tmux-navigator'
 
 
 " All of your Plugins must be added before the following line
@@ -183,6 +183,10 @@ if has("gui_running")
         set guifont=ubuntu\ Mono\ 11
     endif
 
+endif
+
+if &diff
+    colorscheme evening
 endif
 
 " display options
@@ -353,6 +357,8 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 
 " -- FZF ---
 let g:fzf_launcher='gnome-terminal --disable-factory -x bash -ic %s'
+nmap <Leader>z :FZF<CR>
+nmap <Leader>Z :FZF ~<CR>
 
 
 " --- bufkill ---
@@ -458,6 +464,16 @@ nmap <Leader>Y :YcmForceCompileAndDiagnostics<CR>
 
 nnoremap <Leader>H :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 
+" --- tmux navigator
+"
+" " Custom Key Bindings
+" let g:tmux_navigator_no_mappings = 1
+"
+" nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+" nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
+" nnoremap <silent> <A-u> :TmuxNavigateUp<cr>
+" nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
+" nnoremap <silent> <A-\> :TmuxNavigatePrevious<cr>
 
 " --- No plugins
 
@@ -478,9 +494,9 @@ nmap <Leader>rv :so $MYVIMRC<CR>
 nmap <Leader>rr :w<CR>:so %<CR>
 
 " navigate buffers
-nmap <C-h> :BufSurfBack<CR>
-nmap <C-l> :BufSurfForward<CR>
-nmap <C-j> :BufSurfList<CR>
+" nmap <C-h> :BufSurfBack<CR>
+" nmap <C-l> :BufSurfForward<CR>
+" nmap <C-j> :BufSurfList<CR>
 
 " build
 nmap <Leader>b :wa<CR>:make<CR>
@@ -492,11 +508,11 @@ nmap <Leader>C :ccl<CR>
 
 " Move line(s) up/down
 
-nnoremap <A-k> :m .-2<CR>
-nnoremap <A-j> :m .+1<CR>
-
-vnoremap <A-k> :m '<-2<CR>gv
-vnoremap <A-j> :m '>+1<CR>gv
+" nnoremap <A-k> :m .-2<CR>
+" nnoremap <A-j> :m .+1<CR>
+"
+" vnoremap <A-k> :m '<-2<CR>gv
+" vnoremap <A-j> :m '>+1<CR>gv
 
 " Duplicate line(s)
 
