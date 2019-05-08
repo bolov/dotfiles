@@ -94,7 +94,7 @@ Plugin 'terryma/vim-smooth-scroll'
 
 " fuzzy auto completer (multiple languages, uses clang for C family
 " requires separate (out of vim) lib instalation
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " Plugin 'octol/vim-cpp-enhanced-highlight'
 " Plugin 'bbchung/clighter'

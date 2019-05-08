@@ -19,3 +19,6 @@ Host *.amazonaws.com
 Host dev1.holosee.aws
     HostName ec2-52-28-152-185.eu-central-1.compute.amazonaws.com
     IdentityFile ~/.ssh/id_rsa_holosee
+    ForwardAgent yes
+    ForwardX11 yes
+    ForwardX11Trusted yes
