@@ -32,4 +32,5 @@ export FZF_ALT_C_COMMAND="command find -L . -mindepth 1 \
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export DISPLAY=localhost:0.0
+[ $HOSTNAME == "Argia" ] && export GDK_DPI_SCALE=1.25
 
