@@ -1,7 +1,5 @@
 #!/bin/bash
 
-[ `umask` == "0000" ] && umask 002
-
 # needed here for fzf before source ~/.fzf.bash
 # this enables vi mode in bash only
 set -o vi
@@ -30,7 +28,4 @@ export FZF_ALT_C_COMMAND="command find -L . -mindepth 1 \
     -o -type d -print 2> /dev/null | cut -b3-"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-[[ $HOSTNAME != *aws ]] && export DISPLAY=localhost:0.0
-[ $HOSTNAME == "Argia" ] && export GDK_DPI_SCALE=1.25
 

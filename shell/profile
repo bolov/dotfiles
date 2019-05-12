@@ -1,2 +1,17 @@
+#!/bin/sh
+
+[ `umask` == "0000" ] && umask 002
+
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "$HOME/scripts" ] && PATH="$HOME/scripts:$PATH"
+
+[[ $HOSTNAME != *aws ]] && export DISPLAY=localhost:0.0
+[ $HOSTNAME == "Argia" ] && export GDK_DPI_SCALE=1.25
+
+# bug workaround for dbus and gnome terminal
+export NO_AT_BRIDGE=1
+
+# setting that helps with latency and speed of X-Server
+# apparently it's not needed for nvidia drivers
+# I put it here just in case
+export LIBGL_ALWAYS_INDIRECT=1

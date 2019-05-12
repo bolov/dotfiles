@@ -166,14 +166,6 @@ command! -range=% RemoveTrailingWhitespaces
 "    set lines=999 columns=999
 " endif
 
-" autostart NERDTree
-" if has("gui_running")
-"   " start NERDTree
-"   au VimEnter * NERDTree
-"   " switch focus out of NERTTree
-"   au VimEnter * normal l
-"   " au VimEnter * vs
-" endif
 
 " colorschem (slate > desert)
 if has("gui_running")
@@ -188,6 +180,9 @@ endif
 if &diff
     colorscheme evening
 endif
+
+" enable mouse
+set mouse=a
 
 " display options
 set guioptions-=m  "remove menubar
@@ -215,9 +210,9 @@ set matchpairs+=<:>
 set iskeyword+=-
 
 " vertical line
-set colorcolumn=100 " or set cc
+set colorcolumn=120 " or set cc
 " autoformat wrap
-set textwidth=100
+set textwidth=120
 
 " vertical offset
 set scrolloff=5
