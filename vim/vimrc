@@ -110,7 +110,7 @@ Plugin 'digitaltoad/vim-jade'
 " Syntax highlight for stylus (CSS template language)
 Plugin 'wavded/vim-stylus'
 
-" Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'chriskempson/base16-vim'
 
@@ -365,9 +365,6 @@ highlight ExtraWhitespace guibg=#440000
 
 "============== Custom Keyboard Shortcuts ====================================
 
-" Alt key workaround for termial
-" map i <Esc>
-
 " disable shortcuts that I often accidentally press
 " enter visual mode
 nmap Q <nop>
@@ -452,14 +449,14 @@ nnoremap <Leader>H :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
 
 " --- tmux navigator
 "
-" " Custom Key Bindings
-" let g:tmux_navigator_no_mappings = 1
-"
-" nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
-" nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
-" nnoremap <silent> <A-u> :TmuxNavigateUp<cr>
-" nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
-" nnoremap <silent> <A-\> :TmuxNavigatePrevious<cr>
+" Custom Key Bindings
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <A-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <A-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <A-u> :TmuxNavigateUp<cr>
+nnoremap <silent> <A-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <A-\> :TmuxNavigatePrevious<cr>
 
 " --- No plugins
 
@@ -470,10 +467,11 @@ nmap <Leader>S :wa<CR>
 " write with sudo privilege
 cmap w!! w !sudo tee > /dev/null %
 
+nmap <Leader>q :q<CR>
 nmap <Leader>Q :qa<CR>
 
 " edit files
-nmap <Leader>ev :drop $MYVIMRC<CR>
+nmap <Leader>ev :drop ~/.vimrc<CR>
 nmap <Leader>em :drop Makefile<CR>
 
 nmap <Leader>rv :so $MYVIMRC<CR>
