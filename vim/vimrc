@@ -112,6 +112,8 @@ Plugin 'wavded/vim-stylus'
 
 " Plugin 'christoomey/vim-tmux-navigator'
 
+Plugin 'chriskempson/base16-vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -165,21 +167,10 @@ command! -range=% RemoveTrailingWhitespaces
 "   " Maximize gvim window.
 "    set lines=999 columns=999
 " endif
-
-
-" colorschem (slate > desert)
-if has("gui_running")
-    colorscheme mustang-bolov
-
-    if hostname() == "cpl"
-        set guifont=ubuntu\ Mono\ 11
-    endif
-
-endif
-
-if &diff
-    colorscheme evening
-endif
+"
+set termguicolors
+let base16colorspace=256
+colorscheme base16-default-dark
 
 " enable mouse
 set mouse=a
