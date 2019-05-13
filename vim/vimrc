@@ -56,7 +56,7 @@ set rtp+=~/.fzf
 " Plugin 'jtratner/vim-flavored-markdown'
 
 " syntax highlight for GitHub Flavored Markdown + some features (no bug, but slower)
-Plugin 'gabrielelana/vim-markdown'
+" Plugin 'gabrielelana/vim-markdown'
 
 " Preview GitHub Flavored Markdown in browser. Updates in real-time
 " Plugin 'suan/vim-instant-markdown'
@@ -275,6 +275,14 @@ set viminfo='1000,<50,s10,h
 
 " disable swap files
 set noswapfile
+
+set splitright
+
+" start vim in split mode
+augroup BolovOpenVert
+    au!
+    au VimEnter * if &columns > 200 |  vnew | endif
+augroup END
 
 "=============== Plugins Settings ============================================
 
