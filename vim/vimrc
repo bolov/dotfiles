@@ -114,6 +114,10 @@ Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'chriskempson/base16-vim'
 
+" does not work with neovim
+" Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+
+Plugin 'vim-airline/vim-airline'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -160,6 +164,10 @@ command! -range=% RemoveTrailingWhitespaces
 
 
 "================ Vim Settings ================================================
+
+
+let g:airline_powerline_fonts = 1
+
 
 " --- Autostart ---
 " if has("gui_running")

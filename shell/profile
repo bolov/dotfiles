@@ -3,6 +3,7 @@
 [ `umask` == "0000" ] && umask 002
 
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/scripts" ] && PATH="$HOME/scripts:$PATH"
 
 [[ $HOSTNAME != *aws ]] && export DISPLAY=localhost:0.0
