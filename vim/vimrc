@@ -73,7 +73,7 @@ set rtp+=~/.fzf
 " Plugin 'KabbAmine/vCoolor.vim'
 
 " Color picker
-Plugin 'blindFS/vim-colorpicker'
+" Plugin 'blindFS/vim-colorpicker'
 
 
 " Highlight all instances of word under cursor, when idle.
@@ -396,7 +396,8 @@ let g:ClighterOccurrences = 0
 " --- clang format ---
 
 " format selection
-map <Leader>f :pyf /usr/share/vim/addons/syntax/clang-format-3.5.py<CR>
+map <Leader>f :pyf /usr/share/vim/addons/syntax/clang-format.py<CR>
+
 " format {}
 map <Leader>g va{<Leader>f
 " formal all file
@@ -462,6 +463,25 @@ nmap <Leader>Y :YcmForceCompileAndDiagnostics<CR>
 " --- Autohighlight ---
 
 nnoremap <Leader>H :if AutoHighlightToggle()<Bar>set hls<Bar>endif<CR>
+
+function! AutoHighlightToggle()
+  let @/ = ''
+  if exists('#auto_highlight')
+    au! auto_highlight
+    augroup! auto_highlight
+    setl updatetime=4000
+    echo 'Highlight current word: off'
+    return 0
+  else
+    setl updatetime=500
+    augroup auto_highlight
+      au!
+      au CursorHold * let @/ = '\V\<'.escape(expand('<cword>'), '\').'\>'
+    augroup end
+    echo 'Highlight current word: ON'
+    return 1
+  endif
+endfunction
 
 " --- tmux navigator
 "
