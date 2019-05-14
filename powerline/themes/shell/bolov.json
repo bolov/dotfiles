@@ -4,16 +4,16 @@
             {
                 "left": [
                     {
-                        "function": "powerline.segments.common.env.user",
-                        "priority": 30
-                    },
-                    {
                         "function": "powerline.segments.common.net.hostname",
                         "args": {
                             "only_if_ssh": false,
                             "exclude_domain": false
                         },
-                        "priority": 10
+                        "priority": 15
+                    },
+                    {
+                        "function": "powerline.segments.common.env.user",
+                        "priority": 30
                     },
                     {
                         "function": "powerline.segments.shell.cwd",
@@ -32,7 +32,7 @@
                     },
                     {
                         "function": "powerline_gitstatus.gitstatus",
-                        "priority": 40,
+                        "priority": 11,
                         "display":true
                     }
                 ]
