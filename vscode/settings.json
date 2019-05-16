@@ -1,0 +1,40 @@
+{
+    "vim.leader": ",",
+    "vim.textwidth": 120,
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["<Enter>"],
+        "after": ["o", "<Esc>"]
+      },
+      {
+        "before": ["<leader>", "s"],
+        "commands": [":w"]
+      },
+      {
+        "before": ["<leader>", "S"],
+        "commands": [":wa"]
+      },
+      {
+        "before": ["<leader>", "q"],
+        "commands": [":q"]
+      },
+      {
+        "before": ["<leader>", "f"],
+        "commands": ["editor.action.formatSelection", ]
+      },
+      {
+        "before": ["<leader>", "F"],
+        "commands": ["editor.action.formatDocument", ]
+      },
+    ],
+
+    "vim.visualModeKeyBindingsNonRecursive": [
+      {
+        "before": ["<leader>", "f"],
+        "commands": ["editor.action.formatSelection", ]
+      },
+    ],
+    "editor.minimap.enabled": false,
+    "editor.rulers": [ 100, 120 ],
+    "window.zoomLevel": 0
+}

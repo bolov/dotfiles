@@ -1,0 +1,32 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "ctrl+k", "command": "-extension.vim_ctrl+k",
+        "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
+    },
+    {
+        "key": "alt+l", "command": "-toggleFindInSelection",
+        "when": "editorFocus"
+    },
+    {
+        "key": "alt+h", "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "alt+l", "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "alt+k", "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt+j", "command": "workbench.action.navigateDown"
+    },
+
+    {
+        "key" : "shift+h", "command": "workbench.action.previousEditorInGroup",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    },
+    {
+        "key": "shift+l", "command": "workbench.action.nextEditorInGroup",
+        "when": "editorTextFocus && vim.mode != 'Insert'"
+    }
+]
