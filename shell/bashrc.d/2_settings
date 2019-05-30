@@ -4,7 +4,7 @@
 # this enables vi mode in bash only
 set -o vi
 
-export FZF_DEFAULT_COMMAND="find -L . -mindepth 1 -type d \
+export FZF_DEFAULT_COMMAND="find -L \$PWD -mindepth 1 -type d \
     \\( -fstype 'sysfs' \
        -o -fstype 'devfs' \
        -o -fstype 'devtmpfs' \
@@ -12,11 +12,14 @@ export FZF_DEFAULT_COMMAND="find -L . -mindepth 1 -type d \
        -o -name '.git' \
        -o -name '.cache' \
        -o -name '__py_cache__' \
+       -o -name '.vscode*' \
        -o -path '*.vim/bundle' \
+       -o -path '*.vim/undo' \
+       -o -path '/home/mihail.balan/snap' \
        \\) -prune \
-    -o -print 2> /dev/null | cut -b3- "
+    -o -printf '%P\\n' 2> /dev/null "
 
-export FZF_CTRL_T_COMMAND="find -L . -mindepth 1 -type d \
+export FZF_CTRL_T_COMMAND="find -L \$PWD -mindepth 1 -type d \
     \\( -fstype 'sysfs' \
        -o -fstype 'devfs' \
        -o -fstype 'devtmpfs' \
@@ -24,13 +27,15 @@ export FZF_CTRL_T_COMMAND="find -L . -mindepth 1 -type d \
        -o -name '.git' \
        -o -name '.cache' \
        -o -name '__py_cache__' \
+       -o -name '.vscode*' \
        -o -path '*.vim/bundle' \
+       -o -path '*.vim/undo' \
+       -o -path '/home/mihail.balan/snap' \
     \\) -prune \
-    -o -type f -print \
-    -o -type d -print \
-    -o -type l -print 2> /dev/null | cut -b3-"
+    -o \( -type f -o -type d \) \
+    -printf '%P\\n' 2> /dev/null "
 
-export FZF_ALT_C_COMMAND="command find -L . -mindepth 1 -type d \
+export FZF_ALT_C_COMMAND="command find -L \$PWD -mindepth 1 -type d \
     \\( -fstype 'sysfs' \
         -o -fstype 'devfs' \
         -o -fstype 'devtmpfs' \
@@ -38,9 +43,13 @@ export FZF_ALT_C_COMMAND="command find -L . -mindepth 1 -type d \
        -o -name '.git' \
        -o -name '.cache' \
        -o -name '__py_cache__' \
+       -o -name '.vscode*' \
        -o -path '*.vim/bundle' \
+       -o -path '*.vim/undo' \
+       -o -path '/home/mihail.balan/snap' \
        \\) -prune \
-    -o -type d -print 2> /dev/null | cut -b3-"
+    -o -type d \
+    -printf '%P\\n' 2> /dev/null "
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
