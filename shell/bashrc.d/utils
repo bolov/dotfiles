@@ -5,6 +5,13 @@ mkcd() {
     mkdir -- "$1" && cd -- "$1"
 }
 
+# cat file or ls dir
+# https://askubuntu.com/questions/448687/one-command-for-ls-and-cat-functionality
+catls()
+{
+  [[ -f "$1" ]] && cat "$1" || ls "$1";
+}
+
 # print filename and linenumber of a function definition
 whereis-func() {
     shopt -s extdebug;
