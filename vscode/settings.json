@@ -1,4 +1,8 @@
 {
+    "remote.extensionKind": {
+        //"platformio.platformio-ide": "ui",
+    },
+
     "vim.leader": ",",
     "vim.textwidth": 120,
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -26,6 +30,10 @@
         "before": ["<leader>", "F"],
         "commands": ["editor.action.formatDocument", ]
       },
+      {
+          "before": ["<ctrl>", "6"],
+          "commands": ["workbench.action.openNextRecentlyUsedEditorInGroup"]
+      }
     ],
 
     "vim.visualModeKeyBindingsNonRecursive": [
@@ -36,5 +44,91 @@
     ],
     "editor.minimap.enabled": false,
     "editor.rulers": [ 100, 120 ],
-    "window.zoomLevel": 0
+    "files.trimTrailingWhitespace": true,
+    "breadcrumbs.enabled": true,
+    "extensions.autoUpdate": true,
+    "extensions.autoCheckUpdates": false,
+    "window.zoomLevel": 0,
+    "docker.host": "tcp://localhost:23750",
+    "C_Cpp.loggingLevel": "Debug",
+    "git.ignoreMissingGitWarning": true,
+    "workbench.editor.enablePreview": false,
+    "editor.detectIndentation": false,
+    "C_Cpp.updateChannel": "Insiders",
+    "sync.gist": "399c3deed4045ee2bcae619c00cde800",
+    "platformio-ide.disablePIOHomeStartup": true,
+    "files.eol": "\n",
+    "workbench.sideBar.location": "left",
+    "platformio-ide.activateOnlyOnPlatformIOProject": true,
+    "editor.renderWhitespace": "all",
+    "terminal.integrated.shell.linux": "/bin/ash",
+    "peacock.favoriteColors": [
+        {
+            "name": "Angular Red",
+            "value": "#b52e31"
+        },
+        {
+            "name": "Auth0 Orange",
+            "value": "#eb5424"
+        },
+        {
+            "name": "Azure Blue",
+            "value": "#007fff"
+        },
+        {
+            "name": "C# Purple",
+            "value": "#68217A"
+        },
+        {
+            "name": "Gatsby Purple",
+            "value": "#639"
+        },
+        {
+            "name": "Go Cyan",
+            "value": "#5dc9e2"
+        },
+        {
+            "name": "Java Blue-Gray",
+            "value": "#557c9b"
+        },
+        {
+            "name": "JavaScript Yellow",
+            "value": "#f9e64f"
+        },
+        {
+            "name": "Mandalorian Blue",
+            "value": "#1857a4"
+        },
+        {
+            "name": "Node Green",
+            "value": "#215732"
+        },
+        {
+            "name": "React Blue",
+            "value": "#00b3e6"
+        },
+        {
+            "name": "Something Different",
+            "value": "#832561"
+        },
+        {
+            "name": "Vue Green",
+            "value": "#42b883"
+        }
+    ],
+    "workbench.iconTheme": "material-icon-theme",
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single",
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "autoimport.showNotifications": true,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
 }
