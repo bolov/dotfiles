@@ -16,11 +16,11 @@ Host *.amazonaws.com
    IdentityFile ~/.ssh/id_rsa_holosee
 
 # EC2
-Host dev1.holosee.aws
+Host dev1.ec2.holosee.aws
     HostName ec2-52-28-152-185.eu-central-1.compute.amazonaws.com
     IdentityFile ~/.ssh/id_rsa_holosee
 
 # EC2
-Host testbed1.holosee.aws
+Host testbed1.ec2.holosee.aws
     HostName ec2-3-125-108-128.eu-central-1.compute.amazonaws.com
     IdentityFile ~/.ssh/id_rsa_holosee
