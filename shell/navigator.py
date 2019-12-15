@@ -3,7 +3,18 @@ import os
 import subprocess
 
 def printUsage():
-    print("Usage: nv [cd|ls|add|rm|list|p] ...")
+    print(
+'''Usage: nv [cd|ls|p|list|add|rm] ...
+Navigate to directory bookmarks (named marks here)
+
+Subcommands:
+  cd <mark>                 navigate to mark
+  ls <mark>                 list mark directory content
+  p <mark>                  print mark
+  list                      list all marks
+  add <directory> <mark>    add a new mark
+  rm <mark>                 remove mark
+''')
 
 class Navigator:
     def __init__(self, cd_fifo_fn, locations_fn):
@@ -19,10 +30,10 @@ class Navigator:
             else:
                 raise
 
-    def checkNumArgs(self, subcommand, expecter_num, args):
-        if expecter_num != len(args):
-            print("Error: expected 1 argument for {}. Got {}".format(subcommand, len(args)),
-                  file=sys.stderr)
+    def checkNumArgs(self, subcommand, expected_num, args):
+        if expected_num != len(args):
+            print("Error: expected {} argument(s) for {}. Got {}".format(expected_num, subcommand,
+                  len(args)), file=sys.stderr)
             printUsage()
             return False
         return True
@@ -86,10 +97,13 @@ class Navigator:
         return False
 
     def add(self, args):
-        if not self.checkNumArgs("add", 1, args):
+        if not self.checkNumArgs("add", 2, args):
             return False
 
-        mark = args[0]
+        path = args[0]
+        mark = args[1]
+
+        abs_path = os.path.abspath(path)
 
         with open(self.locations_fn, "r") as f:
             lines = f.readlines()
@@ -99,7 +113,7 @@ class Navigator:
                 line = line.rstrip("\n")
                 if line.split(" ", 1)[0] != mark:
                     f.write("{}\n".format(line))
-            f.write("{} {}\n".format(mark, os.getcwd()))
+            f.write("{} {}\n".format(mark, abs_path))
 
         return True
 
@@ -149,17 +163,19 @@ def nv(*args, **dargs):
 
     subcommand = args[0]
 
+    if subcommand not in subcommands:
+        print("Error: invalid subcommand.", file=sys.stderr)
+        printUsage()
+        return -1
+
     cd_loc = "."
 
-    if subcommand != "cd" and subcommand in subcommands:
+    if subcommand != "cd":
         # non-cd subcommand
         ret = subcommands[subcommand](nav, args[1:])
     else:
         # cd command
-        if subcommand == "cd":
-            loc = nav.cd(args[1:])
-        else:
-            loc = nav.cd(args)
+        loc = nav.cd(args[1:])
 
         if loc is None:
             return -1

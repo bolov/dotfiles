@@ -3,13 +3,13 @@
 # navigator
 nv() {
     # python file basename (no extension)
-    local navigator_py_bn=".navigator"
+    local navigator_py_bn="navigator"
     # python file directory
-    local navigator_py_dir="$HOME"
+    local navigator_py_dir="$HOME/.dotfiles/shell"
     # fifo path
-    local navigator_cd_fifo="$HOME/.navigator-cd"
+    local navigator_cd_fifo="$HOME/.navigator/cd"
     # locations file path
-    local navigator_locations="$HOME/.navigator-locations"
+    local navigator_locations="$HOME/.navigator/locations"
 
 
     if [ "$1" = "repair" ] ; then

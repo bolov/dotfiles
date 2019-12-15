@@ -2,7 +2,7 @@
 
 _nv_get_marks() {
     # locations file path
-    local navigator_locations="$HOME/.navigator-locations"
+    local navigator_locations="$HOME/.navigator/locations"
 
     marks=""
 
@@ -23,16 +23,26 @@ _nv()
 
     subcmds="cd ls add rm list p repair"
     subcmds_req_mark="cd ls rm p"
+    subcmds_req_dir="add"
 
     marks=`_nv_get_marks`
 
+    # complete subcommand
     if [ $COMP_CWORD -eq 1 ] ; then
-        COMPREPLY=( $(compgen -W "${subcmds} ${marks}" -- ${cur}) )
+        COMPREPLY=( $(compgen -W "${subcmds}" -- ${cur}) )
         return 0
     fi
 
+    # complete mark
     if [ $COMP_CWORD -eq 2 ] && [[ $subcmds_req_mark =~ $prev ]] ; then
         COMPREPLY=( $(compgen -W "${marks}" -- ${cur}) )
+        return 0
+    fi
+
+    # complete directory
+    if [ $COMP_CWORD -eq 2 ] && [[ $subcmds_req_dir =~ $prev ]] ; then
+        COMPREPLY=( $(compgen -d -S / -- ${cur}) )
+        compopt -o nospace;
         return 0
     fi
 }
