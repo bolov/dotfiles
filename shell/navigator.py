@@ -4,7 +4,7 @@ import subprocess
 
 def printUsage():
     print(
-'''Usage: nv [cd|ls|p|list|add|rm] ...
+'''Usage: nv [cd|ls|p|list|add|rm|help] ...
 Navigate to directory bookmarks (named marks here)
 
 Subcommands:
@@ -14,6 +14,7 @@ Subcommands:
   list                      list all marks
   add <directory> <mark>    add a new mark
   rm <mark>                 remove mark
+  help                      print this help
 ''')
 
 class Navigator:
@@ -36,6 +37,10 @@ class Navigator:
                   len(args)), file=sys.stderr)
             printUsage()
             return False
+        return True
+
+    def help(self, args):
+        printUsage()
         return True
 
     def cd(self, args):
@@ -76,7 +81,13 @@ class Navigator:
             return False
 
         with open(self.locations_fn, "r") as f:
-            print(f.read(), end="")
+            # each row has a mark and a dirpath
+            table = [line.split() for line in f.readlines()]
+
+            # display in readable table format
+            # with mark at lest width 20 left aligned
+            for row in table:
+                print("{: <20} {}".format(*row))
 
         return True
 
@@ -149,6 +160,7 @@ subcommands = {
     "rm"      : Navigator.rm,
     "list"    : Navigator.list,
     "p"       : Navigator.p,
+    "help"    : Navigator.help,
 }
 
 

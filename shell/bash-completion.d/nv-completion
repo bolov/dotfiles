@@ -21,7 +21,7 @@ _nv()
     cur="${COMP_WORDS[COMP_CWORD]}"
     prev="${COMP_WORDS[COMP_CWORD-1]}"
 
-    subcmds="cd ls add rm list p repair"
+    subcmds="cd ls add rm list p repair help"
     subcmds_req_mark="cd ls rm p"
     subcmds_req_dir="add"
 
