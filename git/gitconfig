@@ -20,7 +20,7 @@
     spush   = push --recurse-submodules=on-demand
     supdate = submodule update --remote --merge
 
-    mergeff = merge --ff-only
+    merge-ff = merge --ff-only
     merge-no-ff = merge --no-ff
 
 [push]
@@ -38,7 +38,7 @@
 [mergetool "nvimmerge"]
     cmd = nvim -d $LOCAL $REMOTE $MERGED
 [filter "lfs"]
-	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+	clean = git-lfs clean -- %f
