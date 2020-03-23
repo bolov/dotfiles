@@ -5,6 +5,7 @@
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/scripts" ] && PATH="$HOME/scripts:$PATH"
+[ -d "$HOME/.npm-global" ] && PATH="$HOME/.npm-global:$PATH"
 
 [[ $HOSTNAME != *aws ]] && export DISPLAY=localhost:0.0
 [ $HOSTNAME == "Argia" ] && export GDK_DPI_SCALE=1.25
