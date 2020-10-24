@@ -286,12 +286,6 @@ set noswapfile
 
 set splitright
 
-" start vim in split mode
-augroup BolovOpenVert
-    au!
-    au VimEnter * if &columns > 200 |  vnew | endif
-augroup END
-
 "=============== Plugins Settings ============================================
 
 "" --- clang complete ---

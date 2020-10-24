@@ -36,7 +36,7 @@
     cmd = nvim -d $LOCAL $REMOTE
 
 [mergetool "nvimmerge"]
-    cmd = nvim -d $LOCAL $REMOTE $MERGED
+    cmd = nvim -d $LOCAL $MERGED $REMOTE
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
