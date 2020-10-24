@@ -24,3 +24,6 @@ Host dev1.ec2.holosee.aws
 Host testbed1.ec2.holosee.aws
     HostName ec2-3-125-108-128.eu-central-1.compute.amazonaws.com
     IdentityFile ~/.ssh/id_rsa_holosee
+
+Host dev1.ec2.catmusic.aws
+    IdentityFile ~/.ssh/id_ecdsa_holosee
