@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ -z "$AWS_PROFILE" ]]; then
+    docker run --rm -it -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli $@
+else
+    docker run --rm -it --env AWS_PROFILE=$AWS_PROFILE -v ~/.aws:/root/.aws -v $(pwd):/aws amazon/aws-cli $@
+fi
+

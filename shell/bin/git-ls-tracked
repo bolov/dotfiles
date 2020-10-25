@@ -1,0 +1,4 @@
+#!/bin/bash
+find . -maxdepth 1 -not -type d \( \( -exec sh -c 'git ls-files --error-unmatch -- {} 1>/dev/null 2>/dev/null' \; -exec bash -c 'echo -e "\u001b[32mT\u001b[0m {}"' \;  \) -o -exec bash -c 'echo -e "\u001b[31mN\u001b[0m {}"'  \; \)
+
+
