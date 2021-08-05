@@ -36,6 +36,9 @@ alias makej='make -j 9'
 
 alias nvcd='nv cd'
 
+# in wsl: open explorer in current folder
+[ -x "$(command -v explorer.exe)" ] && alias e='explorer.exe .'
+
 ####################################################################################################
 
 ### https://stackoverflow.com/a/1793178/2805305
