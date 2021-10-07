@@ -4,6 +4,9 @@
 # this enables vi mode in bash only
 set -o vi
 
+# dont' exit on receiving EOF (CTRL-D)
+set -o ignoreeof
+
 export FZF_DEFAULT_COMMAND="find -L \$PWD -mindepth 1 -type d \
     \\( -fstype 'sysfs' \
        -o -fstype 'devfs' \
