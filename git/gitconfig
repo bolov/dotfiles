@@ -2,12 +2,9 @@
     name = Mihail Bălan
     email = mihail.balan@gmail.com
 
-[includeIf "gitdir/i:holosee/**"]
-    path = ~/.dotfiles/git/gitconfig-holosee
-
 [core]
     quotepath = false
-	fileMode = false
+    fileMode = false
 
 [status]
     showUntrackedFiles = "all"
