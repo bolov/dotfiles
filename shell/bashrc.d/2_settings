@@ -62,12 +62,14 @@ if command -v powerline-daemon >/dev/null 2>&1 ; then
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
 
-    if [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
+    if [ -f ~/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh ]; then
+        . ~/.local/lib/python3.8/site-packages/powerline/bindings/bash/powerline.sh
+    elif [ -f ~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh ]; then
+        . ~/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
+    elif [ -f ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh ]; then
         . ~/.local/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-    elif [ -f .local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh ]; then
-        . .local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
     else
-        echo "bash/powerline.sh not found"
+        >&2 echo ${BASH_SOURCE}::$LINENO "bash/powerline.sh not found"
     fi
-
 fi
+
